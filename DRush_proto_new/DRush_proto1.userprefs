@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BlockMaking_j.cs">
+    <Files>
+      <File FileName="DRush_proto1.sln" Line="40" Column="9" />
+      <File FileName="Assets\Score.cs" Line="12" Column="17" />
+      <File FileName="Assets\drawline.cs" Line="6" Column="1" />
+      <File FileName="Assets\BlockMaking_j.cs" Line="82" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

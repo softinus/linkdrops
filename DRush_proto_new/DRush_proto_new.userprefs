@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BlockManager2.cs">
+    <Files>
+      <File FileName="Assets\BlockManager2.cs" Line="53" Column="37" />
+      <File FileName="Assets\Script\Score.cs" Line="1" Column="1" />
+      <File FileName="Assets\bgScrolling.cs" Line="10" Column="75" />
+      <File FileName="Assets\Script\BlockMaking_j.cs" Line="145" Column="22" />
+      <File FileName="Assets\bgMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\startLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\scoreManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\drawline.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="F:\0.WORK\DRush_proto_new\Assets\BlockManager2.cs" line="32" />
+      <Breakpoint file="F:\0.WORK\DRush_proto_new\Assets\BlockManager2.cs" line="41" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets\BlockManager2.cs" line="36" offsetX="512" offsetY="347" expression="vRootPos" liveUpdate="False" />
+    <Watch file="Assets\BlockManager2.cs" line="36" offsetX="576" offsetY="582" expression="o.transform.position" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>
