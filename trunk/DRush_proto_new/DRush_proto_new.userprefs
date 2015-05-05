@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BlockManager2.cs">
     <Files>
-      <File FileName="Assets\BlockManager2.cs" Line="53" Column="37" />
+      <File FileName="Assets\BlockManager2.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Score.cs" Line="1" Column="1" />
-      <File FileName="Assets\bgScrolling.cs" Line="10" Column="75" />
-      <File FileName="Assets\Script\BlockMaking_j.cs" Line="145" Column="22" />
+      <File FileName="Assets\bgScrolling.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\BlockMaking_j.cs" Line="1" Column="1" />
       <File FileName="Assets\bgMove.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\startLevel.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\scoreManager.cs" Line="1" Column="1" />
