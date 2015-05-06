@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 14545216}
   - 114: {fileID: 14545215}
+  - 114: {fileID: 14545217}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -114,13 +115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5389f1b89de503442ae4f6a2dd089c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  g1: {fileID: 128598, guid: 3357afa5ee04c4f4d8b72c34f87a206e, type: 2}
-  g2: {fileID: 150676, guid: e768f1a7c050a4e4ebc44161f562307f, type: 2}
-  g3: {fileID: 172548, guid: 2caed1cc28fb37e4d8aa29a0649b477d, type: 2}
-  g4: {fileID: 173716, guid: 0d44306690129424cbb6b6d02def1761, type: 2}
-  g5: {fileID: 158842, guid: a883348bba86540459174b8136330a35, type: 2}
-  nWidth: 5
+  nWidth: 4
   fSpeed: 20
+  arr:
+  - {fileID: 128598, guid: 3357afa5ee04c4f4d8b72c34f87a206e, type: 2}
+  - {fileID: 150676, guid: e768f1a7c050a4e4ebc44161f562307f, type: 2}
+  - {fileID: 172548, guid: 2caed1cc28fb37e4d8aa29a0649b477d, type: 2}
+  - {fileID: 173716, guid: 0d44306690129424cbb6b6d02def1761, type: 2}
+  - {fileID: 158842, guid: a883348bba86540459174b8136330a35, type: 2}
 --- !u!4 &14545216
 Transform:
   m_ObjectHideFlags: 0
@@ -133,6 +135,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &14545217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14545214}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e55b07f74e9dd4589ade808b4c2bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hello:
+  - {fileID: 185182, guid: 84f51f8fa1cc7d44a9e9ec59a6ce3272, type: 2}
 --- !u!1 &35663645
 GameObject:
   m_ObjectHideFlags: 0

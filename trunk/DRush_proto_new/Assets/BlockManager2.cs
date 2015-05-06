@@ -4,16 +4,11 @@ using System.Collections;
 public class BlockManager2 : MonoBehaviour
 {
 
-	public GameObject g1;
-	public GameObject g2;
-	public GameObject g3;
-	public GameObject g4;
-	public GameObject g5;
-
 	public int nWidth= 5;
 	public float fSpeed= 40f;
 	//List<GameObject> arr= new List<GameObject>();
-	ArrayList arr= new ArrayList();	// 뭔가 바뀐듯 그냥 형을 안 집어넣고
+	//ArrayList arr= new ArrayList();	// 뭔가 바뀐듯 그냥 형을 안 집어넣고
+    public GameObject[] arr;
 	ArrayList arr1row= new ArrayList();
 	//Queue arr= new Queue();
 
@@ -22,23 +17,18 @@ public class BlockManager2 : MonoBehaviour
 	void Start ()
 	{
 		vRootPos= GameObject.Find("Manager").transform.position;
-		arr.Add(g1);
-		arr.Add(g2);
-		arr.Add(g3);
-		arr.Add(g4);
-		arr.Add(g5);
 
-		for(int i=0; i<nWidth; ++i)
-		{
+        for (int i = 0; i < nWidth; ++i)
+        {
             int nIdx = 0;
-            bool bExist= true;
+            bool bExist = true;
             while (bExist)
             {
                 bool bCheck = false;
-                nIdx = Random.Range(0, arr.Count);
+                nIdx = Random.Range(0, arr.Length);
                 foreach (GameObject GO in arr1row)
                 {
-                    if(GO == arr[nIdx]) // if it has already existed in list
+                    if (GO == arr[nIdx]) // if it has already existed in list
                     {
                         bCheck = true;
                         break;
@@ -48,21 +38,30 @@ public class BlockManager2 : MonoBehaviour
                 bExist = bCheck;
             }
 
-            GameObject o = arr[nIdx] as GameObject;
-			//o.transform.position= vRootPos;
-			//o.transform.Translate(10,0,100);
-			//o.transform.position= new Vector3(vRootPos.x+((i+1)*0.45f), vRootPos.y, 100);
+            //GameObject o = arr[nIdx];
+            //o.transform.position= vRootPos;
+            //o.transform.Translate(10,0,100);
+            //o.transform.position= new Vector3(vRootPos.x+((i+1)*0.45f), vRootPos.y, 100);
 
-			arr1row.Add(o);
-		}
+            arr1row.Add(arr[nIdx]);
 
-		for(int i=0; i<arr1row.Count; ++i)
+        }
+
+        //unsafe
+        //{
+        //    string str;
+        //    //int a;
+        //    str= string.Format("{0:X}", arr[0]);
+        //    Debug.Log(str);
+        //}
+
+        GameObject gManager = GameObject.Find("Manager");
+        for (int i = 0; i < arr1row.Count; ++i)
 		{
-            GameObject o = arr1row[i] as GameObject;
+            GameObject o = null;//arr[i] as GameObject;
 			//o.tag= "balls";
 
-			Instantiate(o, new Vector3(vRootPos.x+((i+1)*70f), vRootPos.y, 100), Quaternion.Euler(0, 0, 0) );
-            GameObject gManager = GameObject.Find("Manager");
+            o = Instantiate(arr1row[i] as GameObject, new Vector3(vRootPos.x + ((i + 1) * 70f), vRootPos.y, 100), Quaternion.Euler(0, 0, 0)) as GameObject;
             o.transform.SetParent(gManager.transform);
 		}
 	}
