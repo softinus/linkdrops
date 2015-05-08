@@ -12,7 +12,7 @@ public class RowItems
     protected string strSelectTag;
     protected int nPrevPos = -1;
     protected int nFixedPos = -1;
-    protected ArrayList arrColors = new ArrayList();
+    //protected ArrayList arrColors = new ArrayList();
 
     public int FixedPos
     {
@@ -67,24 +67,24 @@ public class RowItems
 
 
     // fixed block
-    public void MakeFixedBlock()
-    {
-        int nNewPos = -1;
-        if (nPrevPos != -1)  // if it has previous position
-        {
-            while (true)
-            {
-                nNewPos = Random.Range(nPrevPos - 1, nPrevPos + 2);
-                if (nNewPos == -1)
-                { }
-                else if (nNewPos == nWidth + 1)
-                { }
-                else
-                    break;
-            }
-        }
-        arr1row[nNewPos] = new GameObject();
-    }
+    //public void MakeFixedBlock()
+    //{
+    //    int nNewPos = -1;
+    //    if (nPrevPos != -1)  // if it has previous position
+    //    {
+    //        while (true)
+    //        {
+    //            nNewPos = Random.Range(nPrevPos - 1, nPrevPos + 2);
+    //            if (nNewPos == -1)
+    //            { }
+    //            else if (nNewPos == nWidth + 1)
+    //            { }
+    //            else
+    //                break;
+    //        }
+    //    }
+    //    arr1row[nNewPos] = new GameObject();
+    //}
 
     public void ChangeSelectBlockTo()
     {
@@ -174,11 +174,34 @@ public class BlockManager2 : MonoBehaviour
     protected int nSelectedItem= 0;
     protected int nRowCount = 0;
     //protected GameObject gLatestGO;  // the latest game object
+    public bool GameStart = false;    // started?
 	
 	//Queue arr= new Queue();
-        
+    //GameObject gMainBlock;
     
 	Vector3 vRootPos;
+
+    // make main block
+    private void MakeTouchBlock(float _screenWidth)
+    {
+        GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
+        gStartBlock.name = "main_block";
+        gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
+
+        CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
+        collider.isTrigger = true;
+
+        gStartBlock.AddComponent<LinkedCheckMain>();
+        gStartBlock.GetComponent<Animator>().enabled = true;
+        //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
+    }
+
+    //private void AddColliderToSelectObjs()
+    //{
+    //    GetSelectedBlockPos();
+    //    CircleCollider2D collider = gStartBlock.AddComponent<CircleCollider2D>();
+    //    collider.isTrigger = true;
+    //}
 
     private void Make1Row(int y)
     {
@@ -220,14 +243,20 @@ public class BlockManager2 : MonoBehaviour
                     100),
                     Quaternion.Euler(0, 0, 0)) as GameObject;
             o.transform.SetParent(gBoard.transform);
+
+            if (groups[nSelectedGroup].PrevPos == x) // if it's selected color
+            {
+                CircleCollider2D collider = o.AddComponent<CircleCollider2D>(); // add collider
+                collider.isTrigger = true;
+            }
         }
     }
 
 	void Start ()
 	{
         nRowCount = nHeight;
-        int nSelectedGroup = Random.Range(0, groups.Length);    // select shape
-        int nSelectedItem = Random.Range(0, nWidth);    // select color
+        nSelectedGroup = Random.Range(0, groups.Length);    // select shape
+        nSelectedItem = Random.Range(0, nWidth);    // select color
 		//vRootPos= GameObject.Find("Manager").transform.position;
         
         foreach(RowItems BI in groups)
@@ -247,12 +276,16 @@ public class BlockManager2 : MonoBehaviour
         {
             Make1Row(y);            
         }
-        
+
+        MakeTouchBlock(ScreenWidth);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+        if (GameStart == false)
+            return;
+
         GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
         foreach(GameObject GO in gBoards)
         {
