@@ -174,7 +174,7 @@ public class BlockManager2 : MonoBehaviour
     protected int nSelectedItem= 0;
     protected int nRowCount = 0;
     //protected GameObject gLatestGO;  // the latest game object
-    public bool GameStart = false;    // started?
+    public bool BeginStart = false;    // started?
 	
 	//Queue arr= new Queue();
     //GameObject gMainBlock;
@@ -186,11 +186,12 @@ public class BlockManager2 : MonoBehaviour
     {
         GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
         gStartBlock.name = "main_block";
-        gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
+        gStartBlock.transform.position = new Vector3(_screenWidth/2-100, 500 - fYdistance, 40);
 
         CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
 
+        gStartBlock.GetComponent<linkedCheck>().enabled = false;
         gStartBlock.AddComponent<LinkedCheckMain>();
         gStartBlock.GetComponent<Animator>().enabled = true;
         //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
@@ -223,9 +224,9 @@ public class BlockManager2 : MonoBehaviour
         }
 
         // destroy blank objects
-        GameObject GOforDestory = GameObject.Find("New Game Object");
-        if (GOforDestory)
-            Destroy(GOforDestory);  
+        //GameObject GOforDestory = GameObject.Find("New Game Object");
+        //if (GOforDestory)
+        //    Destroy(GOforDestory);  
         
         vRootPos = gBoard.transform.position;
         Debug.Log(fDistance);
@@ -283,11 +284,11 @@ public class BlockManager2 : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        if (GameStart == false)
+        if (BeginStart == false)
             return;
 
         GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
-        foreach(GameObject GO in gBoards)
+        foreach (GameObject GO in gBoards)
         {
             if (GO.transform.position.y < -50)
             {
