@@ -9,20 +9,17 @@ public class linkedCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        coll.gameObject.GetComponent<Animator>().enabled = true;
+        //coll.gameObject.GetComponent<Animator>().enabled = true;
+        this.link = true;
     }
     
 
 	void FixedUpdate ()
 	{
-        
-        //if (link == true)
-        //{
-
-        //    gameObject.GetComponent<Animator>().enabled = true;
-
-
-        //}
+        if (link == true)
+        {
+            gameObject.GetComponent<Animator>().enabled = true;
+        }
 	}
 }
 

@@ -4,6 +4,7 @@ using System.Collections;
 public class TouchManager : MonoBehaviour {
 
     public Vector2 vTouchPos;
+    protected bool bCollide = false;
 	// Use this for initialization
 	void Start ()
     {
@@ -14,15 +15,20 @@ public class TouchManager : MonoBehaviour {
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+        vTouchPos = pos;    // input to the member variable.
 
-        if (Input.GetMouseButton (0))
+        if (Input.GetMouseButton(0))
         {
             if (hit.collider != null)
             {
-                GameObject gStartBlock = GameObject.Find("main_block");
-                gStartBlock.transform.position = new Vector3(pos.x, pos.y, 100);
+                bCollide = true;
+                
                 //GetComponent<BlockManager2>().MakeStart = true;
             }
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            bCollide = false;
         }
     }
 
@@ -40,16 +46,19 @@ public class TouchManager : MonoBehaviour {
         {
             Debug.Log("start : (0) : x = " + pos.x + ", y = " + pos.y);
             vTouchPos = pos;
+            bCollide = true;
         }
         else if (touch.phase == TouchPhase.Ended)
         {
             Debug.Log("end : (0) : x = " + pos.x + ", y = " + pos.y);
             vTouchPos = pos;
+            bCollide = false;
         }
         else if (touch.phase == TouchPhase.Moved)
         {
             Debug.Log("move : (0) : x = " + pos.x + ", y = " + pos.y);
             vTouchPos = pos;
+            bCollide = true;
         }
     }
 
@@ -62,9 +71,15 @@ public class TouchManager : MonoBehaviour {
         {
             InWindows();
         }
-        else
+        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             InMobile();
+        }
+
+        if(bCollide)
+        {
+            GameObject gStartBlock = GameObject.Find("main_block");
+            gStartBlock.transform.position = new Vector3(vTouchPos.x, vTouchPos.y, 100);
         }
         
 

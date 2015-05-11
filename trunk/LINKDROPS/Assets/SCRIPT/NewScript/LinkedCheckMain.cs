@@ -13,11 +13,12 @@ public class LinkedCheckMain : MonoBehaviour {
     {
         //if (GetComponent<BlockManager2>().GameStart == false)
         //  GetComponent<BlockManager2>().GameStart = true;
-        coll.gameObject.GetComponent<Animator>().enabled = false;
+        //coll.gameObject.GetComponent<Animator>().enabled = false;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate ()
+    {
 	
 	}
 }
