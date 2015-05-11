@@ -224,9 +224,9 @@ public class BlockManager2 : MonoBehaviour
         }
 
         // destroy blank objects
-        //GameObject GOforDestory = GameObject.Find("New Game Object");
-        //if (GOforDestory)
-        //    Destroy(GOforDestory);  
+        GameObject GOforDestory = GameObject.Find("New Game Object");
+        if (GOforDestory)
+            Destroy(GOforDestory);  
         
         vRootPos = gBoard.transform.position;
         Debug.Log(fDistance);
