@@ -138,7 +138,7 @@ MonoBehaviour:
     - {fileID: 170884, guid: b18ba6a67c393b14a80421acc51038a1, type: 2}
     - {fileID: 148622, guid: 86f3d2d7b5e44b047b708693b1b83467, type: 2}
     - {fileID: 132076, guid: 933bb19f2d0566542bd8e6b5119ee224, type: 2}
-  BeginStart: 1
+  BeginStart: 0
 --- !u!4 &14545216
 Transform:
   m_ObjectHideFlags: 0
