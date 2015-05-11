@@ -191,8 +191,9 @@ public class BlockManager2 : MonoBehaviour
         CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
 
+        LinkedCheckMain gLinkScript= gStartBlock.AddComponent<LinkedCheckMain>();
+        gLinkScript.gManager = this.gameObject; // send manager object
         gStartBlock.GetComponent<linkedCheck>().enabled = false;
-        gStartBlock.AddComponent<LinkedCheckMain>();
         gStartBlock.GetComponent<Animator>().enabled = true;
         //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
     }
