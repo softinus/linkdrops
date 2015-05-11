@@ -164,7 +164,8 @@ public class BlockManager2 : MonoBehaviour
 {
 	public int nWidth= 5;
     public int nHeight = 15;
-	public float fSpeed= 40f;
+	public float fSpeed= 115f;   // 
+    public float fIncreseSpeed = 0.07f; // 
     public float fYdistance = 120f;
 
     public RowItems[] groups;
@@ -186,7 +187,7 @@ public class BlockManager2 : MonoBehaviour
     {
         GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
         gStartBlock.name = "main_block";
-        gStartBlock.transform.position = new Vector3(_screenWidth/2-100, 500 - fYdistance, 40);
+        gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
 
         CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
@@ -299,6 +300,6 @@ public class BlockManager2 : MonoBehaviour
             GO.transform.Translate(0, fSpeed * Time.deltaTime * -1, 0);
         }
 
-        fSpeed += 0.15f;
+        fSpeed += fIncreseSpeed;
 	}
 }
