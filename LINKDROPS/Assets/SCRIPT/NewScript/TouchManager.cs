@@ -9,6 +9,8 @@ public class TouchManager : MonoBehaviour {
     public float vCharSpeed;
     public float vCharIncreseSpeed;
 
+    public bool s_TouchMode = true;   // game mode
+
 	// Use this for initialization
 	void Start ()
     {
@@ -42,15 +44,16 @@ public class TouchManager : MonoBehaviour {
 
             if (this.GetComponent<BlockManager2>().BeginStart == false)
                 this.GetComponent<BlockManager2>().BeginStart = true;
-            //if (hit.collider != null)
-            //{
-            //    bCollide = true;                
-            //    //GetComponent<BlockManager2>().MakeStart = true;
-            //}
+
+            if (hit.collider != null)
+            {
+                bCollide = true;
+                //GetComponent<BlockManager2>().MakeStart = true;
+            }
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            //bCollide = false;
+            bCollide = false;
         }
     }
 
@@ -103,13 +106,21 @@ public class TouchManager : MonoBehaviour {
         //    InMobile();
         //}
 
-        if(bCollide)
+        if(s_TouchMode == true)
         {
-            //GameObject gStartBlock = GameObject.Find("main_block");
-            //gStartBlock.transform.position = new Vector3(vTouchPos.x, vTouchPos.y, 100);            
+            if (bCollide)
+            {
+                GameObject gStartBlock = GameObject.Find("main_block");
+                gStartBlock.transform.position = new Vector3(vTouchPos.x, 400, 100);
+            }
         }
-        GameObject gStartBlock = GameObject.Find("main_block");
-        gStartBlock.transform.Translate(vCharToward * vCharSpeed);
+        else
+        {
+            GameObject gStartBlock = GameObject.Find("main_block");
+            gStartBlock.transform.Translate(vCharToward * vCharSpeed);
+        }
+        
+       
 
         vCharSpeed += vCharIncreseSpeed;
 

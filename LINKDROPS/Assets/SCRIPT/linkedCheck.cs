@@ -5,12 +5,26 @@ public class linkedCheck : MonoBehaviour
 {
 
 	public bool link = false;
-	public GameObject Manager;
+	public BlockManager2 Manager;
+    protected GameObject gMainBlock;
+
+    void Start()
+    {
+        //selectedBlock = Manager.GetComponent<BlockManager2>()
+        gMainBlock= GameObject.Find("main_block");
+    }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
         //coll.gameObject.GetComponent<Animator>().enabled = true;
-        this.link = true;
+
+        if (this.gameObject.transform.tag == gMainBlock.transform.tag)
+            this.link = true;
+        else
+        {
+            //Manager.GetComponent<BlockManager2>().BeginStart = false;
+            Manager.BeginStart = false;
+        }
     }
     
 
