@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nWidth: 4
   nHeight: 12
-  fSpeed: 125
+  fSpeed: 250
   fIncreseSpeed: .0500000007
   fYdistance: 120
   groups:
@@ -165,6 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vTouchPos: {x: 0, y: 0}
   vCharToward: {x: 0, y: 0}
+  vCharSpeed: 0
+  vCharIncreseSpeed: 0
+  s_TouchMode: 0
 --- !u!1 &35663645
 GameObject:
   m_ObjectHideFlags: 0

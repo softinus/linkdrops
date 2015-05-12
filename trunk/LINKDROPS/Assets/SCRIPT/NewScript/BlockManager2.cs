@@ -14,6 +14,8 @@ public class RowItems
     protected int nFixedPos = -1;
     //protected ArrayList arrColors = new ArrayList();
 
+   
+
     public int FixedPos
     {
         get { return nFixedPos; }
@@ -65,27 +67,6 @@ public class RowItems
     }
 
 
-
-    // fixed block
-    //public void MakeFixedBlock()
-    //{
-    //    int nNewPos = -1;
-    //    if (nPrevPos != -1)  // if it has previous position
-    //    {
-    //        while (true)
-    //        {
-    //            nNewPos = Random.Range(nPrevPos - 1, nPrevPos + 2);
-    //            if (nNewPos == -1)
-    //            { }
-    //            else if (nNewPos == nWidth + 1)
-    //            { }
-    //            else
-    //                break;
-    //        }
-    //    }
-    //    arr1row[nNewPos] = new GameObject();
-    //}
-
     public void ChangeSelectBlockTo()
     {
         if(nPrevPos == -1)  // hasn't previous position
@@ -102,6 +83,10 @@ public class RowItems
             int nNewPos = -1;
             while(true) // find new proper position.
             {
+                //if (nPrevPos == 0 || nPrevPos == nWidth-1)  // if previous position is
+                //{
+                //}
+
                 nNewPos = Random.Range(nPrevPos - 1, nPrevPos + 2);
                 if (nNewPos == -1)
                 { }
@@ -162,6 +147,8 @@ public class RowItems
 
 public class BlockManager2 : MonoBehaviour
 {
+   
+
 	public int nWidth= 5;
     public int nHeight = 15;
 	public float fSpeed= 115f;   // 
@@ -192,19 +179,14 @@ public class BlockManager2 : MonoBehaviour
         CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
 
-        LinkedCheckMain gLinkScript= gStartBlock.AddComponent<LinkedCheckMain>();
-        gLinkScript.gManager = this.gameObject; // send manager object
-        gStartBlock.GetComponent<linkedCheck>().enabled = false;
+        LinkedCheckMain gLinkScriptMain= gStartBlock.AddComponent<LinkedCheckMain>();
+        //gLinkScriptMain.gManager = this.gameObject; // send manager object
+
+        gStartBlock.GetComponent<linkedCheck>().enabled = false;        
         gStartBlock.GetComponent<Animator>().enabled = true;
         //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
     }
 
-    //private void AddColliderToSelectObjs()
-    //{
-    //    GetSelectedBlockPos();
-    //    CircleCollider2D collider = gStartBlock.AddComponent<CircleCollider2D>();
-    //    collider.isTrigger = true;
-    //}
 
     private void Make1Row(int y)
     {
@@ -247,11 +229,19 @@ public class BlockManager2 : MonoBehaviour
                     Quaternion.Euler(0, 0, 0)) as GameObject;
             o.transform.SetParent(gBoard.transform);
 
-            if (groups[nSelectedGroup].PrevPos == x) // if it's selected color
-            {
-                CircleCollider2D collider = o.AddComponent<CircleCollider2D>(); // add collider
-                collider.isTrigger = true;
-            }
+            //if (groups[nSelectedGroup].PrevPos == x) // if it's selected color
+              //  o.transform.tag = "selected"; // if selected
+            
+            CircleCollider2D collider = o.AddComponent<CircleCollider2D>(); // add collider
+            collider.isTrigger = true;
+
+            if (groups[nSelectedGroup].PrevPos == x)    // adjust the radius of blocks
+                collider.radius = 25;
+            else
+                collider.radius = 18;                    
+
+            linkedCheck linkedScript= o.GetComponent<linkedCheck>();
+            linkedScript.Manager = this;
         }
     }
 
