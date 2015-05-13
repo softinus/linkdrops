@@ -4,7 +4,7 @@ using System.Collections;
 public class TouchManager : MonoBehaviour {
 
     public Vector2 vTouchPos;
-    protected bool bCollide = false;
+    protected bool bTouch = false;
     public Vector2 vCharToward;
     public float vCharSpeed;
     public float vCharIncreseSpeed;
@@ -45,15 +45,11 @@ public class TouchManager : MonoBehaviour {
             if (this.GetComponent<BlockManager2>().BeginStart == false)
                 this.GetComponent<BlockManager2>().BeginStart = true;
 
-            if (hit.collider != null)
-            {
-                bCollide = true;
-                //GetComponent<BlockManager2>().MakeStart = true;
-            }
+            bTouch = false;
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            bCollide = false;
+            bTouch = true;
         }
     }
 
@@ -71,17 +67,17 @@ public class TouchManager : MonoBehaviour {
                 if (Input.GetTouch(0).phase == TouchPhase.Began)    // 딱 처음 터치 할때 발생한다
                 {
                     vTouchPos = pos;
-                    bCollide = true;
+                    bTouch = true;
                 }
                 else if (Input.GetTouch(0).phase == TouchPhase.Moved)    // 터치하고 움직이믄 발생한다.
                 {
                     vTouchPos = pos;
-                    bCollide = true;
+                    bTouch = true;
                 }
                 else if (Input.GetTouch(0).phase == TouchPhase.Ended)    // 터치 따악 떼면 발생한다.
                 {
                     vTouchPos = pos;
-                    bCollide = false;
+                    bTouch = false;
                 }
             }
         }
@@ -108,10 +104,10 @@ public class TouchManager : MonoBehaviour {
 
         if(s_TouchMode == true)
         {
-            if (bCollide)
+            if (bTouch)
             {
                 GameObject gStartBlock = GameObject.Find("main_block");
-                gStartBlock.transform.position = new Vector3(vTouchPos.x, 400, 100);
+                gStartBlock.transform.position = new Vector3(vTouchPos.x, 300, 100);
             }
         }
         else
