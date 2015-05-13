@@ -10,6 +10,7 @@ TagManager:
   - blue
   - yellow
   - board
+  - selected
   layers:
   - Default
   - TransparentFX
