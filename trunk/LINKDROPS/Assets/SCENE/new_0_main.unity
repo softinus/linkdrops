@@ -97,6 +97,7 @@ GameObject:
   - 4: {fileID: 14545216}
   - 114: {fileID: 14545215}
   - 114: {fileID: 14545217}
+  - 61: {fileID: 14545218}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -147,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 14545214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 769, z: 40}
+  m_LocalPosition: {x: 360, y: 622, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -168,6 +169,19 @@ MonoBehaviour:
   vCharSpeed: 0
   vCharIncreseSpeed: 0
   s_TouchMode: 1
+--- !u!61 &14545218
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14545214}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 720, y: 1280}
 --- !u!1 &35663645
 GameObject:
   m_ObjectHideFlags: 0
