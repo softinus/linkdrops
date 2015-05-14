@@ -27,7 +27,7 @@ public class TouchManager : MonoBehaviour {
         vTouchPos = pos;    // input to the member variable.
 
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))  // change direction alternately
         {
             if (vCharToward.x == 0)
             {
@@ -42,7 +42,7 @@ public class TouchManager : MonoBehaviour {
                 vCharToward.x = 1;
             }
 
-            if (this.GetComponent<BlockManager2>().BeginStart == false)
+            if (this.GetComponent<BlockManager2>().BeginStart == false) // if game is not started yet
                 this.GetComponent<BlockManager2>().BeginStart = true;
 
             bTouch = false;

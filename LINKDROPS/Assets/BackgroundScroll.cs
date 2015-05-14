@@ -21,21 +21,10 @@ public class BackgroundScroll : MonoBehaviour {
 
         for(int i=0; i<nChildCount; ++i)
         {
-            Transform tChild = this.gameObject.transform.GetChild(i);
-            if( tChild.name=="bg_001" )
+            Transform tChild = this.gameObject.transform.GetChild(i);   // get transform of child gameobject
+            if (tChild.position.y < -1280)
             {
-                if(tChild.position.y < -1280)
-                {
-                    tChild.position = vBeginPos;
-                }
-
-            }
-            else
-            {
-                if (tChild.position.y < -1280)
-                {
-                    tChild.position = vBeginPos;
-                }
+                tChild.position = vBeginPos;
             }
         }
 	}
