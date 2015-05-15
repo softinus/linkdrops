@@ -16,10 +16,18 @@ public class linkedCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        
         //coll.gameObject.GetComponent<Animator>().enabled = true;
 
+        if (gMainBlock)
         if (this.gameObject.transform.tag == gMainBlock.transform.tag)
+        {
             this.link = true;
+
+            if (Manager)
+                Manager.arrLinked.Add(this.gameObject); // add linked game objects
+        }
+
         else
         {
             //Manager.GetComponent<BlockManager2>().BeginStart = false;
