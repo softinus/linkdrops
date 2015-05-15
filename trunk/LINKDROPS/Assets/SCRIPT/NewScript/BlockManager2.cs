@@ -14,6 +14,7 @@ public class RowItems
     protected int nFixedPos = -1;
     //protected ArrayList arrColors = new ArrayList();
 
+    
    
 
     public int FixedPos
@@ -147,23 +148,30 @@ public class RowItems
 
 public class BlockManager2 : MonoBehaviour
 {
-   
 
+    public Vector3 vStartPoint;
 	public int nWidth= 5;
     public int nHeight = 15;
 	public float fSpeed= 115f;   // 
     public float fIncreseSpeed = 0.07f; // 
     public float fYdistance = 120f;
 
+    public ArrayList arrLinked = new ArrayList();
     public RowItems[] groups;
 
     protected float fDistance = 0.0f;
     protected int nSelectedGroup = 0;
+
     protected int nSelectedItem= 0;
     protected int nRowCount = 0;
     //protected GameObject gLatestGO;  // the latest game object
     public bool BeginStart = false;    // started?
-	
+
+    public int SelectedGroup
+    {
+        get { return nSelectedGroup; }
+        set { nSelectedGroup = value; }
+    }
 	//Queue arr= new Queue();
     //GameObject gMainBlock;
     
@@ -174,7 +182,8 @@ public class BlockManager2 : MonoBehaviour
     {
         GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
         gStartBlock.name = "main_block";
-        gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
+        //gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
+        gStartBlock.transform.position = vStartPoint;
 
         CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
