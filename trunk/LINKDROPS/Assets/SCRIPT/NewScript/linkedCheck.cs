@@ -15,10 +15,10 @@ public class linkedCheck : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D coll)
-    {
-        
+    {        
         //coll.gameObject.GetComponent<Animator>().enabled = true;
 
+        if (!link)
         if (gMainBlock)
         if (this.gameObject.transform.tag == gMainBlock.transform.tag)
         {
@@ -26,6 +26,15 @@ public class linkedCheck : MonoBehaviour
 
             if (Manager)
                 Manager.arrLinked.Add(this.gameObject); // add linked game objects
+
+            // attach line to linked block
+            GameObject gLinkLine = Instantiate((GameObject)Resources.Load("LinkLine"));
+            gLinkLine.transform.Translate(gameObject.transform.position);
+            Drawline2 draw= gLinkLine.GetComponent<Drawline2>();
+            draw.sourceObj = gLinkLine;
+            //draw.destiPosition = gMainBlock.transform.position;
+            gLinkLine.transform.SetParent(this.gameObject.transform);
+        
         }
 
         else
