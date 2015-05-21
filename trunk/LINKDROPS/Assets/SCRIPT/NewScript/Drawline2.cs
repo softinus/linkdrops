@@ -4,29 +4,44 @@ using System.Collections;
 public class Drawline2 : MonoBehaviour
 {
 	//private Vector2 objectPosition;
-	public float rotateFix;
-	public float distanceFix;
-	public float stetchSpeed;
-
     public GameObject sourceObj;    // source
     //public Vector2 sourcePosition;  // source 
-    public Vector2 destiPosition;  // destination 
+    Vector2 destiPosition;  // destination 
 
-
+	//public GameObject insteadObj;
+	public int nRowIdx;
 
 	void Start ()
 	{
+		//nRowIdx= 0;
+		//bLinkToMain= true;
 		//objectPosition = new Vector2 (transform.position.x,transform.position.y);	
 	}
 	// Update is called once per frame
 	void Update ()
     {
-        GameObject gMainBlock= GameObject.Find("main_block") as GameObject;
-        destiPosition = gMainBlock.transform.position;
-        transform.LookAt2D(gMainBlock.transform, Vector3.up);
-        float distance = Vector2.Distance(sourceObj.transform.position, destiPosition);
+		GameObject obj= GameObject.Find("LinkLine_" + (nRowIdx+1));
+
+		if(obj == null)
+		{
+			GameObject gMainBlock= GameObject.Find("main_block") as GameObject;	// find main block
+			destiPosition = gMainBlock.transform.position;	// get destination of main block
+			transform.LookAt2D(gMainBlock.transform, Vector3.up);	// rotate this line obj to target block such as main block.
+			
+			float distance = Vector2.Distance(sourceObj.transform.position, destiPosition);	// get distance from source object to destination object.
+			transform.localScale = new Vector2(transform.localScale.x, distance/15);	// change scale
+		}
+		else
+		{
+			//obj.transform.parent;
+			destiPosition = obj.transform.position;	// get destination of main block
+			transform.LookAt2D(obj.transform, Vector3.up);	// rotate this line obj to target block such as main block.
+			
+			float distance = Vector2.Distance(sourceObj.transform.position, destiPosition);	// get distance from source object to destination object.
+			transform.localScale = new Vector2(transform.localScale.x, distance/15);	// change scale
+		}
+
         //transform.localScale = transform.parent.localScale;
-        transform.localScale = new Vector2(transform.localScale.x, distance/15);
         ///transform.localScale = new Vector2(transform.localScale.x, Mathf.Pow(distance, 0.55f));
 
         ////transform.Rotate(0, 0, 1, Space.Self);
