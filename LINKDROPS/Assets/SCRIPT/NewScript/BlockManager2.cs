@@ -251,6 +251,7 @@ public class BlockManager2 : MonoBehaviour
 
             linkedCheck linkedScript= o.GetComponent<linkedCheck>();
             linkedScript.Manager = this;
+			linkedScript.nRowIdx= y;	// set row index
         }
     }
 

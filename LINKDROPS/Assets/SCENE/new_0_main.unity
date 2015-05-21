@@ -119,7 +119,7 @@ MonoBehaviour:
   vStartPoint: {x: 360, y: 300, z: 40}
   nWidth: 4
   nHeight: 12
-  fSpeed: 250
+  fSpeed: 220
   fIncreseSpeed: .0500000007
   fYdistance: 120
   groups:
