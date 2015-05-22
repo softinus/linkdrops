@@ -155,6 +155,8 @@ public class BlockManager2 : MonoBehaviour
 	public float fSpeed= 115f;   // 
     public float fIncreseSpeed = 0.07f; // 
     public float fYdistance = 120f;
+    public float fRadiusForAvoid;
+    public float fRadiusForObsorb;
 
     public ArrayList arrLinked = new ArrayList();
     public RowItems[] groups;
@@ -245,9 +247,9 @@ public class BlockManager2 : MonoBehaviour
             collider.isTrigger = true;
 
             if (groups[nSelectedGroup].PrevPos == x)    // adjust the radius of blocks
-                collider.radius = 25;
+                collider.radius = fRadiusForObsorb;
             else
-                collider.radius = 18;                    
+                collider.radius = fRadiusForAvoid;                    
 
             linkedCheck linkedScript= o.GetComponent<linkedCheck>();
             linkedScript.Manager = this;

@@ -122,6 +122,8 @@ MonoBehaviour:
   fSpeed: 220
   fIncreseSpeed: .0500000007
   fYdistance: 120
+  fRadiusForAvoid: 18
+  fRadiusForObsorb: 25
   groups:
   - items:
     - {fileID: 159582, guid: 317211298311da9489c479006a7f6139, type: 2}
