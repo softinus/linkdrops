@@ -169,6 +169,7 @@ public class RowItems
 
 public class BlockManager2 : MonoBehaviour
 {
+    static public int s_nScore = 0;
 
     public Vector3 vStartPoint;
 	public int nWidth= 5;
