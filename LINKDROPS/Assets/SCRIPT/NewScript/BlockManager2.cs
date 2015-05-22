@@ -292,7 +292,7 @@ public class BlockManager2 : MonoBehaviour
         GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
         foreach (GameObject GO in gBoards)
         {
-            if (GO.transform.position.y < -50)
+            if (GO.transform.position.y < -150)
             {
                 Destroy(GO);
                 Make1Row(nRowCount++);
