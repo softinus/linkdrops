@@ -29,7 +29,7 @@ public class Drawline2 : MonoBehaviour
 			transform.LookAt2D(gMainBlock.transform, Vector3.up);	// rotate this line obj to target block such as main block.
 			
 			float distance = Vector2.Distance(sourceObj.transform.position, destiPosition);	// get distance from source object to destination object.
-			transform.localScale = new Vector2(transform.localScale.x, distance/15);	// change scale
+			transform.localScale = new Vector2(transform.localScale.x, distance/10);	// change scale
 		}
 		else
 		{
@@ -38,7 +38,7 @@ public class Drawline2 : MonoBehaviour
 			transform.LookAt2D(obj.transform, Vector3.up);	// rotate this line obj to target block such as main block.
 			
 			float distance = Vector2.Distance(sourceObj.transform.position, destiPosition);	// get distance from source object to destination object.
-			transform.localScale = new Vector2(transform.localScale.x, distance/15);	// change scale
+			transform.localScale = new Vector2(transform.localScale.x, distance/10);	// change scale
 		}
 
         //transform.localScale = transform.parent.localScale;

@@ -47,10 +47,10 @@ public class linkedCheck : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-        if (link == true)
-        {
-            gameObject.GetComponent<Animator>().enabled = true;
-        }
+        //if (link == true)
+        //{
+        //    gameObject.GetComponent<Animator>().enabled = true;
+        //}
 	}
 }
 

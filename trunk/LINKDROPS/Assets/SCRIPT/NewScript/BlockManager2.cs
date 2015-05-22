@@ -55,6 +55,27 @@ public class RowItems
         get { return strSelectTag; }
     }
 
+    //연두색: 187 249 98
+    //빨간색: 255 86	86
+    //노란색: 255 215 94
+    //파란색: 0 168 255
+    //보라색: 136 77 147
+    public Color GetSelectColor()
+    {
+        Color res = new Color(255, 255, 255);
+        if(this.strSelectTag == "green")
+            res = new Color(187, 249, 98);
+        else if(this.strSelectTag == "red")
+            res = new Color(255, 86, 86);
+        else if(this.strSelectTag == "yellow")
+            res = new Color(255, 215, 94);
+        else if(this.strSelectTag == "blue")
+            res = new Color(0, 168, 255);
+        else if(this.strSelectTag == "purple")
+            res = new Color(136, 77, 147);
+        return res;
+    }
+
     // find pos of selected block
     public int GetSelectedBlockPos()
     {
@@ -182,8 +203,11 @@ public class BlockManager2 : MonoBehaviour
     // make main block
     private void MakeTouchBlock(float _screenWidth)
     {
-        GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
-        gStartBlock.name = "main_block";
+        GameObject gStartBlock = Instantiate((GameObject)Resources.Load("pacman"));
+        //GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
+        gStartBlock.name = "main_block";    // set name for controllable
+        gStartBlock.tag = groups[nSelectedGroup].items[nSelectedItem].tag;  // set tag distinguish between the color of blocks
+        
         //gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
         gStartBlock.transform.position = vStartPoint;
 
@@ -193,9 +217,14 @@ public class BlockManager2 : MonoBehaviour
         LinkedCheckMain gLinkScriptMain= gStartBlock.AddComponent<LinkedCheckMain>();
         //gLinkScriptMain.gManager = this.gameObject; // send manager object
 
-        gStartBlock.GetComponent<linkedCheck>().enabled = false;        
         gStartBlock.GetComponent<Animator>().enabled = true;
+        //gStartBlock.GetComponent<linkedCheck>().enabled = false;        
         //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
+
+        GameObject obj = GameObject.Find("main_block");
+        SpriteRenderer sprRender = obj.GetComponent<SpriteRenderer>();   // get sprite render in main block
+        sprRender.material.color = groups[nSelectedGroup].GetSelectColor();  // set proper color     
+        
     }
 
 
