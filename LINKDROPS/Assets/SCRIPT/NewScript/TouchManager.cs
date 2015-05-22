@@ -3,13 +3,16 @@ using System.Collections;
 
 public class TouchManager : MonoBehaviour {
 
+    private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
+
     protected bool bTouch = false;
     public Vector2 vCharToward;
     public float vCharSpeed;
     public float vCharIncreseSpeed;
 
     public bool s_TouchMode = true;   // game mode
+
 
 	// Use this for initialization
 	void Start ()
@@ -24,7 +27,7 @@ public class TouchManager : MonoBehaviour {
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-        vTouchPos = pos;    // input to the member variable.
+        
 
 
         if (Input.GetMouseButtonUp(0))  // change direction alternately
@@ -46,10 +49,21 @@ public class TouchManager : MonoBehaviour {
                 this.GetComponent<BlockManager2>().BeginStart = true;
 
             bTouch = false;
+            vTouchPos = pos;
+
+           
+            
         }
         else if (Input.GetMouseButtonDown(0))
         {
             bTouch = true;
+            GameObject gStartBlock = GameObject.Find("main_block");
+            vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
+            ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
+        }
+        else if(Input.GetMouseButton(0))
+        {
+            vTouchPos = pos;    // input to the member variable.
         }
     }
 
@@ -102,7 +116,7 @@ public class TouchManager : MonoBehaviour {
         //    InMobile();
         //}
 
-        if(s_TouchMode == true)
+        if(s_TouchMode == true) // each modes are completely different
         {
             if (bTouch)
             {

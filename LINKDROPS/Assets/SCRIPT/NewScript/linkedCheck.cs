@@ -35,7 +35,9 @@ public class linkedCheck : MonoBehaviour
             draw.sourceObj = gLinkLine;
 			draw.nRowIdx= nRowIdx;
             //draw.destiPosition = gMainBlock.transform.position;
-            gLinkLine.transform.SetParent(this.gameObject.transform);        
+            gLinkLine.transform.SetParent(this.gameObject.transform);
+
+            ++BlockManager2.s_nScore;
         }
         else
         {
