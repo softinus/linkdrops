@@ -49,7 +49,7 @@ public class linkedCheck : MonoBehaviour
 	{
         //if (link == true)
         //{
-        //    gameObject.GetComponent<Animator>().enabled = true;
+         //   gameObject.GetComponent<Animator>().enabled = true;
         //}
 	}
 }
