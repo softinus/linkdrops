@@ -221,9 +221,9 @@ public class BlockManager2 : MonoBehaviour
         //gStartBlock.GetComponent<linkedCheck>().enabled = false;        
         //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
 
-        GameObject obj = GameObject.Find("main_block");
-        SpriteRenderer sprRender = obj.GetComponent<SpriteRenderer>();   // get sprite render in main block
-        sprRender.material.color = groups[nSelectedGroup].GetSelectColor();  // set proper color     
+        //GameObject obj = GameObject.Find("main_block");
+        //SpriteRenderer sprRender = obj.GetComponent<SpriteRenderer>();   // get sprite render in main block
+        //sprRender.material.color = groups[nSelectedGroup].GetSelectColor();  // set proper color     
         
     }
 
