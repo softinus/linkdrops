@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TouchManager : MonoBehaviour {
 
+    private Vector2 vStartTouchPos;
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
 
@@ -13,6 +14,14 @@ public class TouchManager : MonoBehaviour {
 
     public bool s_TouchMode = true;   // game mode
 
+    void OnGUI()
+    {
+        GameObject gStartBlock = GameObject.Find("main_block");
+                
+        GUI.Label(new Rect(10, 75, 300, 20), "Touch :: X: " + vTouchPos.x + "   Y: " + vTouchPos.y);
+        GUI.Label(new Rect(10, 100, 300, 20), "gMain :: X: " + gStartBlock.transform.position.x + "   Y: " + gStartBlock.transform.position.y);
+        GUI.Label(new Rect(10, 125, 300, 20), "Gap :: X: " + vGapBetweenTouchAndObj.x + "   Y: " + vGapBetweenTouchAndObj.y);
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -51,13 +60,14 @@ public class TouchManager : MonoBehaviour {
             bTouch = false;
             vTouchPos = pos;
 
-           
             
         }
         else if (Input.GetMouseButtonDown(0))
         {
+            vTouchPos = pos;
             bTouch = true;
             GameObject gStartBlock = GameObject.Find("main_block");
+            vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
         }
@@ -102,9 +112,34 @@ public class TouchManager : MonoBehaviour {
 
     }
 
+    private void InJoySticks()
+    {
+        string[] strJoySticks= Input.GetJoystickNames();
+        if (strJoySticks.Length != 0)
+        {
+            float f = Input.GetAxis("Horizontal");
+            Debug.Log(f);
+
+            GameObject gStartBlock = GameObject.Find("main_block");
+            Vector2 v = new Vector2(f, 0);
+            gStartBlock.transform.Translate(v*10);
+            
+            if(f != 0.0f)
+            {
+                if (this.GetComponent<BlockManager2>().BeginStart == false) // if game is not started yet
+                    this.GetComponent<BlockManager2>().BeginStart = true;
+            }
+            
+            
+        }
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
+
+        InJoySticks();
+        
         //Debug.Log(Application.platform);
 
         //if(Application.platform == RuntimePlatform.WindowsEditor)
@@ -121,7 +156,7 @@ public class TouchManager : MonoBehaviour {
             if (bTouch)
             {
                 GameObject gStartBlock = GameObject.Find("main_block");
-                gStartBlock.transform.position = new Vector3(vTouchPos.x, 300, 100);
+                gStartBlock.transform.position = new Vector3( vTouchPos.x+vGapBetweenTouchAndObj.x, 300, 100);
             }
         }
         else
