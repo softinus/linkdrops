@@ -212,8 +212,8 @@ public class BlockManager2 : MonoBehaviour
         //gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
         gStartBlock.transform.position = vStartPoint;
 
-        CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
-        collider.isTrigger = true;
+        //CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
+        //collider.isTrigger = true;
 
         LinkedCheckMain gLinkScriptMain= gStartBlock.AddComponent<LinkedCheckMain>();
         //gLinkScriptMain.gManager = this.gameObject; // send manager object
