@@ -6,6 +6,7 @@ public class TouchManager : MonoBehaviour {
     private Vector2 vStartTouchPos;
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
+	public float mainblockPosY = 300f;
 
     protected bool bTouch = false;
     public Vector2 vCharToward;
@@ -156,7 +157,7 @@ public class TouchManager : MonoBehaviour {
             if (bTouch)
             {
                 GameObject gStartBlock = GameObject.Find("main_block");
-                gStartBlock.transform.position = new Vector3( vTouchPos.x+vGapBetweenTouchAndObj.x, 300, 100);
+				gStartBlock.transform.position = new Vector3( vTouchPos.x+vGapBetweenTouchAndObj.x, mainblockPosY, 100);
             }
         }
         else
