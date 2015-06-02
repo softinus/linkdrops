@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [System.Serializable]  //  MonoBehaviour가 아닌 클래스에 대해 Inspector에 나타내기.
@@ -218,7 +219,7 @@ public class BlockManager2 : MonoBehaviour
         LinkedCheckMain gLinkScriptMain= gStartBlock.AddComponent<LinkedCheckMain>();
         //gLinkScriptMain.gManager = this.gameObject; // send manager object
 
-        gStartBlock.GetComponent<Animator>().enabled = true;
+       // gStartBlock.GetComponent<Animator>().enabled = true;
         //gStartBlock.GetComponent<linkedCheck>().enabled = false;        
         //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
 
@@ -265,7 +266,7 @@ public class BlockManager2 : MonoBehaviour
             Destroy(GOforDestory);  
         
         vRootPos = gBoard.transform.position;
-        Debug.Log(fDistance);
+        
 
         groups[nSelectedGroup].Randomly(true);  // sorting
         groups[nSelectedGroup].ChangeSelectBlockTo();
@@ -310,7 +311,7 @@ public class BlockManager2 : MonoBehaviour
             BI.Width = nWidth;
             BI.SelectTag = nSelectedItem;
             BI.Randomly(false);
-            Debug.Log(BI.Tag);
+         
         }
         
         var ScreenHeight = 2 * Camera.main.orthographicSize;
@@ -329,20 +330,31 @@ public class BlockManager2 : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        if (BeginStart == false)
-            return;
 
-        GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
-        foreach (GameObject GO in gBoards)
-        {
-            if (GO.transform.position.y < -150)
-            {
-                Destroy(GO);
-                Make1Row(nRowCount++);
-            }
-            GO.transform.Translate(0, fSpeed * Time.deltaTime * -1, 0);
-        }
+        if (BeginStart == false) {
+			//retry button set Active
+			GameObject.Find ("retryButton").GetComponent<Image>().enabled = true;
+			GameObject.Find ("retryButton").GetComponent<Button>().enabled = true;
+		} else {
+			GameObject.Find ("retryButton").GetComponent<Image>().enabled = false;
+			GameObject.Find ("retryButton").GetComponent<Button>().enabled = false;
 
-        fSpeed += fIncreseSpeed;
+			GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
+			foreach (GameObject GO in gBoards)
+			{
+				if (GO.transform.position.y < -150)
+				{
+					Destroy(GO);
+					Make1Row(nRowCount++);
+				}
+				GO.transform.Translate(0, fSpeed * Time.deltaTime * -1, 0);
+			}
+			
+			fSpeed += fIncreseSpeed;
+			
+		}
+
+
+
 	}
 }

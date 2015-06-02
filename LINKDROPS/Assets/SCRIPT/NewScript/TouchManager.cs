@@ -128,7 +128,7 @@ public class TouchManager : MonoBehaviour {
         if (strJoySticks.Length != 0)
         {
             float f = Input.GetAxis("Horizontal");
-            Debug.Log(f);
+           
 
             GameObject gStartBlock = GameObject.Find("main_block");
             Vector2 v = new Vector2(f, 0);
