@@ -15,6 +15,9 @@ public class TouchManager : MonoBehaviour {
 
     public bool s_TouchMode = true;   // game mode
 
+    GameObject gLeftWall ;
+    GameObject gRightWall;
+
     void OnGUI()
     {
         GameObject gStartBlock = GameObject.Find("main_block");
@@ -22,6 +25,9 @@ public class TouchManager : MonoBehaviour {
         GUI.Label(new Rect(10, 75, 300, 20), "Touch :: X: " + vTouchPos.x + "   Y: " + vTouchPos.y);
         GUI.Label(new Rect(10, 100, 300, 20), "gMain :: X: " + gStartBlock.transform.position.x + "   Y: " + gStartBlock.transform.position.y);
         GUI.Label(new Rect(10, 125, 300, 20), "Gap :: X: " + vGapBetweenTouchAndObj.x + "   Y: " + vGapBetweenTouchAndObj.y);
+        GUI.Label(new Rect(10, 150, 300, 20), "Screen.width : " + Screen.width);
+        GUI.Label(new Rect(10, 175, 300, 20), "Screen.height : " + Screen.height);
+        
     }
 
 	// Use this for initialization
@@ -31,6 +37,9 @@ public class TouchManager : MonoBehaviour {
         vCharToward = new Vector2(0, 0);
         vCharSpeed = 5.0f;
         vCharIncreseSpeed = 0.00025f;
+
+        gLeftWall = GameObject.Find("left_wall");
+        gRightWall = GameObject.Find("right_wall");
 	}
 	
     void InWindows()
@@ -157,7 +166,14 @@ public class TouchManager : MonoBehaviour {
             if (bTouch)
             {
                 GameObject gStartBlock = GameObject.Find("main_block");
-				gStartBlock.transform.position = new Vector3( vTouchPos.x+vGapBetweenTouchAndObj.x, mainblockPosY, 100);
+
+                float fMove = vTouchPos.x + vGapBetweenTouchAndObj.x;
+                //if (100 < fMove && Screen.width-100 > fMove)
+                if (gLeftWall.transform.position.x < fMove && gRightWall.transform.position.x > fMove)
+                {
+				    gStartBlock.transform.position = new Vector3( vTouchPos.x+vGapBetweenTouchAndObj.x, mainblockPosY, 100);
+                }
+
             }
         }
         else
@@ -172,3 +188,4 @@ public class TouchManager : MonoBehaviour {
 
 	}
 }
+
