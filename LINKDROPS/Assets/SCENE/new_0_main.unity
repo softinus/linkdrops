@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vTouchPos: {x: 0, y: 0}
+  mainblockPosY: 310
   vCharToward: {x: 0, y: 0}
   vCharSpeed: 0
   vCharIncreseSpeed: 0
