@@ -231,13 +231,24 @@ public class BlockManager2 : MonoBehaviour
 
     private void Make1Row(int y)
     {
+        int nBoardX = 0;
+        //if (Application.platform == RuntimePlatform.Android)
+        //    nBoardX = -40;
+        //else if(Application.platform == RuntimePlatform.IPhonePlayer)
+        //    nBoardX = 0;
+        //else if (Application.platform == RuntimePlatform.WindowsEditor)
+        //    nBoardX = 0;
+        //else
+        //    nBoardX = 0;
+
+
         GameObject gBoard = new GameObject();
         if(y<nHeight)   // first gen
         {
             gBoard = Instantiate(gBoard);
             gBoard.name = "board" + y;
             gBoard.transform.tag = "board";
-            gBoard.transform.position = new Vector3(0, 500 + (fYdistance * y), 40);
+            gBoard.transform.position = new Vector3(nBoardX, 500 + (fYdistance * y), 40);
         }
         else
         {
@@ -245,7 +256,7 @@ public class BlockManager2 : MonoBehaviour
             gBoard = Instantiate(gBoard);
             gBoard.name = "board" + y;
             gBoard.transform.tag = "board";
-            gBoard.transform.position = new Vector3(0, l.transform.position.y + fYdistance, 40); 
+            gBoard.transform.position = new Vector3(nBoardX, l.transform.position.y + fYdistance, 40); 
         }
 
         // destroy blank objects

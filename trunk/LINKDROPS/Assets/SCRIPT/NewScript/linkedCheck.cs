@@ -13,12 +13,11 @@ public class linkedCheck : MonoBehaviour
     {
         //selectedBlock = Manager.GetComponent<BlockManager2>()
         gMainBlock= GameObject.Find("main_block");
-
-	
     }
 
     void OnTriggerEnter2D(Collider2D coll)
-    {        
+    {
+        
         //coll.gameObject.GetComponent<Animator>().enabled = true;
 		if (!link)
         if (gMainBlock)
