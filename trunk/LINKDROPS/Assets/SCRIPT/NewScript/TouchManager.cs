@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TouchManager : MonoBehaviour {
-
+public class TouchManager : MonoBehaviour
+{
+    private BlockManager2 bManager;
     private Vector2 vStartTouchPos;
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
 	public float mainblockPosY = 300f;
-
+        
     protected bool bTouch = false;
     public Vector2 vCharToward;
     public float vCharSpeed;
@@ -41,6 +42,7 @@ public class TouchManager : MonoBehaviour {
         gLeftWall = GameObject.Find("left_wall");
         gRightWall = GameObject.Find("right_wall");
 
+        bManager = this.GetComponent<BlockManager2>();
 	}
 	
     void InWindows()
@@ -48,8 +50,6 @@ public class TouchManager : MonoBehaviour {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
         
-
-
         if (Input.GetMouseButtonUp(0))  // change direction alternately
         {
             if (vCharToward.x == 0)
@@ -65,8 +65,9 @@ public class TouchManager : MonoBehaviour {
                 vCharToward.x = 1;
             }
 
-            if (this.GetComponent<BlockManager2>().BeginStart == false) // if game is not started yet
-                this.GetComponent<BlockManager2>().BeginStart = true;
+
+            if (bManager.BeginStart == false && bManager.bGameOver== false) // if game is not started yet
+                bManager.BeginStart = true;
 
             bTouch = false;
             vTouchPos = pos;
@@ -129,7 +130,6 @@ public class TouchManager : MonoBehaviour {
         if (strJoySticks.Length != 0)
         {
             float f = Input.GetAxis("Horizontal");
-           
 
             GameObject gStartBlock = GameObject.Find("main_block");
             Vector2 v = new Vector2(f, 0);
@@ -164,7 +164,7 @@ public class TouchManager : MonoBehaviour {
 
         if(s_TouchMode == true) // each modes are completely different
         {
-            if (bTouch)
+            if (bTouch && !this.GetComponent<BlockManager2>().bGameOver)
             {
                 GameObject gStartBlock = GameObject.Find("main_block");
 
