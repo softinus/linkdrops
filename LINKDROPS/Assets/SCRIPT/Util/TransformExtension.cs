@@ -33,4 +33,21 @@ public static class TransformExtensions
         if (Equals(forward, Vector2.right)) return 0;
         return 0;
     }
+
+    // Ortographic camera zoom towards a point (in world coordinates). Negative amount zooms in, positive zooms out
+    // TODO: when reaching zoom limits, stop camera movement as well
+    public static void ZoomOrthoCamera(Vector3 zoomTowards, float amount, Camera camera, float fMin, float fMax)
+    {
+        // Calculate how much we will have to move towards the zoomTowards position
+        float multiplier = (1.0f / camera.orthographicSize * amount);
+
+        // Move camera
+        camera.transform.position += (zoomTowards - camera.transform.position) * multiplier;
+
+        // Zoom camera
+        camera.orthographicSize -= amount;
+
+        // Limit zoom
+        camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, fMin, fMax);
+    }
 }
