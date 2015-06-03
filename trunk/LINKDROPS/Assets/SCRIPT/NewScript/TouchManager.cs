@@ -40,6 +40,7 @@ public class TouchManager : MonoBehaviour {
 
         gLeftWall = GameObject.Find("left_wall");
         gRightWall = GameObject.Find("right_wall");
+
 	}
 	
     void InWindows()

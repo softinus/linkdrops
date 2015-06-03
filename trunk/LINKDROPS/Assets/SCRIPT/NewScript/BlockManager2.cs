@@ -229,6 +229,8 @@ public class BlockManager2 : MonoBehaviour
         
     }
 
+    
+
 
     private void Make1Row(int y)
     {
@@ -301,6 +303,7 @@ public class BlockManager2 : MonoBehaviour
 
 	void Start ()
 	{
+        s_nScore = 0;
         nRowCount = nHeight;
         nSelectedGroup = Random.Range(0, groups.Length);    // select shape
         nSelectedItem = Random.Range(0, nWidth);    // select color
