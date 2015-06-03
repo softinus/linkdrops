@@ -66,8 +66,7 @@ public class TouchManager : MonoBehaviour
             }
 
 
-            if (bManager.BeginStart == false && bManager.bGameOver== false) // if game is not started yet
-                bManager.BeginStart = true;
+            
 
             bTouch = false;
             vTouchPos = pos;
@@ -82,6 +81,10 @@ public class TouchManager : MonoBehaviour
             vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
+
+
+            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
+                bManager.BeginStart = true;
         }
         else if(Input.GetMouseButton(0))
         {
