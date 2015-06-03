@@ -191,6 +191,8 @@ public class BlockManager2 : MonoBehaviour
     protected int nRowCount = 0;
     //protected GameObject gLatestGO;  // the latest game object
     public bool BeginStart = false;    // started?
+    public bool bGameOver= false;    // is game over?
+
 
     public int SelectedGroup
     {
@@ -333,31 +335,24 @@ public class BlockManager2 : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
-        if (BeginStart == false) {
-			//retry button set Active
-			GameObject.Find ("retryButton").GetComponent<Image>().enabled = true;
-			GameObject.Find ("retryButton").GetComponent<Button>().enabled = true;
-		} else {
-			GameObject.Find ("retryButton").GetComponent<Image>().enabled = false;
-			GameObject.Find ("retryButton").GetComponent<Button>().enabled = false;
-
-			GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
-			foreach (GameObject GO in gBoards)
-			{
-				if (GO.transform.position.y < -150)
-				{
-					Destroy(GO);
-					Make1Row(nRowCount++);
-				}
-				GO.transform.Translate(0, fSpeed * Time.deltaTime * -1, 0);
-			}
-			
-			fSpeed += fIncreseSpeed;
-			
-		}
-
-
-
+        if(BeginStart)
+        {
+            GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
+            foreach (GameObject GO in gBoards)
+            {
+                if (GO.transform.position.y < -150)
+                {
+                    Destroy(GO);
+                    Make1Row(nRowCount++);
+                }
+                GO.transform.Translate(0, fSpeed * Time.deltaTime * -1, 0);
+            }
+            fSpeed += fIncreseSpeed;
+        }
+        else
+        {
+            GameObject.Find("retryButton").GetComponent<Image>().enabled = bGameOver;
+            GameObject.Find("retryButton").GetComponent<Button>().enabled = bGameOver;
+        }
 	}
 }

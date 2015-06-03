@@ -14,12 +14,6 @@ public class LinkedCheckMain : MonoBehaviour {
     {
         if (gManager)
         {
-            //if (gManager.GetComponent<BlockManager2>().BeginStart == false)
-            //    gManager.GetComponent<BlockManager2>().BeginStart = true;
-
-            //GameObject gStartBlock= GameObject.Find("main_block");
-            //gStartBlock.GetComponent<SpriteRenderer>().enabled = false;
-            //gManager.GetComponent<Animator>().enabled = false;
         }
         
     }
