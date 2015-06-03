@@ -82,7 +82,6 @@ public class TouchManager : MonoBehaviour
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
-
             if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
                 bManager.BeginStart = true;
         }

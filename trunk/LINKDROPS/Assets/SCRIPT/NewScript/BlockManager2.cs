@@ -349,8 +349,21 @@ public class BlockManager2 : MonoBehaviour
             }
             fSpeed += fIncreseSpeed;
         }
-        else
+        else 
         {
+            if(bGameOver)    // game over
+            {
+                GameObject camMain= GameObject.Find("Main Camera");
+                Camera camComponent = camMain.GetComponent<Camera>();
+                camMain.transform.Rotate(new Vector3(0, 0, 0.5f));
+
+                if (this.GetComponent<AudioSource>().pitch > 0f)
+                    this.GetComponent<AudioSource>().pitch -= 0.12f * Time.deltaTime;
+
+                GameObject gMainBlock = GameObject.Find("main_block");
+                TransformExtensions.ZoomOrthoCamera(gMainBlock.transform.position, 2.0f, camComponent, 10, 640);
+            }
+
             GameObject.Find("retryButton").GetComponent<Image>().enabled = bGameOver;
             GameObject.Find("retryButton").GetComponent<Button>().enabled = bGameOver;
         }

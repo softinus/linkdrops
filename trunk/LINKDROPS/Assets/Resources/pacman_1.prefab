@@ -11,7 +11,7 @@ GameObject:
   - 50: {fileID: 5099680}
   - 82: {fileID: 8227600}
   - 61: {fileID: 6136564}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pacman_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 416416}
   - 212: {fileID: 21274596}
   - 95: {fileID: 9531210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pac_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 4: {fileID: 400640}
   - 212: {fileID: 21235000}
   - 95: {fileID: 9536752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pac_slice
   m_TagString: Untagged
   m_Icon: {fileID: 0}

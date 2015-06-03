@@ -43,15 +43,16 @@ public class linkedCheck : MonoBehaviour
 
             ++BlockManager2.s_nScore;
 
-			if( BlockManager2.s_nScore >= 10 )
-            {		
-				gMainBlock.GetComponent<AudioSource>().pitch = 1.1f;
+            gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScore / 100.0f);
+            //if( BlockManager2.s_nScore >= 10 )
+            //{		
+            //    gMainBlock.GetComponent<AudioSource>().pitch = 1.1f;
 
-				if(  BlockManager2.s_nScore >= 20)
-				{
-					gMainBlock.GetComponent<AudioSource>().pitch = 1.2f;
-				}
-			}
+            //    if(  BlockManager2.s_nScore >= 20)
+            //    {
+            //        gMainBlock.GetComponent<AudioSource>().pitch = 1.2f;
+            //    }
+            //}
 
 			
         }
