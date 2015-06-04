@@ -303,6 +303,20 @@ public class BlockManager2 : MonoBehaviour
         }
     }
 
+
+    void ChangeWidth(int _nWid)
+    {
+        foreach (RowItems BI in groups)
+        {
+            BI.Width = _nWid;
+        }
+        var ScreenHeight = 2 * Camera.main.orthographicSize;
+        var ScreenWidth = ScreenHeight * Camera.main.aspect;
+        fDistance = ScreenWidth / (_nWid + 1);
+    }
+
+    
+
 	void Start ()
 	{
         s_nScore = 0;
@@ -315,17 +329,39 @@ public class BlockManager2 : MonoBehaviour
         {
             BI.Width = nWidth;
             BI.SelectTag = nSelectedItem;
-            BI.Randomly(false);
-         
+            BI.Randomly(false);         
         }
         
         var ScreenHeight = 2 * Camera.main.orthographicSize;
         var ScreenWidth  = ScreenHeight * Camera.main.aspect;
         fDistance  = ScreenWidth / (nWidth + 1);
 
-        
+        int nStartMode = Random.Range(0, 5);
         for(int y=0; y<nHeight; ++y)
-        {
+        {            
+            //if(nStartMode == 0)
+            //{
+            //    if (y < 4)  // change position dynamically
+            //        ChangeWidth(1);
+            //    if (y == 4)
+            //        ChangeWidth(5);
+            //}
+            //else if (nStartMode == 1)
+            //{
+            if (y < 4)  // change position dynamically
+                ChangeWidth(y + 1);
+            else if (y == 4)
+                ChangeWidth(5);
+            //}
+            //else
+            //{
+            //    int nCol = Random.Range(1, 4);
+            //    ChangeWidth(nCol+1);
+            //}
+            
+
+            
+
             Make1Row(y);            
         }
 
