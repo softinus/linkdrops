@@ -341,22 +341,22 @@ public class BlockManager2 : MonoBehaviour
         {            
             //if(nStartMode == 0)
             //{
-            //    if (y < 4)  // change position dynamically
-            //        ChangeWidth(1);
-            //    if (y == 4)
-            //        ChangeWidth(5);
+            if (y < 4)  // change position dynamically
+                ChangeWidth(1);
+            if (y == 4)
+                ChangeWidth(5);
             //}
             //else if (nStartMode == 1)
             //{
-            if (y < 4)  // change position dynamically
-                ChangeWidth(y + 1);
-            else if (y == 4)
-                ChangeWidth(5);
+            //if (y < 4)  // change position dynamically
+            //    ChangeWidth(y + 1);
+            //else if (y == 4)
+            //    ChangeWidth(5);
             //}
             //else
             //{
             //    int nCol = Random.Range(1, 4);
-            //    ChangeWidth(nCol+1);
+            //    ChangeWidth(nCol + 1);
             //}
             
 

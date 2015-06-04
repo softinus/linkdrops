@@ -70,6 +70,16 @@ public class linkedCheck : MonoBehaviour
         //{
          //   gameObject.GetComponent<Animator>().enabled = true;
         //}
+
+        if (this.gameObject.transform.tag == gMainBlock.transform.tag)
+        {
+            if (!this.gameObject.GetComponent<linkedCheck>().link)
+            if (this.gameObject.transform.position.y < gMainBlock.transform.position.y)
+            {
+                Manager.GetComponent<BlockManager2>().BeginStart = false;
+                Manager.GetComponent<BlockManager2>().bGameOver = true;
+            }
+        }
 	}
 }
 
