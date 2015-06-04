@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 452432}
   - 212: {fileID: 21202778}
   - 50: {fileID: 5055692}
-  - 95: {fileID: 9540122}
   - 114: {fileID: 11448138}
   m_Layer: 9
   m_Name: dots_circle_purple
@@ -46,23 +45,6 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!95 &9540122
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163958}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 930dcadb612ac684d8006e15a561a065, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11448138
 MonoBehaviour:
   m_ObjectHideFlags: 1
