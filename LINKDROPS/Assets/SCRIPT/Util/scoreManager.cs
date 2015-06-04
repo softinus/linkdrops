@@ -17,7 +17,9 @@ public class scoreManager : MonoBehaviour {
 
         int highScore = BlockManager2.s_nScore;
 
-        highscoreText.text = "HIGHSCORE " + highScore;
+        highscoreText.text = "" + highScore;
+
+		//this.gameObject.GetComponent<Text>().color.a = 10;
 
 
 	}
