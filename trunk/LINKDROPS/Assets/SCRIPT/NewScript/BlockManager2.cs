@@ -172,6 +172,8 @@ public class BlockManager2 : MonoBehaviour
 {
     static public int s_nScore = 0;
 
+    
+
     public Vector3 vStartPoint;
 	public int nWidth= 5;
     public int nHeight = 15;
@@ -193,6 +195,7 @@ public class BlockManager2 : MonoBehaviour
     public bool BeginStart = false;    // started?
     public bool bGameOver= false;    // is game over?
 
+    private int nNextStandardPos = -1;  // previous position moved by force
 
     public int SelectedGroup
     {
@@ -273,8 +276,16 @@ public class BlockManager2 : MonoBehaviour
         
 
         groups[nSelectedGroup].Randomly(true);  // sorting
-        groups[nSelectedGroup].ChangeSelectBlockTo();
-        groups[nSelectedGroup].PrevPos = groups[nSelectedGroup].GetSelectedBlockPos();
+
+        if (nNextStandardPos != -1)
+        {
+            groups[nSelectedGroup].PrevPos = nNextStandardPos;
+            nNextStandardPos = -1;
+        }
+
+        groups[nSelectedGroup].ChangeSelectBlockTo();  //
+
+        groups[nSelectedGroup].PrevPos = groups[nSelectedGroup].GetSelectedBlockPos();  // refresh
 
         for (int x = 0; x < groups[nSelectedGroup].arr1row.Count; ++x)
         {
@@ -318,7 +329,7 @@ public class BlockManager2 : MonoBehaviour
     
 
 	void Start ()
-	{
+	{        
         s_nScore = 0;
         nRowCount = nHeight;
         nSelectedGroup = Random.Range(0, groups.Length);    // select shape
@@ -336,31 +347,17 @@ public class BlockManager2 : MonoBehaviour
         var ScreenWidth  = ScreenHeight * Camera.main.aspect;
         fDistance  = ScreenWidth / (nWidth + 1);
 
-        int nStartMode = Random.Range(0, 5);
+        
+        //int nStartMode = Random.Range(0, 5);
         for(int y=0; y<nHeight; ++y)
-        {            
-            //if(nStartMode == 0)
-            //{
+        {
             if (y < 4)  // change position dynamically
                 ChangeWidth(1);
             if (y == 4)
+            { 
                 ChangeWidth(5);
-            //}
-            //else if (nStartMode == 1)
-            //{
-            //if (y < 4)  // change position dynamically
-            //    ChangeWidth(y + 1);
-            //else if (y == 4)
-            //    ChangeWidth(5);
-            //}
-            //else
-            //{
-            //    int nCol = Random.Range(1, 4);
-            //    ChangeWidth(nCol + 1);
-            //}
-            
-
-            
+                nNextStandardPos = 2;
+            }
 
             Make1Row(y);            
         }
