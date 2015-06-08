@@ -43,6 +43,7 @@ public class linkedCheck : MonoBehaviour
 
             ++BlockManager2.s_nScore;
 
+            // manage pitch of SE
             gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScore / 100.0f);
             //if( BlockManager2.s_nScore >= 10 )
             //{		
