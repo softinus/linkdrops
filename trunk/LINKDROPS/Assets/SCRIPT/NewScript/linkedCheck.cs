@@ -9,6 +9,14 @@ public class linkedCheck : MonoBehaviour
     protected GameObject gMainBlock;
 
 
+    private void GameOver()
+    {
+        Manager.GetComponent<BlockManager2>().BeginStart = false;
+        Manager.GetComponent<BlockManager2>().bGameOver = true;
+
+        BlockManager2.SaveData();
+    }
+
     void Start()
     {
         //selectedBlock = Manager.GetComponent<BlockManager2>()
@@ -59,8 +67,8 @@ public class linkedCheck : MonoBehaviour
         }
         else
         {
-            Manager.GetComponent<BlockManager2>().BeginStart = false;
-            Manager.GetComponent<BlockManager2>().bGameOver = true;
+            GameOver();
+            
         }
     }
     
@@ -77,8 +85,7 @@ public class linkedCheck : MonoBehaviour
             if (!this.gameObject.GetComponent<linkedCheck>().link)
             if (this.gameObject.transform.position.y < gMainBlock.transform.position.y-12)  // game over condition 2
             {
-                Manager.GetComponent<BlockManager2>().BeginStart = false;
-                Manager.GetComponent<BlockManager2>().bGameOver = true;
+                GameOver();
             }
         }
 	}

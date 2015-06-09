@@ -336,7 +336,35 @@ public class BlockManager2 : MonoBehaviour
     //    GameObject gMain= GameObject.Find("main_block");
     //    gMain.tag = groups[nSelectedGroup].items[nSelectedItem].tag;
     //}
-    
+
+    void OnGUI()
+    {
+        if (bGameOver)    // game over
+        {
+            GUILayout.Space(300);
+            GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
+
+            int nMyHighScore= PlayerPrefs.GetInt("high_score");
+
+            GUILayout.Space(15);
+            GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
+
+            
+        }
+    }
+
+    static public void SaveData()
+    {
+        int nMyHighScore = PlayerPrefs.GetInt("high_score");
+
+        if (nMyHighScore < BlockManager2.s_nScore) // if it's higher than current high score renew the high score
+        {
+            PlayerPrefs.SetInt("high_score", BlockManager2.s_nScore);
+            Social.ReportScore(BlockManager2.s_nScore, "CgkIh9fH_cIIEAIQAA", (bool success) => {});
+        }
+
+        Social.ShowLeaderboardUI();
+    }
 
 	void Start ()
 	{        
