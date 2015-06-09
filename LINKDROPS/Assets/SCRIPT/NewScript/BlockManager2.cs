@@ -326,6 +326,16 @@ public class BlockManager2 : MonoBehaviour
         fDistance = ScreenWidth / (_nWid + 1);
     }
 
+    //void ChangeColor()
+    //{
+    //    nSelectedItem = Random.Range(0, nWidth);    // select color
+    //    foreach (RowItems BI in groups)
+    //    {
+    //        BI.SelectTag = nSelectedItem;
+    //    }
+    //    GameObject gMain= GameObject.Find("main_block");
+    //    gMain.tag = groups[nSelectedGroup].items[nSelectedItem].tag;
+    //}
     
 
 	void Start ()
@@ -351,13 +361,21 @@ public class BlockManager2 : MonoBehaviour
         //int nStartMode = Random.Range(0, 5);
         for(int y=0; y<nHeight; ++y)
         {
-            if (y < 4)  // change position dynamically
+            if (y == 0)  // change position dynamically
                 ChangeWidth(1);
             if (y == 4)
-            { 
-                ChangeWidth(5);
-                nNextStandardPos = 2;
+            {
+                int nNewStage = Random.Range(3, 6);
+                ChangeWidth(nNewStage);
+
+                if (nNewStage == 3)
+                    nNextStandardPos = 1;
+                else if (nNewStage == 4)
+                    nNextStandardPos = 2;
+                else
+                    nNextStandardPos = 2;
             }
+
 
             Make1Row(y);            
         }
@@ -376,6 +394,27 @@ public class BlockManager2 : MonoBehaviour
                 if (GO.transform.position.y < -150)
                 {
                     Destroy(GO);
+
+                    if(nRowCount%50 == 0)
+                    {
+                        //ChangeColor();
+                        ChangeWidth(1);
+                        nNextStandardPos = 0;
+                    }
+                    else if (nRowCount % 50 == 4)
+                    {
+                        int nNewStage= Random.Range(3, 6);
+                        ChangeWidth(nNewStage);
+
+                        if (nNewStage== 3)
+                            nNextStandardPos = 1;
+                        else if (nNewStage == 4)
+                            nNextStandardPos = 2;
+                        else
+                            nNextStandardPos = 2;
+                    }
+
+
                     Make1Row(nRowCount++);
                 }
                 GO.transform.Translate(0, fSpeed * Time.deltaTime * -1, 0);
