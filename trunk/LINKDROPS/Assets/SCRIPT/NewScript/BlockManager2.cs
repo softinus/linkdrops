@@ -360,10 +360,13 @@ public class BlockManager2 : MonoBehaviour
         if (nMyHighScore < BlockManager2.s_nScore) // if it's higher than current high score renew the high score
         {
             PlayerPrefs.SetInt("high_score", BlockManager2.s_nScore);
-            Social.ReportScore(BlockManager2.s_nScore, "CgkIh9fH_cIIEAIQAA", (bool success) => {});
+            Social.ReportScore(BlockManager2.s_nScore, "CgkIh9fH_cIIEAIQAA", (bool success) => 
+            {
+                bool _success = success;
+            });
         }
 
-        Social.ShowLeaderboardUI();
+        
     }
 
 	void Start ()
