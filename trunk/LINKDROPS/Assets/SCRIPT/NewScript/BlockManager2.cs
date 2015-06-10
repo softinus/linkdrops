@@ -467,6 +467,9 @@ public class BlockManager2 : MonoBehaviour
             GameObject.Find("retryButton").GetComponent<Image>().enabled = bGameOver;
             GameObject.Find("retryButton").GetComponent<Button>().enabled = bGameOver;
 			GameObject.Find("retryButton").transform.FindChild("retryText").GetComponent<Text>().enabled = bGameOver;
+			GameObject.Find("retryButton 1").GetComponent<Image>().enabled = bGameOver;
+			GameObject.Find("retryButton 1").GetComponent<Button>().enabled = bGameOver;
+			GameObject.Find("retryButton 1").transform.FindChild("retryText").GetComponent<Text>().enabled = bGameOver;
         }
 	}
 }
