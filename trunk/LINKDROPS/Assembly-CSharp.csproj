@@ -194,6 +194,7 @@
      <Compile Include="Assets\SCRIPT\NewScript\BackgroundScroll.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\BlockManager2.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\Drawline2.cs" />
+     <Compile Include="Assets\SCRIPT\NewScript\GPGS.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\LinkedCheckMain.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\TouchManager.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\buttonManager.cs" />
@@ -327,6 +328,7 @@
      <None Include="Assets\Plugins\Android\res\values-es\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values\wallet_colors.xml" />
      <None Include="Assets\Plugins\Android\res\values-cs\common_strings.xml" />
+     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\Plugins\Android\facebook\res\drawable\com_facebook_top_button.xml" />
      <None Include="Assets\Plugins\Android\res\values-is-rIS\common_strings.xml" />
      <None Include="Assets\Plugins\Android\facebook\AndroidManifest.xml" />
@@ -350,6 +352,10 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{4911BF25-1B16-A75A-7F97-924104209DF7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
