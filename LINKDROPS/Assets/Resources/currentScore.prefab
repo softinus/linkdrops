@@ -1,42 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &191512
+--- !u!1 &130694
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 22410476}
-  - 222: {fileID: 22208910}
-  - 114: {fileID: 11498378}
-  - 114: {fileID: 11415792}
+  - 224: {fileID: 22455114}
+  - 222: {fileID: 22292520}
+  - 114: {fileID: 11487122}
+  - 114: {fileID: 11466736}
   m_Layer: 5
-  m_Name: Text
+  m_Name: currentScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11415792
+--- !u!114 &11466736
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191512}
+  m_GameObject: {fileID: 130694}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48f4b35adc838b9438722691f2a7870f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   managerObj: {fileID: 0}
-  highscoreText: {fileID: 11498378}
---- !u!114 &11498378
+  highscoreText: {fileID: 11487122}
+--- !u!114 &11487122
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191512}
+  m_GameObject: {fileID: 130694}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -57,18 +57,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: .779999971
   m_Text: 99999
---- !u!222 &22208910
+--- !u!222 &22292520
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191512}
---- !u!224 &22410476
+  m_GameObject: {fileID: 130694}
+--- !u!224 &22455114
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191512}
+  m_GameObject: {fileID: 130694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.11111116, y: 1.33333337, z: 1.11111116}
@@ -89,5 +89,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 191512}
+  m_RootGameObject: {fileID: 130694}
   m_IsPrefabParent: 1
