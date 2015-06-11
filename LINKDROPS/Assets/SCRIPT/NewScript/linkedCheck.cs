@@ -23,6 +23,20 @@ public class linkedCheck : MonoBehaviour
         gMainBlock= GameObject.Find("main_block");
     }
 
+    void ObsorbCount()
+    {
+        if( this.gameObject.transform.tag == "yellow")
+            ++BlockManager2.nObsorbBlockY;
+        if (this.gameObject.transform.tag == "red")
+            ++BlockManager2.nObsorbBlockR;
+        if (this.gameObject.transform.tag == "blue")
+            ++BlockManager2.nObsorbBlockB;
+        if (this.gameObject.transform.tag == "green")
+            ++BlockManager2.nObsorbBlockG;
+        if (this.gameObject.transform.tag == "purple")
+            ++BlockManager2.nObsorbBlockP;
+    }
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         
@@ -30,7 +44,9 @@ public class linkedCheck : MonoBehaviour
 		if (!link)
         if (gMainBlock)
         if (this.gameObject.transform.tag == gMainBlock.transform.tag)
-        {
+        {   // when connect link
+            ObsorbCount();
+
             this.link = true;
 		    if (Manager)
                 Manager.arrLinked.Add(this.gameObject); // add linked game objects
@@ -83,7 +99,7 @@ public class linkedCheck : MonoBehaviour
         if (this.gameObject.transform.tag == gMainBlock.transform.tag)
         {
             if (!this.gameObject.GetComponent<linkedCheck>().link)
-            if (this.gameObject.transform.position.y < gMainBlock.transform.position.y-12)  // game over condition 2
+            if (this.gameObject.transform.position.y < gMainBlock.transform.position.y-45)  // game over condition 2
             {
                 GameOver();
             }
