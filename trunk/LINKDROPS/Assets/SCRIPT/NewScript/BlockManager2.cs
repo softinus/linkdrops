@@ -337,21 +337,21 @@ public class BlockManager2 : MonoBehaviour
     //    gMain.tag = groups[nSelectedGroup].items[nSelectedItem].tag;
     //}
 
-    void OnGUI()
-    {
-        if (bGameOver)    // game over
-        {
-            GUILayout.Space(300);
-            GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
+    //void OnGUI()
+    //{
+    //    if (bGameOver)    // game over
+    //    {
+    //        GUILayout.Space(300);
+    //        GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
 
-            int nMyHighScore= PlayerPrefs.GetInt("high_score");
+    //        int nMyHighScore= PlayerPrefs.GetInt("high_score");
 
-            GUILayout.Space(15);
-            GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
+    //        GUILayout.Space(15);
+    //        GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
 
             
-        }
-    }
+    //    }
+    //}
 
     static public void SaveData()
     {
@@ -413,6 +413,8 @@ public class BlockManager2 : MonoBehaviour
 
         MakeTouchBlock(ScreenWidth);
 	}
+
+
 	
 	// Update is called once per frame
 	void Update ()
@@ -467,12 +469,35 @@ public class BlockManager2 : MonoBehaviour
                 TransformExtensions.ZoomOrthoCamera(gMainBlock.transform.position, 2.0f, camComponent, 10, 640);
             }
 
+            GameObject.Find("gameoverPanel").GetComponent<Image>().enabled = bGameOver;
+            
+            // update scores
+            int nMyHighScore = PlayerPrefs.GetInt("high_score");
+            GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + BlockManager2.s_nScore;
+            GameObject.Find("highScore_text").GetComponent<Text>().text = ""+nMyHighScore;
+
+            GameObject.Find("scoreBoard").GetComponent<Image>().enabled = bGameOver;
+            GameObject.Find("currentScore_text").GetComponent<Text>().enabled = bGameOver;
+            GameObject.Find("highScore_text").GetComponent<Text>().enabled = bGameOver;
+
+            GameObject.Find("homeButton").GetComponent<Button>().enabled = bGameOver;
+            GameObject.Find("homeButton").GetComponent<Image>().enabled = bGameOver;
+
+            GameObject.Find("rateButton").GetComponent<Button>().enabled = bGameOver;
+            GameObject.Find("rateButton").GetComponent<Image>().enabled = bGameOver;
+
+            GameObject.Find("leaderboardButton").GetComponent<Button>().enabled = bGameOver;
+            GameObject.Find("leaderboardButton").GetComponent<Image>().enabled = bGameOver;
+            
             GameObject.Find("retryButton").GetComponent<Image>().enabled = bGameOver;
             GameObject.Find("retryButton").GetComponent<Button>().enabled = bGameOver;
 			GameObject.Find("retryButton").transform.FindChild("retryText").GetComponent<Text>().enabled = bGameOver;
+
 			GameObject.Find("shareButton").GetComponent<Image>().enabled = bGameOver;
 			GameObject.Find("shareButton").GetComponent<Button>().enabled = bGameOver;
 			GameObject.Find("shareButton").transform.FindChild("shareText").GetComponent<Text>().enabled = bGameOver;
+
+
         }
 	}
 }
