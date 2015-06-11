@@ -178,7 +178,6 @@ public class BlockManager2 : MonoBehaviour
     static public int nObsorbBlockY;
     static public int nObsorbBlockP;
 
-    public Vector3 vStartPoint;
 	public int nWidth= 5;
     public int nHeight = 15;
 	public float fSpeed= 115f;   // 
@@ -220,7 +219,7 @@ public class BlockManager2 : MonoBehaviour
         gStartBlock.tag = groups[nSelectedGroup].items[nSelectedItem].tag;  // set tag distinguish between the color of blocks
         
         //gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
-        gStartBlock.transform.position = vStartPoint;
+        gStartBlock.transform.position = GameObject.Find("MainBlockStartPosition").transform.position;
 
         //CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
         //collider.isTrigger = true;

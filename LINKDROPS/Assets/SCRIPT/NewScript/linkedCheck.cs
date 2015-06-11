@@ -7,10 +7,13 @@ public class linkedCheck : MonoBehaviour
 	public bool link = false;
 	public BlockManager2 Manager;
     protected GameObject gMainBlock;
+    private GameObject gGameOverLimitY;
 
 
     private void GameOver()
     {
+        this.gameObject.GetComponent<Animator>().enabled = true;
+
         Manager.GetComponent<BlockManager2>().BeginStart = false;
         Manager.GetComponent<BlockManager2>().bGameOver = true;
 
@@ -21,6 +24,7 @@ public class linkedCheck : MonoBehaviour
     {
         //selectedBlock = Manager.GetComponent<BlockManager2>()
         gMainBlock= GameObject.Find("main_block");
+        gGameOverLimitY = GameObject.Find("GameOverLimitY");
     }
 
     void ObsorbCount()
@@ -99,8 +103,9 @@ public class linkedCheck : MonoBehaviour
         if (this.gameObject.transform.tag == gMainBlock.transform.tag)
         {
             if (!this.gameObject.GetComponent<linkedCheck>().link)
-            if (this.gameObject.transform.position.y < gMainBlock.transform.position.y-45)  // game over condition 2
+            if (this.gameObject.transform.position.y < gGameOverLimitY.transform.position.y)  // game over condition 2
             {
+                
                 GameOver();
             }
         }
