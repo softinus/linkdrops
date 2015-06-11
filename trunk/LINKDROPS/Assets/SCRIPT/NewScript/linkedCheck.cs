@@ -36,7 +36,7 @@ public class linkedCheck : MonoBehaviour
                 Manager.arrLinked.Add(this.gameObject); // add linked game objects
 
             // attach line to linked block
-            GameObject gLinkLine = Instantiate((GameObject)Resources.Load("LinkLine"));
+            GameObject gLinkLine = Instantiate((GameObject)Resources.Load("line/LinkLine"));
             gLinkLine.transform.Translate(gameObject.transform.position);
 			gLinkLine.name= "LinkLine_"+nRowIdx;
             Drawline2 draw= gLinkLine.GetComponent<Drawline2>();
