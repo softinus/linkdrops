@@ -210,7 +210,7 @@ public class BlockManager2 : MonoBehaviour
     // make main block
     private void MakeTouchBlock(float _screenWidth)
     {
-        GameObject gStartBlock = Instantiate((GameObject)Resources.Load("pacman_1"));
+        GameObject gStartBlock = Instantiate((GameObject)Resources.Load("pacman/pacman_1"));
         //GameObject gStartBlock = Instantiate(groups[nSelectedGroup].items[nSelectedItem]);
         gStartBlock.name = "main_block";    // set name for controllable
         gStartBlock.tag = groups[nSelectedGroup].items[nSelectedItem].tag;  // set tag distinguish between the color of blocks
@@ -470,9 +470,9 @@ public class BlockManager2 : MonoBehaviour
             GameObject.Find("retryButton").GetComponent<Image>().enabled = bGameOver;
             GameObject.Find("retryButton").GetComponent<Button>().enabled = bGameOver;
 			GameObject.Find("retryButton").transform.FindChild("retryText").GetComponent<Text>().enabled = bGameOver;
-			GameObject.Find("retryButton 1").GetComponent<Image>().enabled = bGameOver;
-			GameObject.Find("retryButton 1").GetComponent<Button>().enabled = bGameOver;
-			GameObject.Find("retryButton 1").transform.FindChild("retryText").GetComponent<Text>().enabled = bGameOver;
+			GameObject.Find("shareButton").GetComponent<Image>().enabled = bGameOver;
+			GameObject.Find("shareButton").GetComponent<Button>().enabled = bGameOver;
+			GameObject.Find("shareButton").transform.FindChild("shareText").GetComponent<Text>().enabled = bGameOver;
         }
 	}
 }

@@ -23,11 +23,11 @@ public class TouchManager : MonoBehaviour
     {
         GameObject gStartBlock = GameObject.Find("main_block");
                 
-        GUI.Label(new Rect(10, 75, 300, 20), "Touch :: X: " + vTouchPos.x + "   Y: " + vTouchPos.y);
-        GUI.Label(new Rect(10, 100, 300, 20), "gMain :: X: " + gStartBlock.transform.position.x + "   Y: " + gStartBlock.transform.position.y);
-        GUI.Label(new Rect(10, 125, 300, 20), "Gap :: X: " + vGapBetweenTouchAndObj.x + "   Y: " + vGapBetweenTouchAndObj.y);
-        GUI.Label(new Rect(10, 150, 300, 20), "Screen.width : " + Screen.width);
-        GUI.Label(new Rect(10, 175, 300, 20), "Screen.height : " + Screen.height);
+//        GUI.Label(new Rect(10, 75, 300, 20), "Touch :: X: " + vTouchPos.x + "   Y: " + vTouchPos.y);
+//        GUI.Label(new Rect(10, 100, 300, 20), "gMain :: X: " + gStartBlock.transform.position.x + "   Y: " + gStartBlock.transform.position.y);
+//        GUI.Label(new Rect(10, 125, 300, 20), "Gap :: X: " + vGapBetweenTouchAndObj.x + "   Y: " + vGapBetweenTouchAndObj.y);
+//        GUI.Label(new Rect(10, 150, 300, 20), "Screen.width : " + Screen.width);
+//        GUI.Label(new Rect(10, 175, 300, 20), "Screen.height : " + Screen.height);
         
     }
 
