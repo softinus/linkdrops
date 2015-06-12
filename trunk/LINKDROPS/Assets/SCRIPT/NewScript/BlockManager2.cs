@@ -172,11 +172,11 @@ public class BlockManager2 : MonoBehaviour
 {
     static public int s_nScore = 0;
 
-    static public int nObsorbBlockR;
-    static public int nObsorbBlockB;
-    static public int nObsorbBlockG;
-    static public int nObsorbBlockY;
-    static public int nObsorbBlockP;
+    static public int nAbsorbBlockR;
+    static public int nAbsorbBlockB;
+    static public int nAbsorbBlockG;
+    static public int nAbsorbBlockY;
+    static public int nAbsorbBlockP;
 
 	public int nWidth= 5;
     public int nHeight = 15;
@@ -184,7 +184,7 @@ public class BlockManager2 : MonoBehaviour
     public float fIncreseSpeed = 0.07f; // 
     public float fYdistance = 120f;
     public float fRadiusForAvoid;
-    public float fRadiusForObsorb;
+    public float fRadiusForAbsorb;
 
     public ArrayList arrLinked = new ArrayList();
     public RowItems[] groups;
@@ -307,7 +307,7 @@ public class BlockManager2 : MonoBehaviour
             collider.isTrigger = true;
 
             if (groups[nSelectedGroup].PrevPos == x)    // adjust the radius of blocks
-                collider.radius = fRadiusForObsorb;
+                collider.radius = fRadiusForAbsorb;
             else
                 collider.radius = fRadiusForAvoid;                    
 
@@ -345,11 +345,11 @@ public class BlockManager2 : MonoBehaviour
 
         GUILayout.Space(5);
         GUILayout.Label("current");
-        GUILayout.Label("y : " + nObsorbBlockY, GUILayout.Width(150));
-        GUILayout.Label("r : " + nObsorbBlockR, GUILayout.Width(150));
-        GUILayout.Label("g : " + nObsorbBlockG, GUILayout.Width(150));
-        GUILayout.Label("b : " + nObsorbBlockB, GUILayout.Width(150));
-        GUILayout.Label("p : " + nObsorbBlockP, GUILayout.Width(150));
+        GUILayout.Label("y : " + nAbsorbBlockY, GUILayout.Width(150));
+        GUILayout.Label("r : " + nAbsorbBlockR, GUILayout.Width(150));
+        GUILayout.Label("g : " + nAbsorbBlockG, GUILayout.Width(150));
+        GUILayout.Label("b : " + nAbsorbBlockB, GUILayout.Width(150));
+        GUILayout.Label("p : " + nAbsorbBlockP, GUILayout.Width(150));
 
         if (bGameOver)    // game over
         {
@@ -374,16 +374,16 @@ public class BlockManager2 : MonoBehaviour
 
     static public void SaveData()
     {
-        PlayerPrefs.SetInt("blue_block",    PlayerPrefs.GetInt("blue_block")    + nObsorbBlockB);
-        PlayerPrefs.SetInt("red_block",     PlayerPrefs.GetInt("red_block")     + nObsorbBlockR);
-        PlayerPrefs.SetInt("yellow_block",  PlayerPrefs.GetInt("yellow_block")  + nObsorbBlockY);
-        PlayerPrefs.SetInt("purple_block",  PlayerPrefs.GetInt("purple_block")  + nObsorbBlockP);
-        PlayerPrefs.SetInt("green_block",   PlayerPrefs.GetInt("green_block")   + nObsorbBlockG);
-        nObsorbBlockR= 0;
-        nObsorbBlockB= 0;
-        nObsorbBlockG= 0;
-        nObsorbBlockY= 0;
-        nObsorbBlockP = 0;
+        PlayerPrefs.SetInt("blue_block",    PlayerPrefs.GetInt("blue_block")    + nAbsorbBlockB);
+        PlayerPrefs.SetInt("red_block",     PlayerPrefs.GetInt("red_block")     + nAbsorbBlockR);
+        PlayerPrefs.SetInt("yellow_block",  PlayerPrefs.GetInt("yellow_block")  + nAbsorbBlockY);
+        PlayerPrefs.SetInt("purple_block",  PlayerPrefs.GetInt("purple_block")  + nAbsorbBlockP);
+        PlayerPrefs.SetInt("green_block",   PlayerPrefs.GetInt("green_block")   + nAbsorbBlockG);
+        nAbsorbBlockR= 0;
+        nAbsorbBlockB= 0;
+        nAbsorbBlockG= 0;
+        nAbsorbBlockY= 0;
+        nAbsorbBlockP = 0;
 
         int nMyHighScore = PlayerPrefs.GetInt("high_score");
 
