@@ -123,8 +123,8 @@ PlayerSettings:
   iOSLaunchScreenCustomXibPath: 
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: C:/Users/gabina55/Documents/drops3/trunk/LINKDROPS/raimsoft_20140509.keystore
-  AndroidKeyaliasName: linkman
+  AndroidKeystoreName: "C:/Users/Seongwon Jeong/Google \uB4DC\uB77C\uC774\uBE0C/LINKDROPS/drops/trunk/LINKDROPS/user.keystore"
+  AndroidKeyaliasName: jack
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
