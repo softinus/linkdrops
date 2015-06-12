@@ -90,6 +90,9 @@ public class linkedCheck : MonoBehaviour
             GameOver();
             
         }
+
+		this.GetComponent<SpriteRenderer> ().enabled = false;
+		Debug.Log (coll.name);
     }
     
 
