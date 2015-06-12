@@ -25,6 +25,7 @@ public class linkedCheck : MonoBehaviour
         //selectedBlock = Manager.GetComponent<BlockManager2>()
         gMainBlock= GameObject.Find("main_block");
         gGameOverLimitY = GameObject.Find("GameOverLimitY");
+		//this.transform.FindChild("blockParticle").GetComponent<ParticleSystem>().Stop();
 
 
 
@@ -88,7 +89,10 @@ public class linkedCheck : MonoBehaviour
             //}
 			
 
-			//pacman_particle_play
+			//block_particle_play
+				this.transform.FindChild("blockParticle").GetComponent<ParticleSystem>().Play();
+
+				//this.transform.FindChild("blockParticle").GetComponent<ParticleSystem>().Stop();
 
 
 			
