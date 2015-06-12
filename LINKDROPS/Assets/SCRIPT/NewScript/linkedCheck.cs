@@ -25,10 +25,6 @@ public class linkedCheck : MonoBehaviour
         //selectedBlock = Manager.GetComponent<BlockManager2>()
         gMainBlock= GameObject.Find("main_block");
         gGameOverLimitY = GameObject.Find("GameOverLimitY");
-		//this.transform.FindChild("blockParticle").GetComponent<ParticleSystem>().Stop();
-
-
-
 
     }
 

@@ -19,11 +19,12 @@ public class buttonManager : MonoBehaviour {
 	public void retry_sceneLoad(){
 
 		Application.LoadLevel (1);
+		GameObject.Find ("startCanvas").SetActive (false);
 	}
 
     public void GoHome()
     {
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
     }
 
 
