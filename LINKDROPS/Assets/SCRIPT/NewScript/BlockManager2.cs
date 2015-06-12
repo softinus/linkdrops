@@ -500,7 +500,7 @@ public class BlockManager2 : MonoBehaviour
                     this.GetComponent<AudioSource>().pitch -= 0.12f * Time.deltaTime;
 
                 GameObject gMainBlock = GameObject.Find("main_block");
-                TransformExtensions.ZoomOrthoCamera(gMainBlock.transform.position, 2.0f, camComponent, 10, 640);
+                TransformExtensions.ZoomOrthoCamera(gMainBlock.transform.position, 2.0f, camComponent, 100, 640);
             }
 
             GameObject.Find("gameoverPanel").GetComponent<Image>().enabled = bGameOver;
