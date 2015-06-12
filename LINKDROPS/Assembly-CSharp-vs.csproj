@@ -191,6 +191,7 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\NearbyConnectionClientFactory.cs" />
      <Compile Include="Assets\GooglePlayGames\Platforms\PlayGamesClientFactory.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
+     <Compile Include="Assets\MainScreen.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\BackgroundScroll.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\BlockManager2.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\Drawline2.cs" />
