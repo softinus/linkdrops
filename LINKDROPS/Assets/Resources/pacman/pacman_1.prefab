@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 446286}
   - 50: {fileID: 5099680}
   - 82: {fileID: 8227600}
-  - 61: {fileID: 6136564}
+  - 58: {fileID: 5891598}
   m_Layer: 9
   m_Name: pacman_1
   m_TagString: Untagged
@@ -105,19 +105,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6136564
-BoxCollider2D:
+--- !u!58 &5891598
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159548}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -1.70000005, y: -11.96}
+  m_Offset: {x: 0, y: -27.0799999}
   serializedVersion: 2
-  m_Size: {x: 116.599998, y: 23.3999996}
+  m_Radius: 17.5599995
 --- !u!82 &8227600
 AudioSource:
   m_ObjectHideFlags: 1
