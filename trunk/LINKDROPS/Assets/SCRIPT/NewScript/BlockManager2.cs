@@ -333,7 +333,7 @@ public class BlockManager2 : MonoBehaviour
     //{
     //    nSelectedItem = Random.Range(0, nWidth);    // select color
     //    foreach (RowItems BI in groups)
-    //    {
+    //    {came
     //        BI.SelectTag = nSelectedItem;
     //    }
     //    GameObject gMain= GameObject.Find("main_block");
@@ -500,7 +500,7 @@ public class BlockManager2 : MonoBehaviour
                     this.GetComponent<AudioSource>().pitch -= 0.12f * Time.deltaTime;
 
                 GameObject gMainBlock = GameObject.Find("main_block");
-                TransformExtensions.ZoomOrthoCamera(gMainBlock.transform.position, 2.0f, camComponent, 100, 640);
+				TransformExtensions.ZoomOrthoCamera(new Vector2(gMainBlock.transform.position.x,gMainBlock.transform.position.y), 2.0f, camComponent, 100, 640);
             }
 
             GameObject.Find("gameoverPanel").GetComponent<Image>().enabled = bGameOver;
