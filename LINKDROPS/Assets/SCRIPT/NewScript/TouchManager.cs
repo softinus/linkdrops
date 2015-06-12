@@ -8,8 +8,7 @@ public class TouchManager : MonoBehaviour
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
     public float mainblockPosY = 300f;
-    public Camera camera2;
-
+    
     GameObject gStartBlock;
 
     private Vector2 vTouchDeltaPos;
@@ -82,6 +81,7 @@ public class TouchManager : MonoBehaviour
             bTouch = true;
             vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
+			Debug.Log (hit);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
             if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
@@ -144,7 +144,7 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+	
         InJoySticks();
 
         //Debug.Log(Application.platform);
