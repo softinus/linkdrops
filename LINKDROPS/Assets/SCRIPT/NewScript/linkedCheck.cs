@@ -27,18 +27,18 @@ public class linkedCheck : MonoBehaviour
         gGameOverLimitY = GameObject.Find("GameOverLimitY");
     }
 
-    void ObsorbCount()
+    void AbsorbCount()
     {
         if( this.gameObject.transform.tag == "yellow")
-            ++BlockManager2.nObsorbBlockY;
+            ++BlockManager2.nAbsorbBlockY;
         if (this.gameObject.transform.tag == "red")
-            ++BlockManager2.nObsorbBlockR;
+            ++BlockManager2.nAbsorbBlockR;
         if (this.gameObject.transform.tag == "blue")
-            ++BlockManager2.nObsorbBlockB;
+            ++BlockManager2.nAbsorbBlockB;
         if (this.gameObject.transform.tag == "green")
-            ++BlockManager2.nObsorbBlockG;
+            ++BlockManager2.nAbsorbBlockG;
         if (this.gameObject.transform.tag == "purple")
-            ++BlockManager2.nObsorbBlockP;
+            ++BlockManager2.nAbsorbBlockP;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -49,7 +49,7 @@ public class linkedCheck : MonoBehaviour
         if (gMainBlock)
         if (this.gameObject.transform.tag == gMainBlock.transform.tag)
         {   // when connect link
-            ObsorbCount();
+            AbsorbCount();
 
             this.link = true;
 		    if (Manager)

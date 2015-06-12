@@ -121,8 +121,8 @@ MonoBehaviour:
   fSpeed: 220
   fIncreseSpeed: .0700000003
   fYdistance: 120
-  fRadiusForAvoid: 0
-  fRadiusForObsorb: 0
+  fRadiusForAvoid: 17
+  fRadiusForAbsorb: 24
   groups:
   - items:
     - {fileID: 159582, guid: 317211298311da9489c479006a7f6139, type: 2}
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vTouchPos: {x: 0, y: 0}
   mainblockPosY: 300
+  camera2: {fileID: 0}
   vCharToward: {x: 0, y: 0}
   vCharSpeed: 0
   vCharIncreseSpeed: 0
@@ -682,7 +683,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 593713317}
-        m_MethodName: retry_sceneLoad
+        m_MethodName: Share2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
