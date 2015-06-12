@@ -86,6 +86,10 @@ public class linkedCheck : MonoBehaviour
             //        gMainBlock.GetComponent<AudioSource>().pitch = 1.2f;
             //    }
             //}
+			
+
+			//pacman_particle_play
+
 
 			
         }
