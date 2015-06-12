@@ -18,7 +18,7 @@ public class buttonManager : MonoBehaviour {
 
 	public void retry_sceneLoad(){
 
-		Application.LoadLevel (1);
+		Application.LoadLevel (0);
 		GameObject.Find ("startCanvas").SetActive (false);
 	}
 

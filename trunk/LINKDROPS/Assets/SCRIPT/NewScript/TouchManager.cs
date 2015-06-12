@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
@@ -9,9 +8,10 @@ public class TouchManager : MonoBehaviour
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
     public float mainblockPosY = 300f;
-	public bool gamestartReady = false;
     
     GameObject gStartBlock;
+    GameObject gMainBlockStartPosition;
+    public float fSpeed = 3.8F;
 
     private Vector2 vTouchDeltaPos;
 
@@ -26,6 +26,9 @@ public class TouchManager : MonoBehaviour
     GameObject gLeftWall;
     GameObject gRightWall;
 
+    GUIStyle smallFont;
+    GUIStyle largeFont;
+
     void OnGUI()
     {
         //        GameObject gStartBlock = GameObject.Find("main_block");
@@ -35,8 +38,30 @@ public class TouchManager : MonoBehaviour
         ////        GUI.Label(new Rect(10, 125, 300, 20), "Gap :: X: " + vGapBetweenTouchAndObj.x + "   Y: " + vGapBetweenTouchAndObj.y);
         ////        GUI.Label(new Rect(10, 150, 300, 20), "Screen.width : " + Screen.width);
         ////        GUI.Label(new Rect(10, 175, 300, 20), "Screen.height : " + Screen.height);
-        //GUI.Label(UnityEngine.Touch)        
-//        GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition);
+        //GUI.Label(UnityEngine.Touch)     
+        //GUIStyle myStyle = new GUIStyle();
+        //myStyle.fontSize = 100;
+        //GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition, myStyle);
+
+        
+        //largeFont = new GUIStyle();
+        //largeFont.fontSize = 80;
+        
+        
+
+        GUI.color = Color.green;
+        GUI.skin.label.fontSize = 85;
+        ////GUI.Label(new Rect(150, 275, 300, 20), "a");
+        ////GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition.x);
+        GUILayout.Space(5);
+        ////GUILayout.Label("current");
+        GUILayout.Label("delta : " + Input.GetTouch(0).deltaPosition.x, GUILayout.Width(800));
+        //GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
+        //GUILayout.Label("acc(y) : " + Input.acceleration.y, GUILayout.Width(800));
+        //GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
+        
+
+        //GUI.Label(new Rect(150, 275, 300, 20), "<color=green><size=40>Lose</size></color>");
     }
 
     // Use this for initialization
@@ -52,14 +77,14 @@ public class TouchManager : MonoBehaviour
 
         bManager = this.GetComponent<BlockManager2>();
         gStartBlock = GameObject.Find("main_block");
-		if (GameObject.Find ("startCanvas") == null)
-			gamestartReady = true;
+        gMainBlockStartPosition = GameObject.Find("MainBlockStartPosition");
     }
 
     void InWindows()
     {
+        //Camera camera2 = GameObject.Find("Camera").GetComponent<Camera>();
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
 
         if (Input.GetMouseButtonUp(0))  // change direction alternately
         {
@@ -85,10 +110,10 @@ public class TouchManager : MonoBehaviour
             bTouch = true;
             vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
-
+			Debug.Log (hit);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
-			if (bManager.BeginStart == false && bManager.bGameOver == false && gamestartReady == true) // if game is not started yet
+            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
                 bManager.BeginStart = true;
         }
         else if (Input.GetMouseButton(0))
@@ -106,7 +131,7 @@ public class TouchManager : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Began)    // 딱 처음 터치 할때 발생한다
             {
                 bTouch = true;
-				if (bManager.BeginStart == false && bManager.bGameOver == false && gamestartReady == true) // if game is not started yet
+                if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
                     bManager.BeginStart = true;
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Moved)    // 터치하고 움직이믄 발생한다.
@@ -146,7 +171,7 @@ public class TouchManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 	
         InJoySticks();
@@ -182,23 +207,46 @@ public class TouchManager : MonoBehaviour
 
             if (s_TouchMode == true) // each modes are completely different
             {
-                if (bTouch && !this.GetComponent<BlockManager2>().bGameOver)
-                {
-                    gStartBlock.transform.Translate(new Vector3(vTouchDeltaPos.x * 3.5f, 0, 0));
+                //if (!this.GetComponent<BlockManager2>().bGameOver)
+                //{
+                //    gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * 26.5f, 0, 0));
+                //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -135.5f);
+                //}
 
-                    if (vTouchDeltaPos.x == 0)
-                    {
-                        gStartBlock.transform.Rotate(0, 0, 0);
-                    }
-                    else if (vTouchDeltaPos.x > 0)
-                    {
-                        gStartBlock.transform.Rotate(0, 0, -45);
-                    }
-                    else
-                    {
-                        gStartBlock.transform.Rotate(0, 0, 45);
-                    }
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    // Get movement of the finger since last frame
+                    Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+
+                    // Move object across XY plane
+                    gStartBlock.transform.Translate(touchDeltaPosition.x * fSpeed, 0, 0);
+                    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, vTouchDeltaPos.x * 0.3f);
                 }
+
+                //if (bTouch && !this.GetComponent<BlockManager2>().bGameOver)
+                //{
+                //    gStartBlock.transform.Translate(new Vector3(vTouchDeltaPos.x * 3.8f, 0, 0));
+                //}
+                //gStartBlock.transform.rotation = Quaternion.Euler(0, 0, vTouchDeltaPos.x * -20.5f);
+
+
+
+                //if (vTouchDeltaPos == null || vTouchDeltaPos.x == 0)
+                //{
+                //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, 0);
+                //}
+                
+                //if (vTouchDeltaPos.x > 0)
+                //{
+                //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, -45);
+                //}
+                //else
+                //{
+                //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, 45);
+                //}
+                
+                // fixed y-position
+                gStartBlock.transform.position = new Vector3(gStartBlock.transform.position.x, gMainBlockStartPosition.transform.position.y, gStartBlock.transform.position.z);
             }
             else
             {
@@ -209,14 +257,9 @@ public class TouchManager : MonoBehaviour
 
 
 
-		if (GameObject.Find ("startCanvas") == null)
-			gamestartReady = true;
 
         vCharSpeed += vCharIncreseSpeed;
 
-    
-	
-	}
-
+    }
 }
 

@@ -343,30 +343,30 @@ public class BlockManager2 : MonoBehaviour
     void OnGUI()
     {
 
-        GUILayout.Space(5);
-        GUILayout.Label("current");
-        GUILayout.Label("y : " + nAbsorbBlockY, GUILayout.Width(150));
-        GUILayout.Label("r : " + nAbsorbBlockR, GUILayout.Width(150));
-        GUILayout.Label("g : " + nAbsorbBlockG, GUILayout.Width(150));
-        GUILayout.Label("b : " + nAbsorbBlockB, GUILayout.Width(150));
-        GUILayout.Label("p : " + nAbsorbBlockP, GUILayout.Width(150));
+        //GUILayout.Space(5);
+        //GUILayout.Label("current");
+        //GUILayout.Label("y : " + nAbsorbBlockY, GUILayout.Width(150));
+        //GUILayout.Label("r : " + nAbsorbBlockR, GUILayout.Width(150));
+        //GUILayout.Label("g : " + nAbsorbBlockG, GUILayout.Width(150));
+        //GUILayout.Label("b : " + nAbsorbBlockB, GUILayout.Width(150));
+        //GUILayout.Label("p : " + nAbsorbBlockP, GUILayout.Width(150));
 
         if (bGameOver)    // game over
         {
-            GUILayout.Space(20);
-            GUILayout.Label("all");
-            GUILayout.Label("y : " + PlayerPrefs.GetInt("yellow_block"), GUILayout.Width(150));
-            GUILayout.Label("r : " + PlayerPrefs.GetInt("red_block"), GUILayout.Width(150));
-            GUILayout.Label("g : " + PlayerPrefs.GetInt("green_block"), GUILayout.Width(150));
-            GUILayout.Label("b : " + PlayerPrefs.GetInt("blue_block"), GUILayout.Width(150));
-            GUILayout.Label("p : " + PlayerPrefs.GetInt("purple_block"), GUILayout.Width(150));
+            //GUILayout.Space(20);
+            //GUILayout.Label("all");
+            //GUILayout.Label("y : " + PlayerPrefs.GetInt("yellow_block"), GUILayout.Width(150));
+            //GUILayout.Label("r : " + PlayerPrefs.GetInt("red_block"), GUILayout.Width(150));
+            //GUILayout.Label("g : " + PlayerPrefs.GetInt("green_block"), GUILayout.Width(150));
+            //GUILayout.Label("b : " + PlayerPrefs.GetInt("blue_block"), GUILayout.Width(150));
+            //GUILayout.Label("p : " + PlayerPrefs.GetInt("purple_block"), GUILayout.Width(150));
 
-            //
-            GUILayout.Space(10);
-            GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
+            ////
+            //GUILayout.Space(10);
+            //GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
 
             int nMyHighScore = PlayerPrefs.GetInt("high_score");
-            GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
+            //GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
 
 			//pacman_died_animation_stop
 			GameObject.Find("main_block").transform.FindChild("pac_slice").GetComponent<Animator>().enabled = false;
@@ -428,17 +428,18 @@ public class BlockManager2 : MonoBehaviour
         {
             if (y == 0)  // change position dynamically
                 ChangeWidth(1);
-            if (y == 4)
+            if (y == 5)
             {
-                int nNewStage = Random.Range(3, 6);
-                ChangeWidth(nNewStage);
+                ChangeWidth(2);
+                //int nNewStage = Random.Range(3, 6);
+                //ChangeWidth(nNewStage);
 
-                if (nNewStage == 3)
-                    nNextStandardPos = 1;
-                else if (nNewStage == 4)
-                    nNextStandardPos = 2;
-                else
-                    nNextStandardPos = 2;
+                //if (nNewStage == 3)
+                //    nNextStandardPos = 1;
+                //else if (nNewStage == 4)
+                //    nNextStandardPos = 2;
+                //else
+                //    nNextStandardPos = 2;
             }
 
 
@@ -462,24 +463,37 @@ public class BlockManager2 : MonoBehaviour
                 {
                     Destroy(GO);
 
-                    if(nRowCount%50 == 0)
-                    {
-                        //ChangeColor();
+                    if (nRowCount == 50)
                         ChangeWidth(1);
-                        nNextStandardPos = 0;
-                    }
-                    else if (nRowCount % 50 == 4)
-                    {
-                        int nNewStage= Random.Range(3, 6);
-                        ChangeWidth(nNewStage);
+                    else if (nRowCount == 55)
+                        ChangeWidth(3);
+                    else if (nRowCount == 130)
+                        ChangeWidth(1);
+                    else if (nRowCount == 135)
+                        ChangeWidth(4);
+                    else if (nRowCount == 260)
+                        ChangeWidth(1);
+                    else if (nRowCount == 265)
+                        ChangeWidth(5);
+                    //else if (nRowCount == 265)
+                    //if(nRowCount%50 == 0)
+                    //{
+                    //    //ChangeColor();
+                    //    ChangeWidth(1);
+                    //    nNextStandardPos = 0;
+                    //}
+                    //else if (nRowCount % 50 == 4)
+                    //{
+                    //    int nNewStage= Random.Range(3, 6);
+                    //    ChangeWidth(nNewStage);
 
-                        if (nNewStage== 3)
-                            nNextStandardPos = 1;
-                        else if (nNewStage == 4)
-                            nNextStandardPos = 2;
-                        else
-                            nNextStandardPos = 2;
-                    }
+                    //    if (nNewStage== 3)
+                    //        nNextStandardPos = 1;
+                    //    else if (nNewStage == 4)
+                    //        nNextStandardPos = 2;
+                    //    else
+                    //        nNextStandardPos = 2;
+                    //}
 
 
                     Make1Row(nRowCount++);
