@@ -202,6 +202,7 @@
      <Compile Include="Assets\SCRIPT\NewScript\linkedCheck.cs" />
      <Compile Include="Assets\SCRIPT\Util\TransformExtension.cs" />
      <Compile Include="Assets\SCRIPT\Util\scoreManager.cs" />
+     <Compile Include="Assets\TouchManager2.cs" />
      <None Include="Assets\Plugins\Android\res\drawable\common_signin_btn_icon_light.xml" />
      <None Include="Assets\Plugins\Android\res\values-fa\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values\wallet_strings.xml" />
