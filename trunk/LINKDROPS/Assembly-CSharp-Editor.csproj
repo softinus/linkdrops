@@ -185,7 +185,6 @@
      <None Include="Assets\Plugins\Android\res\values-es\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values\wallet_colors.xml" />
      <None Include="Assets\Plugins\Android\res\values-cs\common_strings.xml" />
-     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\Plugins\Android\facebook\res\drawable\com_facebook_top_button.xml" />
      <None Include="Assets\Plugins\Android\res\values-is-rIS\common_strings.xml" />
      <None Include="Assets\Plugins\Android\facebook\AndroidManifest.xml" />
@@ -253,8 +252,6 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{4911BF25-1B16-A75A-7F97-924104209DF7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{FBA08BAB-64F7-2B79-4731-5BC51B2DD216}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
