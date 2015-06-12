@@ -13,6 +13,28 @@ public class Drawline2 : MonoBehaviour
 
 	void Start ()
 	{
+		SpriteRenderer lineColor = this.GetComponent<SpriteRenderer>();
+		if (this.gameObject.transform.parent.tag == "yellow") {
+			lineColor.color = new Color (255f / 255f, 132f / 255f, 65f / 255f, 255f / 255f);
+			Debug.Log (lineColor.color);}
+		if (this.gameObject.transform.parent.tag == "red") {
+			lineColor.color = new Color (255f / 255f, 56f / 255f, 60f / 255f, 255f / 255f);
+			Debug.Log (lineColor.color);
+		}
+		if (this.gameObject.transform.parent.tag == "blue") {
+			lineColor.color = new Color (15f / 255f, 185f / 255f, 255f / 255f, 255f / 255f);
+			Debug.Log (lineColor.color);
+		}
+		if (this.gameObject.transform.parent.tag == "green") {
+			lineColor.color = new Color (41f / 255f, 217f / 255f, 72f / 255f, 255f / 255f);
+			Debug.Log (lineColor.color);
+		}
+		if (this.gameObject.transform.parent.tag == "purple") {
+			lineColor.color = new Color (255f / 255f, 98f / 255f, 255f / 255f, 255f / 255f);
+			Debug.Log (lineColor.color);
+		}
+					
+		
 		//nRowIdx= 0;
 		//bLinkToMain= true;
 		//objectPosition = new Vector2 (transform.position.x,transform.position.y);	
