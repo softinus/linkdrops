@@ -100,11 +100,18 @@ public class buttonManager : MonoBehaviour {
         //currentActivity.Call("startActivity", intentObject);
     }
 
+    private string destination = "";
     private bool isProcessing = false;
     public void Share2()
     {
         if (!isProcessing)
             StartCoroutine(ShareScreenshot());
+    }
+
+    void OnGUI()
+    {
+        if (isProcessing)
+            GUILayout.Label("      Saving screenshot : " + destination);
     }
 
     public IEnumerator ShareScreenshot()
@@ -124,12 +131,16 @@ public class buttonManager : MonoBehaviour {
 
         byte[] dataToSave = screenTexture.EncodeToPNG();
 
-        string destination = Path.Combine(Application.persistentDataPath, System.DateTime.Now.ToString("yyyy-MM-dd-HHmmss") + ".png");
+        destination = Path.Combine(Application.persistentDataPath, System.DateTime.Now.ToString("yyyy-MM-dd-HHmmss") + ".png");
 
         File.WriteAllBytes(destination, dataToSave);
 
+
+
         if (!Application.isEditor)
         {
+
+
             // block to open the file and share it ------------START
             AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
             AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
