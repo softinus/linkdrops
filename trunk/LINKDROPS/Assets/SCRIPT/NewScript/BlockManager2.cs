@@ -367,6 +367,10 @@ public class BlockManager2 : MonoBehaviour
 
             int nMyHighScore = PlayerPrefs.GetInt("high_score");
             GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
+
+			//pacman_died_animation_stop
+			GameObject.Find("main_block").transform.FindChild("pac_slice").GetComponent<Animator>().enabled = false;
+			GameObject.Find("main_block").transform.FindChild("pac_right").GetComponent<Animator>().enabled = false;
         }
         
 
