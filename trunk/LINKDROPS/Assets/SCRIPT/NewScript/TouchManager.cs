@@ -8,6 +8,8 @@ public class TouchManager : MonoBehaviour
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
 	public float mainblockPosY = 300f;
+	public Camera camera2;
+
         
     protected bool bTouch = false;
     public Vector2 vCharToward;
