@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TouchManager : MonoBehaviour
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
     public float mainblockPosY = 300f;
+	public bool gamestartReady = false;
     
     GameObject gStartBlock;
 
@@ -50,12 +52,14 @@ public class TouchManager : MonoBehaviour
 
         bManager = this.GetComponent<BlockManager2>();
         gStartBlock = GameObject.Find("main_block");
+		if (GameObject.Find ("startCanvas") == null)
+			gamestartReady = true;
     }
 
     void InWindows()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
+        //RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
 
         if (Input.GetMouseButtonUp(0))  // change direction alternately
         {
@@ -81,10 +85,10 @@ public class TouchManager : MonoBehaviour
             bTouch = true;
             vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
-			Debug.Log (hit);
+
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
-            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
+			if (bManager.BeginStart == false && bManager.bGameOver == false && gamestartReady == true) // if game is not started yet
                 bManager.BeginStart = true;
         }
         else if (Input.GetMouseButton(0))
@@ -102,7 +106,7 @@ public class TouchManager : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Began)    // 딱 처음 터치 할때 발생한다
             {
                 bTouch = true;
-                if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
+				if (bManager.BeginStart == false && bManager.bGameOver == false && gamestartReady == true) // if game is not started yet
                     bManager.BeginStart = true;
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Moved)    // 터치하고 움직이믄 발생한다.
@@ -205,9 +209,14 @@ public class TouchManager : MonoBehaviour
 
 
 
+		if (GameObject.Find ("startCanvas") == null)
+			gamestartReady = true;
 
         vCharSpeed += vCharIncreseSpeed;
 
-    }
+    
+	
+	}
+
 }
 
