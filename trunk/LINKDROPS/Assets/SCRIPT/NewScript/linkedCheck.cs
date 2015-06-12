@@ -12,7 +12,7 @@ public class linkedCheck : MonoBehaviour
 
     private void GameOver()
     {
-        this.gameObject.GetComponent<Animator>().enabled = true;
+        //this.gameObject.GetComponent<Animator>().enabled = true;
 
         Manager.GetComponent<BlockManager2>().BeginStart = false;
         Manager.GetComponent<BlockManager2>().bGameOver = true;
@@ -25,6 +25,10 @@ public class linkedCheck : MonoBehaviour
         //selectedBlock = Manager.GetComponent<BlockManager2>()
         gMainBlock= GameObject.Find("main_block");
         gGameOverLimitY = GameObject.Find("GameOverLimitY");
+
+
+
+
     }
 
     void AbsorbCount()
@@ -57,7 +61,7 @@ public class linkedCheck : MonoBehaviour
 
             // attach line to linked block
             GameObject gLinkLine = Instantiate((GameObject)Resources.Load("line/LinkLine"));
-            gLinkLine.transform.Translate(gameObject.transform.position);
+			gLinkLine.transform.Translate(gameObject.transform.position);
 			gLinkLine.name= "LinkLine_"+nRowIdx;
             Drawline2 draw= gLinkLine.GetComponent<Drawline2>();
             draw.sourceObj = gLinkLine;
@@ -92,8 +96,7 @@ public class linkedCheck : MonoBehaviour
         }
 
 		this.GetComponent<SpriteRenderer> ().enabled = false;
-		Debug.Log (coll.name);
-    }
+		   }
     
 
 	void FixedUpdate ()
