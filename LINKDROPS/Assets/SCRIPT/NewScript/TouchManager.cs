@@ -35,7 +35,7 @@ public class TouchManager : MonoBehaviour
         ////        GUI.Label(new Rect(10, 150, 300, 20), "Screen.width : " + Screen.width);
         ////        GUI.Label(new Rect(10, 175, 300, 20), "Screen.height : " + Screen.height);
         //GUI.Label(UnityEngine.Touch)        
-        GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition);
+//        GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition);
     }
 
     // Use this for initialization
