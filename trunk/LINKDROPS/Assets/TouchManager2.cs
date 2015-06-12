@@ -210,12 +210,12 @@ public class TouchManager2 : MonoBehaviour
 
     void OnGUI () 
     {
-        GUI.color = Color.green;
-        GUI.skin.label.fontSize = 40;
-        GUILayout.Space(5);
-        ////GUILayout.Label("current");
-        //GUILayout.Label(_rotBack + " : " + _rot, GUILayout.Width(800));
-        GUILayout.Label("" + (_rot - _rotNow) * -1, GUILayout.Width(800));
-        //GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
+        //GUI.color = Color.green;
+        //GUI.skin.label.fontSize = 40;
+        //GUILayout.Space(5);
+        //////GUILayout.Label("current");
+        ////GUILayout.Label(_rotBack + " : " + _rot, GUILayout.Width(800));
+        //GUILayout.Label("" + (_rot - _rotNow) * -1, GUILayout.Width(800));
+        ////GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
     }
 }
