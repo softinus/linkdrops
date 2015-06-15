@@ -175,6 +175,7 @@ public class RowItems
         }
     }
 
+
 }
 
 public class BlockManager2 : MonoBehaviour
@@ -220,6 +221,8 @@ public class BlockManager2 : MonoBehaviour
     
 	Vector3 vRootPos;
 
+    ArrayList arrXpos = new ArrayList();
+
     // make main block
     private void MakeTouchBlock(float _screenWidth)
     {
@@ -228,23 +231,23 @@ public class BlockManager2 : MonoBehaviour
         gStartBlock.name = "main_block";    // set name for controllable
         gStartBlock.tag = groups[nSelectedGroup].items[nSelectedItem].tag;  // set tag distinguish between the color of blocks
         
-        //gStartBlock.transform.position = new Vector3(_screenWidth/2, 500 - fYdistance, 40);
         gStartBlock.transform.position = GameObject.Find("MainBlockStartPosition").transform.position;
 
-        //CircleCollider2D collider= gStartBlock.AddComponent<CircleCollider2D>();
-        //collider.isTrigger = true;
-
         LinkedCheckMain gLinkScriptMain= gStartBlock.AddComponent<LinkedCheckMain>();
-        //gLinkScriptMain.gManager = this.gameObject; // send manager object
-
-       // gStartBlock.GetComponent<Animator>().enabled = true;
-        //gStartBlock.GetComponent<linkedCheck>().enabled = false;        
-        //gMainBlock.transform.position = GetComponent<TouchManager>().vTouchPos;
-
-        //GameObject obj = GameObject.Find("main_block");
-        //SpriteRenderer sprRender = obj.GetComponent<SpriteRenderer>();   // get sprite render in main block
-        //sprRender.material.color = groups[nSelectedGroup].GetSelectColor();  // set proper color     
         
+    }
+
+
+    private float CalcEachBlockXPos(int x, int i)    // row and each columns
+    {
+        int n = groups[nSelectedGroup].items.Length + 1;
+
+        var ScreenHeight = 2 * Camera.main.orthographicSize;
+        float w = ScreenHeight * Camera.main.aspect;
+        float per20 = w * 0.2f;
+
+        float currXpos = (n - x) * w / 10 + (per20 * i);
+        return currXpos;
     }
 
 
@@ -302,7 +305,8 @@ public class BlockManager2 : MonoBehaviour
         {
             GameObject o = null;//arr[i] as GameObject;
             o = Instantiate(groups[nSelectedGroup].arr1row[x] as GameObject,
-                new Vector3(vRootPos.x + ((x + 1) * fDistance),
+                //new Vector3(vRootPos.x + ((x + 1) * fDistance),
+                new Vector3((float)arrXpos[x],
                     vRootPos.y,
                     100),
                     Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -332,9 +336,14 @@ public class BlockManager2 : MonoBehaviour
         {
             BI.Width = _nWid;
         }
-        var ScreenHeight = 2 * Camera.main.orthographicSize;
-        var ScreenWidth = ScreenHeight * Camera.main.aspect;
-        fDistance = ScreenWidth / (_nWid + 1);
+
+        arrXpos.Clear();
+        for (int i = 0; i < _nWid; ++i )
+        {            
+            float fXpos = CalcEachBlockXPos(_nWid, i);
+            arrXpos.Add(fXpos);
+        }
+            
     }
 
     //void ChangeColor()
