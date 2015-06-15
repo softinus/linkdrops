@@ -46,29 +46,29 @@ public class LoginSystem : MonoBehaviour
         gBTNsign.GetComponent<Button>().enabled = _b;
     }
 
-    //void SignIn(string _id, string _pw)
-    //{
-    //    strReasonOfLoginFailed = "Signing In...";
+    void SignIn(string _id, string _pw)
+    {
+        strReasonOfLoginFailed = "Signing In...";
 
-    //    ParseUser.LogInAsync(_id, _pw).ContinueWith(t =>
-    //    {
-    //        if (t.IsFaulted || t.IsCanceled)
-    //        {
-    //            // The login failed. Check the error to see why.
-    //            foreach (var e in t.Exception.InnerExceptions)
-    //            {
-    //                ParseException parseException = (ParseException)e;
-    //                strReasonOfLoginFailed = parseException.Message;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            // Login was successful.
-    //            //bLoginUIShow = false;
-    //            strReasonOfLoginFailed = "Login successful!";
-    //        }
-    //    });
-    //}
+        ParseUser.LogInAsync(_id, _pw).ContinueWith(t =>
+        {
+            if (t.IsFaulted || t.IsCanceled)
+            {
+                // The login failed. Check the error to see why.
+                foreach (var e in t.Exception.InnerExceptions)
+                {
+                    ParseException parseException = (ParseException)e;
+                    strReasonOfLoginFailed = parseException.Message;
+                }
+            }
+            else
+            {
+                // Login was successful.
+                //bLoginUIShow = false;
+                strReasonOfLoginFailed = "Login successful!";
+            }
+        });
+    }
 
     public void ConnectToParseAndSignIn()
     {
@@ -103,17 +103,19 @@ public class LoginSystem : MonoBehaviour
                     Debug.Log("Error code: " + parseException.Code);
                     strReasonOfLoginFailed = parseException.Message;
 
-                    //if (parseException.Code == ParseException.ErrorCode.UsernameTaken)
-                    //    this.SignIn(inputID.text, inputPW.text);
+                    if (parseException.Code == ParseException.ErrorCode.UsernameTaken)
+                        this.SignIn(inputID.text, inputPW.text);
                 }
                 // The login failed. Check t.Exception to see why.
                 Debug.Log("Registration failed! " + t.Exception.Message);
+                strReasonOfLoginFailed = "Registration failed! ";
             }
             else
             {
                 // Login was successful.
                 Debug.Log("Registration was successful!");
                 //SignIn(inputID.text, inputPW.text);
+                strReasonOfLoginFailed = "Login successful!";
             }
         });
         //var user = new ParseUser()
