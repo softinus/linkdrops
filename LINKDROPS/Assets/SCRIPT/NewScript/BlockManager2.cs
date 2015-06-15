@@ -247,8 +247,6 @@ public class BlockManager2 : MonoBehaviour
         
     }
 
-    
-
 
     private void Make1Row(int y)
     {

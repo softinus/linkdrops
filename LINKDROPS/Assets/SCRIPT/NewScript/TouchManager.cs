@@ -207,21 +207,21 @@ public class TouchManager : MonoBehaviour
 
             if (s_TouchMode == true) // each modes are completely different
             {
-                //if (!this.GetComponent<BlockManager2>().bGameOver)
-                //{
-                //    gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * 26.5f, 0, 0));
-                //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -135.5f);
-                //}
-
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+                if (!this.GetComponent<BlockManager2>().bGameOver)
                 {
-                    // Get movement of the finger since last frame
-                    Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-
-                    // Move object across XY plane
-                    gStartBlock.transform.Translate(touchDeltaPosition.x * fSpeed, 0, 0);
-                    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, vTouchDeltaPos.x * 0.3f);
+                    gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * 25.5f, 0, 0));
+                    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -135.5f);
                 }
+
+                //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+                //{
+                //    // Get movement of the finger since last frame
+                //    Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+
+                //    // Move object across XY plane
+                //    gStartBlock.transform.Translate(touchDeltaPosition.x * fSpeed, 0, 0);
+                //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, vTouchDeltaPos.x * 0.3f);
+                //}
 
                 //if (bTouch && !this.GetComponent<BlockManager2>().bGameOver)
                 //{
