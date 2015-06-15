@@ -49,16 +49,16 @@ public class TouchManager : MonoBehaviour
         
         
 
-        GUI.color = Color.green;
-        GUI.skin.label.fontSize = 85;
-        ////GUI.Label(new Rect(150, 275, 300, 20), "a");
-        ////GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition.x);
-        GUILayout.Space(5);
-        ////GUILayout.Label("current");
-        GUILayout.Label("delta : " + Input.GetTouch(0).deltaPosition.x, GUILayout.Width(800));
-        //GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
-        //GUILayout.Label("acc(y) : " + Input.acceleration.y, GUILayout.Width(800));
-        //GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
+        //GUI.color = Color.green;
+        //GUI.skin.label.fontSize = 85;
+        //////GUI.Label(new Rect(150, 275, 300, 20), "a");
+        //////GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition.x);
+        //GUILayout.Space(5);
+        //////GUILayout.Label("current");
+        //GUILayout.Label("delta : " + Input.GetTouch(0).deltaPosition.x, GUILayout.Width(800));
+        ////GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
+        ////GUILayout.Label("acc(y) : " + Input.acceleration.y, GUILayout.Width(800));
+        ////GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
         
 
         //GUI.Label(new Rect(150, 275, 300, 20), "<color=green><size=40>Lose</size></color>");
@@ -113,8 +113,8 @@ public class TouchManager : MonoBehaviour
 			Debug.Log (hit);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
-            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
-                bManager.BeginStart = true;
+            //if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
+            //    bManager.BeginStart = true;
         }
         else if (Input.GetMouseButton(0))
         {
@@ -150,31 +150,31 @@ public class TouchManager : MonoBehaviour
 
     }
 
-    private void InJoySticks()
-    {
-        string[] strJoySticks = Input.GetJoystickNames();
-        if (strJoySticks.Length != 0)
-        {
-            float f = Input.GetAxis("Horizontal");
+    //private void InJoySticks()
+    //{
+    //    string[] strJoySticks = Input.GetJoystickNames();
+    //    if (strJoySticks.Length != 0)
+    //    {
+    //        float f = Input.GetAxis("Horizontal");
 
-            Vector2 v = new Vector2(f, 0);
-            gStartBlock.transform.Translate(v * 10);
+    //        Vector2 v = new Vector2(f, 0);
+    //        gStartBlock.transform.Translate(v * 10);
 
-            if (f != 0.0f)
-            {
-                if (this.GetComponent<BlockManager2>().BeginStart == false) // if game is not started yet
-                    this.GetComponent<BlockManager2>().BeginStart = true;
-            }
+    //        if (f != 0.0f)
+    //        {
+    //            if (this.GetComponent<BlockManager2>().BeginStart == false) // if game is not started yet
+    //                this.GetComponent<BlockManager2>().BeginStart = true;
+    //        }
 
 
-        }
-    }
+    //    }
+    //}
 
     // Update is called once per frame
     void FixedUpdate()
     {
 	
-        InJoySticks();
+//        InJoySticks();
 
         //Debug.Log(Application.platform);
 
