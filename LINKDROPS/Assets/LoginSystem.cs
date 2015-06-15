@@ -46,29 +46,29 @@ public class LoginSystem : MonoBehaviour
         gBTNsign.GetComponent<Button>().enabled = _b;
     }
 
-    void SignIn(string _id, string _pw)
-    {
-        strReasonOfLoginFailed = "Signing In...";
+    //void SignIn(string _id, string _pw)
+    //{
+    //    strReasonOfLoginFailed = "Signing In...";
 
-        ParseUser.LogInAsync(_id, _pw).ContinueWith(t =>
-        {
-            if (t.IsFaulted || t.IsCanceled)
-            {
-                // The login failed. Check the error to see why.
-                foreach (var e in t.Exception.InnerExceptions)
-                {
-                    ParseException parseException = (ParseException)e;
-                    strReasonOfLoginFailed = parseException.Message;
-                }
-            }
-            else
-            {
-                // Login was successful.
-                //bLoginUIShow = false;
-                strReasonOfLoginFailed = "Login successful!";
-            }
-        });
-    }
+    //    ParseUser.LogInAsync(_id, _pw).ContinueWith(t =>
+    //    {
+    //        if (t.IsFaulted || t.IsCanceled)
+    //        {
+    //            // The login failed. Check the error to see why.
+    //            foreach (var e in t.Exception.InnerExceptions)
+    //            {
+    //                ParseException parseException = (ParseException)e;
+    //                strReasonOfLoginFailed = parseException.Message;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            // Login was successful.
+    //            //bLoginUIShow = false;
+    //            strReasonOfLoginFailed = "Login successful!";
+    //        }
+    //    });
+    //}
 
     public void ConnectToParseAndSignIn()
     {
@@ -103,8 +103,8 @@ public class LoginSystem : MonoBehaviour
                     Debug.Log("Error code: " + parseException.Code);
                     strReasonOfLoginFailed = parseException.Message;
 
-                    if (parseException.Code == ParseException.ErrorCode.UsernameTaken)
-                        this.SignIn(inputID.text, inputPW.text);
+                    //if (parseException.Code == ParseException.ErrorCode.UsernameTaken)
+                    //    this.SignIn(inputID.text, inputPW.text);
                 }
                 // The login failed. Check t.Exception to see why.
                 Debug.Log("Registration failed! " + t.Exception.Message);
@@ -113,7 +113,7 @@ public class LoginSystem : MonoBehaviour
             {
                 // Login was successful.
                 Debug.Log("Registration was successful!");
-                SignIn(inputID.text, inputPW.text);
+                //SignIn(inputID.text, inputPW.text);
             }
         });
         //var user = new ParseUser()
@@ -128,6 +128,8 @@ public class LoginSystem : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ParseUser.EnableRevocableSessionAsync();
+
         strReasonOfLoginFailed = "";
         gLoginForm = GameObject.Find("LoginForm");
         gBTNshowLoginUI = GameObject.Find("BTNshowSignUI");
@@ -149,16 +151,5 @@ public class LoginSystem : MonoBehaviour
             gTXTerr.GetComponent<Text>().text = strReasonOfLoginFailed;
     }
 
-    private static void HandleInvalidSessionToken()
-    {
-        //--------------------------------------
-        // Option 1: Show a message asking the user to log out and log back in.
-        //--------------------------------------
-        // If the user needs to finish what they were doing, they have the opportunity to do so.
 
-        //--------------------------------------
-        // Option #2: Show login screen so user can re-authenticate.
-        //--------------------------------------
-        // You may want this if the logout button is inaccessible in the UI.
-    }
 }
