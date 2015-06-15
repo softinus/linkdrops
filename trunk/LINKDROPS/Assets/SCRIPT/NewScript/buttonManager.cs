@@ -10,6 +10,7 @@ public class buttonManager : MonoBehaviour {
 
     
 	static public GameObject manager;
+
     //static private GameObject canvas;
 
 
@@ -41,16 +42,22 @@ public class buttonManager : MonoBehaviour {
 
 
 
-	public void main_sceneLoad()
+	public void main_gameStart()
     {
+
+		manager.GetComponent<BlockManager2> ().BeginStart = true;
 		//Application.LoadLevel (1);
         GameObject.Find("startCanvas").SetActive(false);
+		if(manager.GetComponent<BlockManager2> ().bGameOver == false){
+		manager.GetComponent<BlockManager2> ().BeginStart = true;
+		}
 	}
 
 
 	public void retry_sceneLoad()
     {
-        Application.LoadLevel(0);
+		manager.GetComponent<BlockManager2> ().retry = true;
+		Application.LoadLevel(0);
 
         StartCoroutine(ShowCanvas());
 
@@ -84,6 +91,14 @@ public class buttonManager : MonoBehaviour {
     {
         Social.ShowLeaderboardUI();
     }
+
+	//change mode button controll
+	public void modeChanger ()
+	{
+
+
+	}
+
 
     //public void Share()
     //{

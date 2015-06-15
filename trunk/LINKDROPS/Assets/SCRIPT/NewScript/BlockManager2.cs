@@ -32,6 +32,7 @@ public class RowItems
     {
         get { return nWidth; }
         set { nWidth = value; }
+
     }
     public int SelectTag
     {
@@ -90,7 +91,15 @@ public class RowItems
     }
 
 
-    public void ChangeSelectBlockTo()
+	public void Awake(){
+	
+
+
+	}
+
+   
+
+	public void ChangeSelectBlockTo()
     {
         if(nPrevPos == -1)  // hasn't previous position
         {
@@ -197,6 +206,7 @@ public class BlockManager2 : MonoBehaviour
     //protected GameObject gLatestGO;  // the latest game object
     public bool BeginStart = false;    // started?
     public bool bGameOver= false;    // is game over?
+	public bool retry = false;
 
     private int nNextStandardPos = -1;  // previous position moved by force
 

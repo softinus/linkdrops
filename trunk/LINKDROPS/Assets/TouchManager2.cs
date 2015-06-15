@@ -60,8 +60,8 @@ public class TouchManager2 : MonoBehaviour
             _startMouse = Input.mousePosition; 
             _checkMouseIn = true;
 
-            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
-                bManager.BeginStart = true;
+//            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
+//                bManager.BeginStart = true;
         }
 
         if (Input.GetButtonUp("Fire1")) 
