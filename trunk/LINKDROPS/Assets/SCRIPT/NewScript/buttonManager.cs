@@ -3,11 +3,12 @@ using System.Collections;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 using System.IO;
+using Parse;
+using System.Threading.Tasks;
 
 public class buttonManager : MonoBehaviour {
 
-    bool bLoginUIShow;
-    static public bool bLogined;
+    
 	static public GameObject manager;
     //static private GameObject canvas;
 
@@ -17,8 +18,25 @@ public class buttonManager : MonoBehaviour {
     {
         //if (isProcessing)
         //    GUILayout.Label("      Saving screenshot : " + destination);
-        if(bLoginUIShow)
-            GUILayout.Label("dasdsad");
+        //if (bLoginUIShow)
+        //{
+        //    GUI.TextArea(new Rect(20, 40, 160, 20), "");
+        //    GUI.TextArea(new Rect(20, 60, 160, 20), "");
+        //    if (GUI.Button(new Rect(20, 80, 80, 20), "Ok"))
+        //    {
+        //        var user = new ParseUser()
+        //        {
+        //            Username = "my name",
+        //            Password = "my pass",
+        //            Email = "email@example.com"
+        //        };
+        //        Task signUpTask = user.SignUpAsync();
+        //    }
+        //    if (GUI.Button(new Rect(100, 80, 80, 20), "Cancel"))
+        //    {
+        //        bLoginUIShow = false;
+        //    }
+        //}
     }
 
 
@@ -29,10 +47,6 @@ public class buttonManager : MonoBehaviour {
         GameObject.Find("startCanvas").SetActive(false);
 	}
 
-    public void Signin()
-    {
-        bLoginUIShow = true;
-    }
 
 	public void retry_sceneLoad()
     {
@@ -40,14 +54,11 @@ public class buttonManager : MonoBehaviour {
 
         StartCoroutine(ShowCanvas());
 
-        GameObject.Find("startCanvas").SetActive(false);
 	}
 
     IEnumerator ShowCanvas()
     {
-        GameObject.Find("startCanvas").SetActive(false);
-
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         GameObject.Find("startCanvas").SetActive(false);
         
     }
@@ -199,8 +210,13 @@ public class buttonManager : MonoBehaviour {
     {
 		manager = GameObject.Find ("Manager");
         //canvas= GameObject.Find("startCanvas");
+
 	}
 
+
+    void Update()
+    {
+    }
 
 
 }
