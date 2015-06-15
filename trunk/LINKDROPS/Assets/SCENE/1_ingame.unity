@@ -304,6 +304,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!81 &35663648
 AudioListener:
   m_ObjectHideFlags: 0
@@ -520,6 +521,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &348555104
 MonoBehaviour:
@@ -805,6 +807,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 593713315}
+--- !u!1 &730092113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 730092114}
+  - 114: {fileID: 730092115}
+  m_Layer: 5
+  m_Name: forParse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &730092114
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730092113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 789256298}
+  m_RootOrder: 4
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &730092115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730092113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 762677091, guid: 7c5df6eb4d8f2784b9a13094679792b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applicationID: JYGGO2Jvnogl7AJAjBg97sGLbSumuFfupFruwgFN
+  dotnetKey: rRSMYPoN4WflaJZ6IOOdQ9YvRJnUWvR9gjiY3bEj
 --- !u!1 &772536978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,6 +1096,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e7580d021a7be24cab84d619754da39, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &789256298 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22421878, guid: 7e7580d021a7be24cab84d619754da39,
+    type: 2}
+  m_PrefabInternal: {fileID: 789256297}
 --- !u!1 &929744904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1855,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!1 &1697235759
 GameObject:
   m_ObjectHideFlags: 0
