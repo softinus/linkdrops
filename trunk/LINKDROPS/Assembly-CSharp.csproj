@@ -191,6 +191,7 @@
      <Compile Include="Assets\GooglePlayGames\Platforms\NearbyConnectionClientFactory.cs" />
      <Compile Include="Assets\GooglePlayGames\Platforms\PlayGamesClientFactory.cs" />
      <Compile Include="Assets\GooglePlayGames\PluginVersion.cs" />
+     <Compile Include="Assets\LoginSystem.cs" />
      <Compile Include="Assets\MainScreen.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\BackgroundScroll.cs" />
      <Compile Include="Assets\SCRIPT\NewScript\BlockManager2.cs" />
@@ -239,10 +240,12 @@
      <None Include="Assets\Plugins\Android\res\values-sv\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values\wallet_styles.xml" />
      <None Include="Assets\Plugins\Android\res\values-tl\common_strings.xml" />
+     <None Include="Assets\Plugins\Android\AndroidManifest 1.xml" />
      <None Include="Assets\Plugins\Android\res\values-nl\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-pt\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\drawable\common_signin_btn_text_dark.xml" />
      <None Include="Assets\Plugins\Android\res\values-in\common_strings.xml" />
+     <None Include="Assets\link.xml" />
      <None Include="Assets\Plugins\Android\res\values-mn-rMN\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-zh-rHK\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-fi\common_strings.xml" />
@@ -252,7 +255,9 @@
      <None Include="Assets\Plugins\Android\res\values-ka-rGE\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-lo-rLA\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-te-rIN\common_strings.xml" />
+     <None Include="Assets\Parse\Parse.Unity.xml" />
      <None Include="Assets\Plugins\Android\res\values-mk-rMK\common_strings.xml" />
+     <None Include="Assets\Parse\README.txt" />
      <None Include="Assets\Plugins\Android\res\values-ko\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\values-sr\common_strings.xml" />
      <None Include="Assets\Plugins\Android\res\color\common_signin_btn_text_light.xml" />
@@ -307,6 +312,9 @@
      <None Include="Assets\Plugins\Android\res\values\admob_ads_attrs.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Parse.Unity">
+ <HintPath>C:/Users/Seongwon Jeong/Google 드라이브/LINKDROPS/drops/trunk/LINKDROPS/Assets/Parse/Parse.Unity.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
