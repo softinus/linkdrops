@@ -1,18 +1,19 @@
 fileFormatVersion: 2
-guid: 63c0e309869bf0c49b1fd2afc737cf31
-timeCreated: 1434372718
+guid: 7c5df6eb4d8f2784b9a13094679792b9
+timeCreated: 1434378866
 licenseType: Free
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
-  executionOrder: {}
+  executionOrder:
+    Parse.ParseInitializeBehaviour: 100
   isPreloaded: 0
   platformData:
     Any:
-      enabled: 0
+      enabled: 1
       settings: {}
     Editor:
-      enabled: 1
+      enabled: 0
       settings:
         DefaultValueInitialized: true
   userData: 
