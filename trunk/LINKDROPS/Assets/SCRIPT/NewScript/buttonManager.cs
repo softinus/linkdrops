@@ -6,25 +6,55 @@ using System.IO;
 
 public class buttonManager : MonoBehaviour {
 
+    bool bLoginUIShow;
+    static public bool bLogined;
 	static public GameObject manager;
+    //static private GameObject canvas;
 
 
 
-	public void main_sceneLoad(){
+    void OnGUI()
+    {
+        //if (isProcessing)
+        //    GUILayout.Label("      Saving screenshot : " + destination);
+        if(bLoginUIShow)
+            GUILayout.Label("dasdsad");
+    }
 
+
+
+	public void main_sceneLoad()
+    {
 		//Application.LoadLevel (1);
-		GameObject.Find ("startCanvas").SetActive (false);
+        GameObject.Find("startCanvas").SetActive(false);
 	}
 
-	public void retry_sceneLoad(){
+    public void Signin()
+    {
+        bLoginUIShow = true;
+    }
 
-		Application.LoadLevel (1);
+	public void retry_sceneLoad()
+    {
+        Application.LoadLevel(0);
 
+        StartCoroutine(ShowCanvas());
+
+        GameObject.Find("startCanvas").SetActive(false);
 	}
+
+    IEnumerator ShowCanvas()
+    {
+        GameObject.Find("startCanvas").SetActive(false);
+
+        yield return new WaitForSeconds(3);
+        GameObject.Find("startCanvas").SetActive(false);
+        
+    }
 
     public void GoHome()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel(0);
     }
 
 
@@ -110,12 +140,6 @@ public class buttonManager : MonoBehaviour {
             StartCoroutine(ShareScreenshot());
     }
 
-    void OnGUI()
-    {
-        //if (isProcessing)
-        //    GUILayout.Label("      Saving screenshot : " + destination);
-    }
-
     public IEnumerator ShareScreenshot()
     {
         isProcessing = true;
@@ -171,13 +195,15 @@ public class buttonManager : MonoBehaviour {
     }
 
 
-	void Awake(){
+	void Awake()
+    {
 		manager = GameObject.Find ("Manager");
+        //canvas= GameObject.Find("startCanvas");
 	}
 
 
 
-		}
+}
 
 
 
