@@ -5,6 +5,7 @@ using UnityEngine.SocialPlatforms;
 using System.IO;
 using Parse;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class buttonManager : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class buttonManager : MonoBehaviour {
 
     //static private GameObject canvas;
 
-
+    bool bSlideMode = true;
 
     void OnGUI()
     {
@@ -42,14 +43,43 @@ public class buttonManager : MonoBehaviour {
 
 
 
+
+    public void ChangeMode()
+    {
+        bSlideMode = !bSlideMode;
+        if (bSlideMode)
+        {
+            GameObject.Find("TXTmode").GetComponent<Text>().text = "SLIDE MODE";
+        }
+        else
+        {
+            GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
+        }
+
+        
+    }
+
+
+
 	public void main_gameStart()
     {
+        if (bSlideMode)
+        {
+            manager.GetComponent<TouchManager>().enabled = false;
+            manager.GetComponent<TouchManager2>().enabled = true;
+        }
+        else
+        {
+            manager.GetComponent<TouchManager>().enabled = true;
+            manager.GetComponent<TouchManager2>().enabled = false;
+        }
 
-		manager.GetComponent<BlockManager2> ().BeginStart = true;
+		//manager.GetComponent<BlockManager2> ().BeginStart = true;
 		//Application.LoadLevel (1);
         GameObject.Find("startCanvas").SetActive(false);
-		if(manager.GetComponent<BlockManager2> ().bGameOver == false){
-		manager.GetComponent<BlockManager2> ().BeginStart = true;
+		if(manager.GetComponent<BlockManager2> ().bGameOver == false)
+        {
+		    manager.GetComponent<BlockManager2> ().BeginStart = true;
 		}
 	}
 
