@@ -56,13 +56,7 @@ public class buttonManager : MonoBehaviour {
             GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
         }
 
-        
-    }
 
-
-
-	public void main_gameStart()
-    {
         if (bSlideMode)
         {
             manager.GetComponent<TouchManager>().enabled = false;
@@ -73,6 +67,13 @@ public class buttonManager : MonoBehaviour {
             manager.GetComponent<TouchManager>().enabled = true;
             manager.GetComponent<TouchManager2>().enabled = false;
         }
+    }
+
+
+
+	public void main_gameStart()
+    {
+
 
 		//manager.GetComponent<BlockManager2> ().BeginStart = true;
 		//Application.LoadLevel (1);
