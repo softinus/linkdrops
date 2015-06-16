@@ -7,11 +7,13 @@ public class TouchManager : MonoBehaviour
     private Vector2 vStartTouchPos;
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
-    public float mainblockPosY = 300f;
+    //public float mainblockPosY = 300f;
     
     GameObject gStartBlock;
     GameObject gMainBlockStartPosition;
-    public float fSpeed = 3.8F;
+    //public float fSpeed = 3.8F;
+    public float fTiltMovementFactor = 25.5F;
+    public float fTiltRotationFactor = 135.5F;
 
     private Vector2 vTouchDeltaPos;
 
@@ -26,8 +28,8 @@ public class TouchManager : MonoBehaviour
     GameObject gLeftWall;
     GameObject gRightWall;
 
-    GUIStyle smallFont;
-    GUIStyle largeFont;
+    //GUIStyle smallFont;
+    //GUIStyle largeFont;
 
     void OnGUI()
     {
@@ -198,7 +200,7 @@ public class TouchManager : MonoBehaviour
                     //if (100 < fMove && Screen.width-100 > fMove)
                     if (gLeftWall.transform.position.x < fMove && gRightWall.transform.position.x > fMove)
                     {
-                        gStartBlock.transform.position = new Vector3(vTouchPos.x + vGapBetweenTouchAndObj.x, mainblockPosY, 100);
+                        gStartBlock.transform.position = new Vector3(vTouchPos.x + vGapBetweenTouchAndObj.x, gMainBlockStartPosition.transform.position.y, 100);
                     }
 
                 }
@@ -216,8 +218,11 @@ public class TouchManager : MonoBehaviour
             {
                 if (!this.GetComponent<BlockManager2>().bGameOver)
                 {
-                    gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * 25.5f, 0, 0));
-                    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -135.5f);
+                    if (gLeftWall.transform.position.x < gStartBlock.transform.position.x && gRightWall.transform.position.x > gStartBlock.transform.position.x)
+                    {
+                        gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * fTiltMovementFactor, 0, 0));
+                        gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -fTiltRotationFactor);
+                    }
                 }
 
                 //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -264,7 +269,7 @@ public class TouchManager : MonoBehaviour
 
 
 
-
+        fTiltMovementFactor += vCharIncreseSpeed;
         vCharSpeed += vCharIncreseSpeed;
 
     }

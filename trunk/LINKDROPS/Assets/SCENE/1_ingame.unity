@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vTouchPos: {x: 0, y: 0}
-  mainblockPosY: 300
-  fSpeed: 3.79999995
+  fTiltMovementFactor: 25.5
+  fTiltRotationFactor: 135.5
   vCharToward: {x: 0, y: 0}
   vCharSpeed: 0
   vCharIncreseSpeed: 0
@@ -3498,7 +3498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1692308397
 MonoBehaviour:
   m_ObjectHideFlags: 0

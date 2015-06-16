@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LoginSystem : MonoBehaviour
 {
 
-    bool bLoginUIShow = false;
+    //bool bLoginUIShow = false;
     bool bShowLoginFailedPopup = false;
     string strReasonOfLoginFailed;
     GameObject gInputID, gInputPW, gBTNsign, gTXTerr;
@@ -34,9 +34,11 @@ public class LoginSystem : MonoBehaviour
 
 
     public void ShowSignInUI()
-    {
-        bLoginUIShow = !bLoginUIShow;
-
+    {        
+        if(gLoginForm.active== false)
+            gLoginForm.SetActive(true);
+        else
+            gLoginForm.SetActive(false);
     }
 
     void ButtonStatus(bool _b)
@@ -142,12 +144,15 @@ public class LoginSystem : MonoBehaviour
         gBTNsign = GameObject.Find("BTN_Login");
         inputID = gInputID.GetComponent<InputField>();
         inputPW = gInputPW.GetComponent<InputField>();
+
+        if (gLoginForm)
+            gLoginForm.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        gLoginForm.SetActive(bLoginUIShow);
+        
 
         if (strReasonOfLoginFailed != "")
             gTXTerr.GetComponent<Text>().text = strReasonOfLoginFailed;
