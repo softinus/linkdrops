@@ -7,6 +7,8 @@ public class MainScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         if(Global.s_nPlayMode == Global.TouchModes.E_TILT_MODE)
         {
             Global.s_nPlayMode = Global.TouchModes.E_TILT_MODE;
@@ -26,7 +28,8 @@ public class MainScreen : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 	
 	}
 }
