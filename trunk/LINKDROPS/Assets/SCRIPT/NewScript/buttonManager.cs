@@ -14,31 +14,10 @@ public class buttonManager : MonoBehaviour {
 
     //static private GameObject canvas;
 
-    bool bSlideMode = true;
+    //bool bSlideMode = true;
 
     void OnGUI()
     {
-        //if (isProcessing)
-        //    GUILayout.Label("      Saving screenshot : " + destination);
-        //if (bLoginUIShow)
-        //{
-        //    GUI.TextArea(new Rect(20, 40, 160, 20), "");
-        //    GUI.TextArea(new Rect(20, 60, 160, 20), "");
-        //    if (GUI.Button(new Rect(20, 80, 80, 20), "Ok"))
-        //    {
-        //        var user = new ParseUser()
-        //        {
-        //            Username = "my name",
-        //            Password = "my pass",
-        //            Email = "email@example.com"
-        //        };
-        //        Task signUpTask = user.SignUpAsync();
-        //    }
-        //    if (GUI.Button(new Rect(100, 80, 80, 20), "Cancel"))
-        //    {
-        //        bLoginUIShow = false;
-        //    }
-        //}
     }
 
 
@@ -46,27 +25,19 @@ public class buttonManager : MonoBehaviour {
 
     public void ChangeMode()
     {
-        bSlideMode = !bSlideMode;
-        if (bSlideMode)
+        if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
+            Global.s_nPlayMode = Global.TouchModes.E_TILT_MODE;
+            GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
+            
+        }
+        else
+        {
+            Global.s_nPlayMode = Global.TouchModes.E_TOUCH_MODE;
             GameObject.Find("TXTmode").GetComponent<Text>().text = "SLIDE MODE";
         }
-        else
-        {
-            GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
-        }
 
 
-        if (bSlideMode)
-        {
-            manager.GetComponent<TouchManager>().enabled = false;
-            manager.GetComponent<TouchManager2>().enabled = true;
-        }
-        else
-        {
-            manager.GetComponent<TouchManager>().enabled = true;
-            manager.GetComponent<TouchManager2>().enabled = false;
-        }
     }
 
 
@@ -80,31 +51,42 @@ public class buttonManager : MonoBehaviour {
         GameObject.Find("startCanvas").SetActive(false);
 		if(manager.GetComponent<BlockManager2> ().bGameOver == false)
         {
+            if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+            {
+                manager.GetComponent<TouchManager>().enabled = false;
+                manager.GetComponent<TouchManager2>().enabled = true;
+            }
+            else
+            {
+                manager.GetComponent<TouchManager>().enabled = true;
+                manager.GetComponent<TouchManager2>().enabled = false;
+            }
+
 		    manager.GetComponent<BlockManager2> ().BeginStart = true;
 		}
 	}
-
-
-	public void retry_sceneLoad()
-    {
-		manager.GetComponent<BlockManager2> ().retry = true;
-		Application.LoadLevel(0);
-
-        StartCoroutine(ShowCanvas());
-
-	}
-
-    IEnumerator ShowCanvas()
-    {
-        yield return new WaitForSeconds(1);
-        GameObject.Find("startCanvas").SetActive(false);
-        
-    }
 
     public void GoHome()
     {
         Application.LoadLevel(0);
     }
+
+
+    public void retry_sceneLoad()
+    {
+        BlockManager2.retry = true;
+        Application.LoadLevel(0);
+    }
+
+    //    StartCoroutine(ShowCanvas());
+
+    //}
+
+    //IEnumerator ShowCanvas()
+    //{
+    //    yield return new WaitForSeconds(1);
+    //    GameObject.Find("startCanvas").SetActive(false);        
+    //}
 
 
     public void GoStore()

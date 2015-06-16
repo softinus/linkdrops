@@ -207,7 +207,7 @@ public class BlockManager2 : MonoBehaviour
     //protected GameObject gLatestGO;  // the latest game object
     public bool BeginStart = false;    // started?
     public bool bGameOver= false;    // is game over?
-	public bool retry = false;
+	static public bool retry = false;
 
     private int nNextStandardPos = -1;  // previous position moved by force
 
@@ -382,12 +382,11 @@ public class BlockManager2 : MonoBehaviour
             //GUILayout.Space(10);
             //GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
 
-            int nMyHighScore = PlayerPrefs.GetInt("high_score");
+            //int nMyHighScore = PlayerPrefs.GetInt("high_score");
             //GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
 
 			//pacman_died_animation_stop
-			GameObject.Find("main_block").transform.FindChild("pac_slice").GetComponent<Animator>().enabled = false;
-			GameObject.Find("main_block").transform.FindChild("pac_right").GetComponent<Animator>().enabled = false;
+
         }
         
 
@@ -428,6 +427,9 @@ public class BlockManager2 : MonoBehaviour
         nSelectedItem = Random.Range(0, nWidth);    // select color
 		//vRootPos= GameObject.Find("Manager").transform.position;
         
+        // if retry
+         GameObject.Find("startCanvas").SetActive(!retry);
+
         foreach(RowItems BI in groups)
         {
             BI.Width = nWidth;
@@ -471,6 +473,12 @@ public class BlockManager2 : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+        if(bGameOver)
+        {
+            GameObject.Find("main_block").transform.FindChild("pac_slice").GetComponent<Animator>().enabled = false;
+            GameObject.Find("main_block").transform.FindChild("pac_right").GetComponent<Animator>().enabled = false;
+        }
+
         if(BeginStart)
         {
             GameObject[] gBoards = GameObject.FindGameObjectsWithTag("board");
@@ -492,25 +500,6 @@ public class BlockManager2 : MonoBehaviour
                         ChangeWidth(1);
                     else if (nRowCount == 265)
                         ChangeWidth(5);
-                    //else if (nRowCount == 265)
-                    //if(nRowCount%50 == 0)
-                    //{
-                    //    //ChangeColor();
-                    //    ChangeWidth(1);
-                    //    nNextStandardPos = 0;
-                    //}
-                    //else if (nRowCount % 50 == 4)
-                    //{
-                    //    int nNewStage= Random.Range(3, 6);
-                    //    ChangeWidth(nNewStage);
-
-                    //    if (nNewStage== 3)
-                    //        nNextStandardPos = 1;
-                    //    else if (nNewStage == 4)
-                    //        nNextStandardPos = 2;
-                    //    else
-                    //        nNextStandardPos = 2;
-                    //}
 
 
                     Make1Row(nRowCount++);

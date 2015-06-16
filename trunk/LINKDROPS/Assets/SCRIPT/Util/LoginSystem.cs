@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LoginSystem : MonoBehaviour
 {
 
-    bool bLoginUIShow = true;
+    bool bLoginUIShow = false;
     bool bShowLoginFailedPopup = false;
     string strReasonOfLoginFailed;
     GameObject gInputID, gInputPW, gBTNsign, gTXTerr;

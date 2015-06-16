@@ -145,7 +145,6 @@ MonoBehaviour:
     - {fileID: 112332, guid: 27a3929a2196b6d4aba4d442e420dae2, type: 2}
   BeginStart: 0
   bGameOver: 0
-  retry: 0
 --- !u!4 &14545216
 Transform:
   m_ObjectHideFlags: 0
