@@ -82,6 +82,7 @@ public class TouchManager : MonoBehaviour
 
     void InWindows()
     {
+
         //Camera camera2 = GameObject.Find("Camera").GetComponent<Camera>();
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
@@ -113,6 +114,11 @@ public class TouchManager : MonoBehaviour
 			Debug.Log (hit);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
+            if (bManager.BeginStart == false && BlockManager2.retry == true) // when rety, if game is not started yet
+            {
+                bManager.BeginStart = true;
+                BlockManager2.retry = false;
+            }
             //if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
             //    bManager.BeginStart = true;
         }
@@ -173,6 +179,7 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
 	
 //        InJoySticks();
 
@@ -203,7 +210,7 @@ public class TouchManager : MonoBehaviour
         }
         else
         {
-            InMobile();
+            //InMobile();
 
             if (s_TouchMode == true) // each modes are completely different
             {

@@ -53,6 +53,8 @@ public class TouchManager2 : MonoBehaviour
     // Update is called once per frame 
     void FixedUpdate () 
     {
+
+
         gStartBlock = GameObject.Find("main_block");
 
         if (Input.GetButtonDown("Fire1")) 
@@ -62,10 +64,16 @@ public class TouchManager2 : MonoBehaviour
 
 //            if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
 //                bManager.BeginStart = true;
+            if (bManager.BeginStart == false && BlockManager2.retry == true) // when rety, if game is not started yet
+            {
+                bManager.BeginStart = true;
+                BlockManager2.retry = false;
+            }
         }
 
         if (Input.GetButtonUp("Fire1")) 
-        { 
+        {
+
             _startMouse = Vector2.zero; 
             _rotBack = _rot + _rotBack; 
             _rot = 0; 
