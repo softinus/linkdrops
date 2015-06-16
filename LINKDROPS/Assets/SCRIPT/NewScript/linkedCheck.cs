@@ -12,6 +12,15 @@ public class linkedCheck : MonoBehaviour
 
     private void GameOver()
     {
+        if (Manager.GetComponent<BlockManager2>().bGameOver)    // call one time.
+            return;
+
+        ++Global.s_nPlayCount;
+        if(Global.s_nPlayCount % 5 == 0)
+        {
+            UnityAdsManager.CallAD();
+        }
+
         //this.gameObject.GetComponent<Animator>().enabled = true;
 
         Manager.GetComponent<BlockManager2>().BeginStart = false;
