@@ -8,7 +8,7 @@ public class TouchManager : MonoBehaviour
     private Vector2 vGapBetweenTouchAndObj;
     public Vector2 vTouchPos;
     //public float mainblockPosY = 300f;
-    
+
     GameObject gStartBlock;
     GameObject gMainBlockStartPosition;
     //public float fSpeed = 3.8F;
@@ -45,11 +45,11 @@ public class TouchManager : MonoBehaviour
         //myStyle.fontSize = 100;
         //GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition, myStyle);
 
-        
+
         //largeFont = new GUIStyle();
         //largeFont.fontSize = 80;
-        
-        
+
+
 
         //GUI.color = Color.green;
         //GUI.skin.label.fontSize = 85;
@@ -61,7 +61,7 @@ public class TouchManager : MonoBehaviour
         ////GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
         ////GUILayout.Label("acc(y) : " + Input.acceleration.y, GUILayout.Width(800));
         ////GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
-        
+
 
         //GUI.Label(new Rect(150, 275, 300, 20), "<color=green><size=40>Lose</size></color>");
     }
@@ -113,7 +113,7 @@ public class TouchManager : MonoBehaviour
             bTouch = true;
             vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
-			Debug.Log (hit);
+            Debug.Log(hit);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
             if (bManager.BeginStart == false && BlockManager2.retry == true) // when rety, if game is not started yet
@@ -196,8 +196,8 @@ public class TouchManager : MonoBehaviour
     void FixedUpdate()
     {
 
-	
-//        InJoySticks();
+
+        //        InJoySticks();
 
         //Debug.Log(Application.platform);
 
@@ -261,7 +261,7 @@ public class TouchManager : MonoBehaviour
                 //{
                 //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, 0);
                 //}
-                
+
                 //if (vTouchDeltaPos.x > 0)
                 //{
                 //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, -45);
@@ -270,7 +270,7 @@ public class TouchManager : MonoBehaviour
                 //{
                 //    gStartBlock.transform.rotation = Quaternion.Euler(0, 0, 45);
                 //}
-                
+
                 // fixed y-position
                 gStartBlock.transform.position = new Vector3(gStartBlock.transform.position.x, gMainBlockStartPosition.transform.position.y, gStartBlock.transform.position.z);
             }
