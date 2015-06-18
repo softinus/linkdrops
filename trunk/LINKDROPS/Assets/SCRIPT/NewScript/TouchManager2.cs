@@ -9,6 +9,8 @@ public class TouchManager2 : MonoBehaviour
     private Vector2 vGapBetweenTouchAndObj;
     protected bool bTouch = false;
 
+    private Vector2 vTouchDeltaPos;
+
     Vector2 _startMouse = Vector2.zero;
     float _rot = 0.0f;
     float _rotNow = 0.0f;
@@ -68,6 +70,17 @@ public class TouchManager2 : MonoBehaviour
             {
                 bManager.BeginStart = true;
                 BlockManager2.retry = false;
+
+                if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+                {
+                    bManager.GetComponent<TouchManager>().enabled = false;
+                    bManager.GetComponent<TouchManager2>().enabled = true;
+                }
+                else
+                {
+                    bManager.GetComponent<TouchManager>().enabled = true;
+                    bManager.GetComponent<TouchManager2>().enabled = false;
+                }
             }
         }
 
@@ -178,6 +191,7 @@ public class TouchManager2 : MonoBehaviour
 
     void DragMove()
     {
+        vTouchDeltaPos = Input.GetTouch(0).deltaPosition;
         //Camera camera2 = GameObject.Find("Camera").GetComponent<Camera>();
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
@@ -226,4 +240,5 @@ public class TouchManager2 : MonoBehaviour
         //GUILayout.Label("" + (_rot - _rotNow) * -1, GUILayout.Width(800));
         ////GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
     }
+
 }
