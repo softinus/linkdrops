@@ -437,7 +437,7 @@ public class BlockManager2 : MonoBehaviour
             BI.Randomly(false);         
         }
         
-        var ScreenHeight = 2 * Camera.main.orthographicSize;
+		var ScreenHeight = 2 * Camera.main.orthographicSize;
         var ScreenWidth  = ScreenHeight * Camera.main.aspect;
         fDistance  = ScreenWidth / (nWidth + 1);
 
@@ -473,6 +473,7 @@ public class BlockManager2 : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		Debug.Log (Screen.width);
         if(bGameOver)
         {
             GameObject.Find("main_block").transform.FindChild("pac_slice").GetComponent<Animator>().enabled = false;
