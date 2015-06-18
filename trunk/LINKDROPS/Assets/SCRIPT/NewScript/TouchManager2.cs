@@ -191,7 +191,7 @@ public class TouchManager2 : MonoBehaviour
 
     void DragMove()
     {
-        vTouchDeltaPos = Input.GetTouch(0).deltaPosition;
+        //vTouchDeltaPos = Input.GetTouch(0).deltaPosition;
         //Camera camera2 = GameObject.Find("Camera").GetComponent<Camera>();
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
