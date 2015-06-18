@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TouchManager : MonoBehaviour
+public class TouchManager3 : MonoBehaviour
 {
     private BlockManager2 bManager;
     private Vector2 vStartTouchPos;
