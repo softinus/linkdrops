@@ -272,6 +272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0c706ebb9b454aa6c678d8a4988fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vTouchPos: {x: 0, y: 0}
+  fTiltMovementFactor: 25.5
+  fTiltRotationFactor: 135.5
+  vCharToward: {x: 0, y: 0}
+  vCharSpeed: 0
+  vCharIncreseSpeed: 0
+  s_TouchMode: 1
 --- !u!1 &35663645
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +653,6 @@ GameObject:
   - 222: {fileID: 124910382}
   - 114: {fileID: 124910381}
   - 114: {fileID: 124910380}
-  - 114: {fileID: 124910379}
   - 114: {fileID: 124910378}
   m_Layer: 5
   m_Name: BTNshowSignUI
@@ -664,23 +670,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 124910377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd774b061edb2f419d4459dafbfba33, type: 3}
+  m_Script: {fileID: 11500000, guid: 88aefed8ea1f0244cb2e2f61a508223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &124910379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11419782, guid: 7e7580d021a7be24cab84d619754da39,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 124910377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 762677091, guid: 7c5df6eb4d8f2784b9a13094679792b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  applicationID: gTkDbuKA2CGuyN7okSolsGnHaCJkb5nojUpaC6sn
-  dotnetKey: rumpqyhqs0jQ1cn3ZEJz3FyJNNhJRPFqNex6hsta
 --- !u!114 &124910380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +718,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3208,7 +3201,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311052185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd774b061edb2f419d4459dafbfba33, type: 3}
+  m_Script: {fileID: 11500000, guid: 88aefed8ea1f0244cb2e2f61a508223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1311052188
