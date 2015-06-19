@@ -204,8 +204,8 @@ public class buttonManager : MonoBehaviour {
 
         if (!Application.isEditor)
         {
-
-
+            #if UNITY_ANDROID
+            
             // block to open the file and share it ------------START
             AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
             AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
@@ -227,6 +227,9 @@ public class buttonManager : MonoBehaviour {
             //currentActivity.Call("startActivity", jChooser);
 
             // block to open the file and share it ------------END
+
+            #else
+            #endif
 
         }
         isProcessing = false;
