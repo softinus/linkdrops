@@ -473,7 +473,7 @@ public class BlockManager2 : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log (Screen.width);
+
         if(bGameOver)
         {
             GameObject.Find("main_block").transform.FindChild("pac_slice").GetComponent<Animator>().enabled = false;
