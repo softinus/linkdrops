@@ -191,7 +191,8 @@ public class TouchManager2 : MonoBehaviour
 
     void DragMove()
     {
-        //vTouchDeltaPos = Input.GetTouch(0).deltaPosition;
+        if (Input.touchCount > 0)
+            vTouchDeltaPos = Input.GetTouch(0).deltaPosition;
         //Camera camera2 = GameObject.Find("Camera").GetComponent<Camera>();
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
@@ -228,17 +229,43 @@ public class TouchManager2 : MonoBehaviour
             }
 
         }
+
+        if(Mathf.Abs(vTouchDeltaPos.x) < 0.1f)
+        {
+            if (gStartBlock.transform.eulerAngles.z < 359.0f)
+            if (gStartBlock.transform.eulerAngles.z > 310.0f)
+                gStartBlock.transform.Rotate(Vector3.back, -1.85f, Space.World);
+
+            if (gStartBlock.transform.eulerAngles.z < 50.0f)
+            if (gStartBlock.transform.eulerAngles.z > 1.0f)
+                gStartBlock.transform.Rotate(Vector3.back, 1.85f, Space.World);
+        }
+
     }
 
     void OnGUI () 
     {
         //GUI.color = Color.green;
-        //GUI.skin.label.fontSize = 40;
+        //GUI.skin.label.fontSize = 85;
+        //////GUI.Label(new Rect(150, 275, 300, 20), "a");
+        //////GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition.x);
         //GUILayout.Space(5);
         //////GUILayout.Label("current");
-        ////GUILayout.Label(_rotBack + " : " + _rot, GUILayout.Width(800));
-        //GUILayout.Label("" + (_rot - _rotNow) * -1, GUILayout.Width(800));
-        ////GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
+        ////GUILayout.Label("delta : " + Input.GetTouch(0).deltaPosition.x, GUILayout.Width(800));
+        //GUILayout.Label("delta : " + vTouchDeltaPos.x, GUILayout.Width(800));
+        ////GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
+        ////GUILayout.Label("acc(y) : " + Input.acceleration.y, GUILayout.Width(800));
+        ////GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
+
+
+        GUI.color = Color.green;
+        GUI.skin.label.fontSize = 40;
+        GUILayout.Space(5);
+        ////GUILayout.Label("current");
+        //GUILayout.Label(_rotBack + " : " + _rot, GUILayout.Width(800));
+        GUILayout.Label("Delta : " + vTouchDeltaPos.x, GUILayout.Width(800));
+        GUILayout.Label("Euler : " + gStartBlock.transform.eulerAngles.z, GUILayout.Width(800));
+        //GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
     }
 
 }
