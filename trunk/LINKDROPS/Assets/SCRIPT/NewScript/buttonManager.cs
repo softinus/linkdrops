@@ -28,13 +28,13 @@ public class buttonManager : MonoBehaviour {
         if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
             Global.s_nPlayMode = Global.TouchModes.E_TILT_MODE;
-            GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
+            //GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
             
         }
         else
         {
             Global.s_nPlayMode = Global.TouchModes.E_TOUCH_MODE;
-            GameObject.Find("TXTmode").GetComponent<Text>().text = "SLIDE MODE";
+           // GameObject.Find("TXTmode").GetComponent<Text>().text = "SLIDE MODE";
         }
 
 
@@ -53,13 +53,13 @@ public class buttonManager : MonoBehaviour {
         {
             if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
             {
-                manager.GetComponent<TouchManager>().enabled = false;
-                manager.GetComponent<TouchManager2>().enabled = true;
+                manager.GetComponent<TouchManager2>().enabled = false;
+                manager.GetComponent<TouchManager>().enabled = true;
             }
             else
             {
-                manager.GetComponent<TouchManager>().enabled = true;
-                manager.GetComponent<TouchManager2>().enabled = false;
+                manager.GetComponent<TouchManager2>().enabled = true;
+                manager.GetComponent<TouchManager>().enabled = false;
             }
 
 		    manager.GetComponent<BlockManager2> ().BeginStart = true;
