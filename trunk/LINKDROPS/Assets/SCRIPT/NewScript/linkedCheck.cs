@@ -77,22 +77,20 @@ public class linkedCheck : MonoBehaviour
 
 			gMainBlock.GetComponent<AudioSource>().Play ();
 
-			
 
-            ++BlockManager2.s_nScore;
+            if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+            {
+                ++BlockManager2.s_nScoreSlide;
+                // manage pitch of SE
+                gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScoreSlide / 100.0f);
+            }
+            else
+            {
+                ++BlockManager2.s_nScoreTlit;
+                gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScoreTlit / 100.0f);
+            }
 
-            // manage pitch of SE
-            gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScore / 100.0f);
-            //if( BlockManager2.s_nScore >= 10 )
-            //{		
-            //    gMainBlock.GetComponent<AudioSource>().pitch = 1.1f;
-
-            //    if(  BlockManager2.s_nScore >= 20)
-            //    {
-            //        gMainBlock.GetComponent<AudioSource>().pitch = 1.2f;
-            //    }
-            //}
-			
+            
 
 			//block_particle_play
 				this.transform.FindChild("blockParticle").GetComponent<ParticleSystem>().Play();

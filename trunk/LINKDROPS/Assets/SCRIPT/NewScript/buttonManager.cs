@@ -29,12 +29,38 @@ public class buttonManager : MonoBehaviour {
         {
             Global.s_nPlayMode = Global.TouchModes.E_TILT_MODE;
             //GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
+            //GameObject.Find("SLIDE").get
+            for (int i = 0; i < this.gameObject.transform.childCount; ++i)
+            {
+                Transform tChild= this.gameObject.transform.GetChild(i);
+                if( tChild.name == "SLIDE")
+                {
+                    tChild.GetComponent<Text>().color = Color.white;
+                }
+                if( tChild.name == "TILT")
+                {
+                    tChild.GetComponent<Text>().color = Color.gray;
+                }
+            }
             
         }
         else
         {
             Global.s_nPlayMode = Global.TouchModes.E_TOUCH_MODE;
            // GameObject.Find("TXTmode").GetComponent<Text>().text = "SLIDE MODE";
+
+            for (int i = 0; i < this.gameObject.transform.childCount; ++i)
+            {
+                Transform tChild = this.gameObject.transform.GetChild(i);
+                if (tChild.name == "SLIDE")
+                {
+                    tChild.GetComponent<Text>().color = Color.gray;
+                }
+                if (tChild.name == "TILT")
+                {
+                    tChild.GetComponent<Text>().color = Color.white;
+                }
+            }
         }
 
 
@@ -53,13 +79,13 @@ public class buttonManager : MonoBehaviour {
         {
             if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
             {
-                manager.GetComponent<TouchManager2>().enabled = false;
-                manager.GetComponent<TouchManager>().enabled = true;
+                manager.GetComponent<TouchManager>().enabled = false;
+                manager.GetComponent<TouchManager2>().enabled = true;
             }
             else
             {
-                manager.GetComponent<TouchManager2>().enabled = true;
-                manager.GetComponent<TouchManager>().enabled = false;
+                manager.GetComponent<TouchManager>().enabled = true;
+                manager.GetComponent<TouchManager2>().enabled = false;
             }
 
 		    manager.GetComponent<BlockManager2> ().BeginStart = true;
@@ -247,6 +273,37 @@ public class buttonManager : MonoBehaviour {
 
     void Update()
     {
+        if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+        {
+            for (int i = 0; i < this.gameObject.transform.childCount; ++i)
+            {
+                Transform tChild = this.gameObject.transform.GetChild(i);
+                if (tChild.name == "SLIDE")
+                {
+                    tChild.GetComponent<Text>().color = Color.white;
+                }
+                if (tChild.name == "TILT")
+                {
+                    tChild.GetComponent<Text>().color = Color.gray;
+                }
+            }
+
+        }
+        else
+        {
+            for (int i = 0; i < this.gameObject.transform.childCount; ++i)
+            {
+                Transform tChild = this.gameObject.transform.GetChild(i);
+                if (tChild.name == "SLIDE")
+                {
+                    tChild.GetComponent<Text>().color = Color.gray;
+                }
+                if (tChild.name == "TILT")
+                {
+                    tChild.GetComponent<Text>().color = Color.white;
+                }
+            }
+        }
     }
 
 
