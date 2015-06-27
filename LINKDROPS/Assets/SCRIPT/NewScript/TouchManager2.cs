@@ -28,6 +28,7 @@ public class TouchManager2 : MonoBehaviour
 
     GameObject gLeftWall;
     GameObject gRightWall;
+    GameObject gTutorialFinger, gTutotiralAccelometer;
 
     public float vCharSpeed;
     public float vCharIncreseSpeed;
@@ -45,10 +46,18 @@ public class TouchManager2 : MonoBehaviour
 
         gLeftWall = GameObject.Find("left_wall");
         gRightWall = GameObject.Find("right_wall");
+        gTutorialFinger = GameObject.Find("tuto_finger");
+        gTutotiralAccelometer = GameObject.Find("tuto_phone");
 
         bManager = this.GetComponent<BlockManager2>();
         gStartBlock = GameObject.Find("main_block");
         gMainBlockStartPosition = GameObject.Find("MainBlockStartPosition").transform.position;
+
+        if(BlockManager2.retry)
+        {
+            gTutorialFinger.SetActive(false);
+            gTutotiralAccelometer.SetActive(false);
+        }
 
     } 
 
@@ -68,6 +77,7 @@ public class TouchManager2 : MonoBehaviour
 //                bManager.BeginStart = true;
             if (bManager.BeginStart == false && BlockManager2.retry == true) // when rety, if game is not started yet
             {
+                gTutorialFinger.SetActive(false);
                 bManager.BeginStart = true;
                 BlockManager2.retry = false;
 
@@ -78,9 +88,14 @@ public class TouchManager2 : MonoBehaviour
                 }
                 else
                 {
-                    bManager.GetComponent<TouchManager2>().enabled = true;
+                    bManager.GetComponent<TouchManager>().enabled = true;
                     bManager.GetComponent<TouchManager2>().enabled = false;
                 }
+            }
+            else if (bManager.BeginStart == false && buttonManager.bPressStart) // when rety, if game is not started yet
+            {
+                bManager.BeginStart = true;
+                gTutorialFinger.SetActive(false);
             }
         }
 
@@ -154,38 +169,6 @@ public class TouchManager2 : MonoBehaviour
         //gStartBlock.transform.Rotate(new Vector3(0.0f, 0.0f, (_rot - _rotNow) * -1));
 
         }
-        //else 
-        //{ 
-        //    if (_rotBack != 0.0f)
-        //    { 
-        //        if (_rotBack > 0) 
-        //        {
-        //            if (_rotBack > fFactor)
-        //            {
-        //                _rotBack -= fFactor;
-        //                gStartBlock.transform.Rotate(new Vector3(0.0f, 0.0f, -fFactor)); 
-        //            }
-        //            else
-        //            { 
-        //                gStartBlock.transform.eulerAngles = _angleBack; 
-        //                _rotBack = 0.0f; 
-        //            } 
-        //        } 
-
-        //    if (_rotBack < 0) 
-        //    {
-        //        if (_rotBack < -fFactor)
-        //        {
-        //            _rotBack += fFactor;
-        //            gStartBlock.transform.Rotate(new Vector3(0.0f, 0.0f, fFactor)); 
-        //        } else { 
-        //            gStartBlock.transform.eulerAngles = _angleBack; 
-        //            _rotBack = 0.0f; 
-        //        } 
-        //    } 
-        //} 
-        //}
-
         DragMove();
     } 
 

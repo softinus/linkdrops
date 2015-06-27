@@ -117,6 +117,10 @@ public class LoginSystem : MonoBehaviour
             }
             else
             {
+                Social.ReportProgress("CgkIuKTZ6sIaEAIQHA", 100.0f, (bool success) =>
+                {
+                });
+
                 // Login was successful.
                 Debug.Log("Registration was successful!");
                 //SignIn(inputID.text, inputPW.text);

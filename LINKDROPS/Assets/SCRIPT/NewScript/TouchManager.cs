@@ -27,6 +27,7 @@ public class TouchManager : MonoBehaviour
 
     GameObject gLeftWall;
     GameObject gRightWall;
+    GameObject gTutorialFinger, gTutorialAccelometer;
 
     //GUIStyle smallFont;
     //GUIStyle largeFont;
@@ -76,10 +77,18 @@ public class TouchManager : MonoBehaviour
 
         gLeftWall = GameObject.Find("left_wall");
         gRightWall = GameObject.Find("right_wall");
+        gTutorialFinger = GameObject.Find("tuto_finger");
+        gTutorialAccelometer = GameObject.Find("tuto_phone");
 
         bManager = this.GetComponent<BlockManager2>();
         gStartBlock = GameObject.Find("main_block");
         gMainBlockStartPosition = GameObject.Find("MainBlockStartPosition");
+
+        if (BlockManager2.retry)
+        {
+            gTutorialFinger.SetActive(false);
+            gTutorialAccelometer.SetActive(false);
+        }
     }
 
     void InWindows()
@@ -134,6 +143,11 @@ public class TouchManager : MonoBehaviour
                         bManager.GetComponent<TouchManager2>().enabled = false;
                     }
                 }
+            }
+            else if (bManager.BeginStart == false && buttonManager.bPressStart) // when rety, if game is not started yet
+            {
+                bManager.BeginStart = true;
+                gTutorialAccelometer.SetActive(false);
             }
 
             //if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet

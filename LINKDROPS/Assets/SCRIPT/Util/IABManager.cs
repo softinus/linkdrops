@@ -5,18 +5,19 @@ using Assets.SCRIPT.Util;
 using System.Collections.Generic;
 using System;
 
-public class IAB : MonoBehaviour
+public class IABManager : MonoBehaviour
 {
-    LifetimeVG[] buyNonADs = null;
+    static public LifetimeVG[] buyNonADs = null;
     //public static List<LifetimeVG> NonConsumableItems = null;
 	// Use this for initialization
 	void Start ()
     {
+        StoreEvents.OnSoomlaStoreInitialized += OnSoomlaStoreInitialized;
+        SoomlaStore.Initialize(new IABStore());
+
         // Start Iab Service
         SoomlaStore.StartIabServiceInBg();
 
-        StoreEvents.OnSoomlaStoreInitialized += OnSoomlaStoreInitialized;
-        SoomlaStore.Initialize(new IABStore());
 	}
 
     public void OnSoomlaStoreInitialized()
@@ -29,6 +30,8 @@ public class IAB : MonoBehaviour
 	void Update () {
 	
 	}
+
+
 
     void OnGUI()
     {
