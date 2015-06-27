@@ -78,7 +78,7 @@ public class TouchManager2 : MonoBehaviour
                 }
                 else
                 {
-                    bManager.GetComponent<TouchManager>().enabled = true;
+                    bManager.GetComponent<TouchManager2>().enabled = true;
                     bManager.GetComponent<TouchManager2>().enabled = false;
                 }
             }
@@ -258,14 +258,14 @@ public class TouchManager2 : MonoBehaviour
         ////GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
 
 
-        GUI.color = Color.green;
-        GUI.skin.label.fontSize = 40;
-        GUILayout.Space(5);
-        ////GUILayout.Label("current");
-        //GUILayout.Label(_rotBack + " : " + _rot, GUILayout.Width(800));
-        GUILayout.Label("Delta : " + vTouchDeltaPos.x, GUILayout.Width(800));
-        GUILayout.Label("Euler : " + gStartBlock.transform.eulerAngles.z, GUILayout.Width(800));
-        //GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
+        //GUI.color = Color.green;
+        //GUI.skin.label.fontSize = 40;
+        //GUILayout.Space(5);
+        //////GUILayout.Label("current");
+        ////GUILayout.Label(_rotBack + " : " + _rot, GUILayout.Width(800));
+        //GUILayout.Label("Delta : " + vTouchDeltaPos.x, GUILayout.Width(800));
+        //GUILayout.Label("Euler : " + gStartBlock.transform.eulerAngles.z, GUILayout.Width(800));
+        ////GUI.Label(new Rect(10, 10, 320, 20), _rotBack + " : " + _rot); 
     }
 
 }

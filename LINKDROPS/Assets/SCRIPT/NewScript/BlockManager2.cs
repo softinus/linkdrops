@@ -180,7 +180,8 @@ public class RowItems
 
 public class BlockManager2 : MonoBehaviour
 {
-    static public int s_nScore = 0;
+    static public int s_nScoreTlit = 0;
+    static public int s_nScoreSlide = 0;
 
     static public int nAbsorbBlockR;
     static public int nAbsorbBlockB;
@@ -382,8 +383,8 @@ public class BlockManager2 : MonoBehaviour
             //GUILayout.Space(10);
             //GUILayout.Label("score : " + BlockManager2.s_nScore, GUILayout.Width(150));
 
-            //int nMyHighScore = PlayerPrefs.GetInt("high_score");
-            //GUILayout.Label("high_score : " + nMyHighScore, GUILayout.Width(150));
+            //int nMyHighScore = PlayerPrefs.GetInt("high_score_slide");
+            //GUILayout.Label("high_score_slide : " + nMyHighScore, GUILayout.Width(150));
 
 			//pacman_died_animation_stop
 
@@ -405,23 +406,42 @@ public class BlockManager2 : MonoBehaviour
         nAbsorbBlockY= 0;
         nAbsorbBlockP = 0;
 
-        int nMyHighScore = PlayerPrefs.GetInt("high_score");
+        
 
-        if (nMyHighScore < BlockManager2.s_nScore) // if it's higher than current high score renew the high score
+        //CgkIuKTZ6sIaEAIQAg(tilt), CgkIuKTZ6sIaEAIQAQ(slide)
+        if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
-            PlayerPrefs.SetInt("high_score", BlockManager2.s_nScore);
-            Social.ReportScore(BlockManager2.s_nScore, "CgkIh9fH_cIIEAIQAA", (bool success) => 
+            int nMyHighScore = PlayerPrefs.GetInt("high_score_slide");
+            if (nMyHighScore < BlockManager2.s_nScoreSlide) // if it's higher than current high score renew the high score
             {
-                bool _success = success;
-            });
+                PlayerPrefs.SetInt("high_score_slide", BlockManager2.s_nScoreSlide);
+                Social.ReportScore(BlockManager2.s_nScoreSlide, "CgkIuKTZ6sIaEAIQAQ", (bool success) =>
+                {
+                    bool _success = success;
+                });
+            }
         }
+        else
+        {
+            int nMyHighScore = PlayerPrefs.GetInt("high_score_tilt");
+            if (nMyHighScore < BlockManager2.s_nScoreTlit) // if it's higher than current high score renew the high score
+            {
+                PlayerPrefs.SetInt("high_score_tilt", BlockManager2.s_nScoreTlit);
+                Social.ReportScore(BlockManager2.s_nScoreTlit, "CgkIuKTZ6sIaEAIQAg", (bool success) =>
+                {
+                    bool _success = success;
+                });
+            }
+        }
+
 
         
     }
 
 	void Start ()
 	{        
-        s_nScore = 0;
+        s_nScoreSlide = 0;
+        s_nScoreTlit = 0;
         nRowCount = nHeight;
         nSelectedGroup = Random.Range(0, groups.Length);    // select shape
         nSelectedItem = Random.Range(0, nWidth);    // select color
@@ -527,9 +547,19 @@ public class BlockManager2 : MonoBehaviour
             GameObject.Find("gameoverPanel").GetComponent<Image>().enabled = bGameOver;
             
             // update scores
-            int nMyHighScore = PlayerPrefs.GetInt("high_score");
-            GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + BlockManager2.s_nScore;
-            GameObject.Find("highScore_text").GetComponent<Text>().text = ""+nMyHighScore;
+            int nMyHighScoreSlide = PlayerPrefs.GetInt("high_score_slide");
+            int nMyHighScoreTilt = PlayerPrefs.GetInt("high_score_tilt");
+
+            if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+            {
+                GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + BlockManager2.s_nScoreSlide;
+                GameObject.Find("highScore_text").GetComponent<Text>().text = "" + nMyHighScoreSlide;
+            }
+            else
+            {
+                GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + BlockManager2.s_nScoreTlit;
+                GameObject.Find("highScore_text").GetComponent<Text>().text = "" + nMyHighScoreTilt;
+            }
 
             GameObject.Find("scoreBoard").GetComponent<Image>().enabled = bGameOver;
             GameObject.Find("currentScore_text").GetComponent<Text>().enabled = bGameOver;

@@ -135,6 +135,7 @@ public class TouchManager : MonoBehaviour
                     }
                 }
             }
+
             //if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
             //    bManager.BeginStart = true;
         }
@@ -195,7 +196,7 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        
 	
 //        InJoySticks();
 

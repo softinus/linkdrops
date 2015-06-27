@@ -11,7 +11,7 @@ public class GPGS : MonoBehaviour {
     bool bLogined = false;
     void OnGUI()
     {
-        GUILayout.Label("GPGS : " + bLogined);
+        //GUILayout.Label("GPGS : " + bLogined);
     }
 
     void Awake()

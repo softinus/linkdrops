@@ -34,9 +34,12 @@ public class LoginSystem : MonoBehaviour
 
 
     public void ShowSignInUI()
-    {        
-        if(gLoginForm.active== false)
-            gLoginForm.SetActive(true);
+    {
+        
+        if(gLoginForm.activeSelf== false)
+        {
+            gLoginForm.SetActive(true);           
+        }
         else
             gLoginForm.SetActive(false);
     }
