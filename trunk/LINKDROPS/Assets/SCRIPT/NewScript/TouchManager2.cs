@@ -169,7 +169,9 @@ public class TouchManager2 : MonoBehaviour
         //gStartBlock.transform.Rotate(new Vector3(0.0f, 0.0f, (_rot - _rotNow) * -1));
 
         }
-        DragMove();
+
+        if (buttonManager.bPressStart)
+            DragMove();
     } 
 
     void DragMove()
