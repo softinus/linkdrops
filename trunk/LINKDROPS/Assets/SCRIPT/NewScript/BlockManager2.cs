@@ -406,6 +406,136 @@ public class BlockManager2 : MonoBehaviour
         nAbsorbBlockY= 0;
         nAbsorbBlockP = 0;
 
+        if (PlayerPrefs.GetInt("blue_block") > 100)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQFw", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("blue_block") > 1000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQGA", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("blue_block") > 2000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQGQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("blue_block") > 5000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQGg", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+        if (PlayerPrefs.GetInt("green_block") > 100)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQFA", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("green_block") > 1000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQGw", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("green_block") > 2000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQFQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("green_block") > 5000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQFg", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+
+        if (PlayerPrefs.GetInt("purple_block") > 100)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQEA", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("purple_block") > 1000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQEQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("purple_block") > 2000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQEg", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("purple_block") > 5000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQEw", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+
+        if (PlayerPrefs.GetInt("yellow_block") > 100)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQDA", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("yellow_block") > 1000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQDQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("yellow_block") > 2000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQDg", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("yellow_block") > 5000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQDw", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+        if (PlayerPrefs.GetInt("red_block") > 100)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQCA", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("red_block") > 1000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQCQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("red_block") > 2000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQCg", 100.0f, (bool success) =>
+            {
+            });
+        }
+        else if (PlayerPrefs.GetInt("red_block") > 5000)
+        {
+            Social.ReportProgress("CgkIuKTZ6sIaEAIQCw", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+
+        
+
         
 
         //CgkIuKTZ6sIaEAIQAg(tilt), CgkIuKTZ6sIaEAIQAQ(slide)
@@ -419,6 +549,37 @@ public class BlockManager2 : MonoBehaviour
                 {
                     bool _success = success;
                 });
+
+                if (PlayerPrefs.GetInt("high_score_slide") > 100)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQAw", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_slide") > 200)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQBA", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_slide") > 300)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQBQ", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_slide") > 500)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQBg", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_slide") > 1000)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQBw", 100.0f, (bool success) =>
+                    {
+                    });
+                }
             }
         }
         else
@@ -431,6 +592,37 @@ public class BlockManager2 : MonoBehaviour
                 {
                     bool _success = success;
                 });
+
+                if (PlayerPrefs.GetInt("high_score_tilt") > 100)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQHQ", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_tilt") > 200)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQHg", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_tilt") > 300)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQHw", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_tilt") > 500)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQIA", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+                else if (PlayerPrefs.GetInt("high_score_tilt") > 1000)
+                {
+                    Social.ReportProgress("CgkIuKTZ6sIaEAIQIQ", 100.0f, (bool success) =>
+                    {
+                    });
+                }
             }
         }
 

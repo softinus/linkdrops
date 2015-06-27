@@ -1242,45 +1242,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
---- !u!1 &466869944
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 466869946}
-  - 114: {fileID: 466869945}
-  m_Layer: 0
-  m_Name: IAB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &466869945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 466869944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f195149b5addc4bb5b8cf8c758c05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &466869946
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 466869944}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.5764923, y: 937.79895, z: 141.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
 --- !u!1 &487721461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2053,45 @@ RectTransform:
   m_AnchoredPosition: {x: 228.899994, y: -77.4000015}
   m_SizeDelta: {x: 380, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &832671982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 832671984}
+  - 114: {fileID: 832671983}
+  m_Layer: 0
+  m_Name: IAB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &832671983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832671982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f195149b5addc4bb5b8cf8c758c05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &832671984
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832671982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 404.64093, y: 832.383179, z: -234.975403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &840570661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +2944,7 @@ GameObject:
   - 222: {fileID: 1165407163}
   - 114: {fileID: 1165407162}
   - 114: {fileID: 1165407161}
+  - 114: {fileID: 1165407164}
   m_Layer: 5
   m_Name: noadsPurchase
   m_TagString: Untagged
@@ -3006,7 +3007,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1165407162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1165407164}
+        m_MethodName: RemoveAds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1165407162
@@ -3036,6 +3048,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165407159}
+--- !u!114 &1165407164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165407159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28196c7e5b53dc43a9235a18513b856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260933666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,7 +4054,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &1697235759
 GameObject:
   m_ObjectHideFlags: 0

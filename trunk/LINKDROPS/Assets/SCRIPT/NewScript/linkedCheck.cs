@@ -9,6 +9,7 @@ public class linkedCheck : MonoBehaviour
     protected GameObject gMainBlock;
     private GameObject gGameOverLimitY;
 
+    
 
     private void GameOver()
     {
@@ -18,7 +19,10 @@ public class linkedCheck : MonoBehaviour
         ++Global.s_nPlayCount;
         if(Global.s_nPlayCount % 5 == 0)
         {
-            UnityAdsManager.CallAD();
+            int NoADs= PlayerPrefs.GetInt("no_ads", 0);    // 0:default, 1:removed
+
+            if (NoADs == 0)
+                UnityAdsManager.CallAD();
         }
 
         //this.gameObject.GetComponent<Animator>().enabled = true;

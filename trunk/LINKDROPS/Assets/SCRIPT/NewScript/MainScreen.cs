@@ -4,13 +4,17 @@ using UnityEngine.UI;
 
 public class MainScreen : MonoBehaviour {
 
+    GameObject gTutorialFinger = null;
+    GameObject gTutorialAccelometer = null;
+
 	// Use this for initialization
 	void Start () 
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
 
-
+        gTutorialFinger = GameObject.Find("tuto_finger");
+        gTutorialAccelometer = GameObject.Find("tuto_phone");
         
 
 	}
@@ -20,8 +24,8 @@ public class MainScreen : MonoBehaviour {
     {
         if (Global.s_nPlayMode == Global.TouchModes.E_TILT_MODE)
         {
-            Global.s_nPlayMode = Global.TouchModes.E_TILT_MODE;
-            //GameObject.Find("TXTmode").GetComponent<Text>().text = "TILT MODE";
+            gTutorialFinger.SetActive(false);
+            gTutorialAccelometer.SetActive(true);
 
             int nHighScore = PlayerPrefs.GetInt("high_score_tilt");
             GameObject gHighScore = GameObject.Find("highscore_num");
@@ -30,8 +34,8 @@ public class MainScreen : MonoBehaviour {
         }
         else if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
-            Global.s_nPlayMode = Global.TouchModes.E_TOUCH_MODE;
-            //GameObject.Find("TXTmode").GetComponent<Text>().text = "SLIDE MODE";
+            gTutorialFinger.SetActive(true);
+            gTutorialAccelometer.SetActive(false);
 
             int nHighScore = PlayerPrefs.GetInt("high_score_slide");
             GameObject gHighScore = GameObject.Find("highscore_num");

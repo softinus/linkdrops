@@ -6,6 +6,8 @@ using System.IO;
 using Parse;
 using System.Threading.Tasks;
 using UnityEngine.UI;
+using Soomla.Store;
+using System;
 
 public class buttonManager : MonoBehaviour {
 
@@ -16,10 +18,31 @@ public class buttonManager : MonoBehaviour {
 
     //bool bSlideMode = true;
 
+    static public bool bPressStart = false;
+
     void OnGUI()
     {
     }
 
+
+    public void RemoveAds()
+    {
+        try
+        {
+            StoreInventory.BuyItem(IABManager.buyNonADs[0].ItemId);
+        }
+        catch (Exception e)
+        {
+            //GUILayout.Label(e.Message, GUILayout.Width(800));
+            Debug.Log("purchase error : " + e.Message);
+        }
+
+        //Social.ReportProgress("CgkIuKTZ6sIaEAIQIg", 100.0f, (bool success) =>
+        //{
+        //});
+
+        //PlayerPrefs.SetInt("no_ads", 1);
+    }
 
 
 
@@ -87,8 +110,8 @@ public class buttonManager : MonoBehaviour {
                 manager.GetComponent<TouchManager>().enabled = true;
                 manager.GetComponent<TouchManager2>().enabled = false;
             }
-
-		    manager.GetComponent<BlockManager2> ().BeginStart = true;
+            bPressStart = true;
+		    //manager.GetComponent<BlockManager2> ().BeginStart = true;
 		}
 	}
 
@@ -103,6 +126,8 @@ public class buttonManager : MonoBehaviour {
         BlockManager2.retry = true;
         Application.LoadLevel(0);
     }
+
+
 
     //    StartCoroutine(ShowCanvas());
 
