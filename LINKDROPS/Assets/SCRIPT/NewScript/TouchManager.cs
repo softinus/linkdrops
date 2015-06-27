@@ -211,6 +211,7 @@ public class TouchManager : MonoBehaviour
     void FixedUpdate()
     {
         
+        
 	
 //        InJoySticks();
 
@@ -220,6 +221,7 @@ public class TouchManager : MonoBehaviour
         {
             InWindows();
 
+            if (buttonManager.bPressStart)
             if (s_TouchMode == true) // each modes are completely different
             {
                 if (bTouch && !this.GetComponent<BlockManager2>().bGameOver)
@@ -242,7 +244,9 @@ public class TouchManager : MonoBehaviour
         else
         {
             //InMobile();
+            InWindows();
 
+            if (buttonManager.bPressStart)
             if (s_TouchMode == true) // each modes are completely different
             {
                 if (!this.GetComponent<BlockManager2>().bGameOver)
