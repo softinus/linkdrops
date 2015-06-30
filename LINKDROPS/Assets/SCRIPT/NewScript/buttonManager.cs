@@ -6,12 +6,11 @@ using System.IO;
 using Parse;
 using System.Threading.Tasks;
 using UnityEngine.UI;
-using Soomla.Store;
 using System;
+using OnePF;
 
 public class buttonManager : MonoBehaviour {
 
-    
 	static public GameObject manager;
 
     //static private GameObject canvas;
@@ -20,22 +19,76 @@ public class buttonManager : MonoBehaviour {
 
     static public bool bPressStart = false;
 
+
+    string resultPrint = "ASKY";
+    bool clicked = false;
+
     void OnGUI()
     {
     }
 
 
-    public void RemoveAds()
+    void CallAndroid()
     {
+        if (clicked || Application.platform != RuntimePlatform.Android)
+        {
+            Debug.Log("Do not Execute this method");
+            return;
+        }
+        clicked = true;
+        resultPrint = "";
+
+#if UNITY_ANDROID
         try
         {
-            StoreInventory.BuyItem(IABManager.buyNonADs[0].ItemId);
+            using (AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+            {
+                using (AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity"))
+                {
+                    Debug.Log("purchase");
+
+                    jo.Call("AnswerToUnity");
+
+                }
+            }
         }
         catch (Exception e)
         {
-            //GUILayout.Label(e.Message, GUILayout.Width(800));
-            Debug.Log("purchase error : " + e.Message);
+            Debug.Log(e.StackTrace);
         }
+#endif
+
+    }
+
+    /// <summary>
+    /// Android using the method returns the result. 
+    /// </summary>
+    void ResultFromAndroid(string result)
+    {
+        clicked = false;
+        resultPrint = result;
+    }
+
+
+    public void RemoveAds()
+    {
+        //OpenIAB.purchaseProduct(openIAB.SKU_ads);
+
+
+
+
+        //CallAndroid();
+
+
+        //try
+        //{
+        //    StoreInventory.BuyItem(IABManager.buyNonADs[0].ItemId);
+        //}
+        //catch (Exception e)
+        //{
+        //    //GUILayout.Label(e.Message, GUILayout.Width(800));
+        //    Debug.Log("purchase error : " + e.Message);
+        //}
 
         //Social.ReportProgress("CgkIuKTZ6sIaEAIQIg", 100.0f, (bool success) =>
         //{
@@ -123,6 +176,7 @@ public class buttonManager : MonoBehaviour {
 
     public void retry_sceneLoad()
     {
+        buttonManager.bPressStart = true;
         BlockManager2.retry = true;
         Application.LoadLevel(0);
     }

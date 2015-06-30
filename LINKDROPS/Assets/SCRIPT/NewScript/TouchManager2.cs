@@ -92,7 +92,7 @@ public class TouchManager2 : MonoBehaviour
                     bManager.GetComponent<TouchManager2>().enabled = false;
                 }
             }
-            else if (bManager.BeginStart == false && buttonManager.bPressStart) // when rety, if game is not started yet
+            else if (bManager.BeginStart == false && buttonManager.bPressStart && !bManager.bGameOver) // when rety, if game is not started yet
             {
                 bManager.BeginStart = true;
                 gTutorialFinger.SetActive(false);
