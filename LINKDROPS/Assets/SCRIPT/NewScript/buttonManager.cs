@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using UnityEngine.UI;
 using System;
 using OnePF;
+using System.Diagnostics;
 
 public class buttonManager : MonoBehaviour {
 
@@ -20,11 +21,36 @@ public class buttonManager : MonoBehaviour {
     static public bool bPressStart = false;
 
 
-    string resultPrint = "ASKY";
+    string resultPrint = "";
     bool clicked = false;
 
-    void OnGUI()
+    Stopwatch SW = new Stopwatch();
+
+    void Start()
     {
+        SW.Reset();
+        SW.Start();
+    }
+
+
+    void CallAD()
+    {
+
+        long timeCheck = SW.ElapsedMilliseconds;
+
+        ++Global.s_nPlayCount;
+        if (Global.s_nPlayCount > 5)
+            if (timeCheck >= 9000)
+            {
+                int NoADs = PlayerPrefs.GetInt("no_ads", 0);    // 0:default, 1:removed
+
+                if (NoADs == 0)
+                    UnityAdsManager.CallAD();
+
+                SW.Reset();
+
+                Global.s_nPlayCount = 0;
+            }
     }
 
 
@@ -32,7 +58,7 @@ public class buttonManager : MonoBehaviour {
     {
         if (clicked || Application.platform != RuntimePlatform.Android)
         {
-            Debug.Log("Do not Execute this method");
+            UnityEngine.Debug.Log("Do not Execute this method");
             return;
         }
         clicked = true;
@@ -45,7 +71,7 @@ public class buttonManager : MonoBehaviour {
             {
                 using (AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity"))
                 {
-                    Debug.Log("purchase");
+                    UnityEngine.Debug.Log("purchase");
 
                     jo.Call("AnswerToUnity");
 
@@ -54,7 +80,7 @@ public class buttonManager : MonoBehaviour {
         }
         catch (Exception e)
         {
-            Debug.Log(e.StackTrace);
+            UnityEngine.Debug.Log(e.StackTrace);
         }
 #endif
 
@@ -170,12 +196,15 @@ public class buttonManager : MonoBehaviour {
 
     public void GoHome()
     {
+        CallAD();
         Application.LoadLevel(0);
     }
 
 
     public void retry_sceneLoad()
     {
+        CallAD();
+
         buttonManager.bPressStart = true;
         BlockManager2.retry = true;
         Application.LoadLevel(0);
