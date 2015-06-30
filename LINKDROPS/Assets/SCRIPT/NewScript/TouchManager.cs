@@ -244,6 +244,9 @@ public class TouchManager : MonoBehaviour
         }
         else
         {
+            if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+                return;
+
             //InMobile();
             InWindows();
 
