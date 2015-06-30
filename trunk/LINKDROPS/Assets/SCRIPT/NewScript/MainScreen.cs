@@ -6,7 +6,6 @@ public class MainScreen : MonoBehaviour {
 
     GameObject gTutorialFinger = null;
     GameObject gTutorialAccelometer = null;
-    GameObject gBuyNoAds = null;
 
 	// Use this for initialization
 	void Start () 
@@ -16,12 +15,8 @@ public class MainScreen : MonoBehaviour {
 
         gTutorialFinger = GameObject.Find("tuto_finger");
         gTutorialAccelometer = GameObject.Find("tuto_phone");
-        gBuyNoAds = GameObject.Find("noadsPurchase");
-
-        int NoADs = PlayerPrefs.GetInt("no_ads", 0);    // 0:default, 1:removed
-        if (NoADs == 1)
-            gBuyNoAds.SetActive(false);
 	}
+
 	
 	// Update is called once per frame
 	void Update () 

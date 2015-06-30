@@ -255,10 +255,22 @@ public class TouchManager : MonoBehaviour
             {
                 if (!this.GetComponent<BlockManager2>().bGameOver)
                 {
-                    if (gLeftWall.transform.position.x < gStartBlock.transform.position.x && gRightWall.transform.position.x > gStartBlock.transform.position.x)
+                    if (Input.acceleration.x < 0 ) // if accelometer x pos towards to left,
                     {
-                        gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * fTiltMovementFactor, 0, 0));
-                        gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -fTiltRotationFactor);
+                        if(gLeftWall.transform.position.x < gStartBlock.transform.position.x)
+                        {
+                               gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * fTiltMovementFactor, 0, 0));
+                            gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -fTiltRotationFactor);
+                        }
+
+                    }
+                    else
+                    {
+                        if (gRightWall.transform.position.x > gStartBlock.transform.position.x)
+                        {
+                            gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * fTiltMovementFactor, 0, 0));
+                            gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -fTiltRotationFactor);
+                        }
                     }
                 }
 

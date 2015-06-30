@@ -171,8 +171,8 @@ MonoBehaviour:
   vTouchPos: {x: 0, y: 0}
   fSpeed: 3.79999995
   fFactor: .200000003
-  vCharSpeed: 0
-  vCharIncreseSpeed: 0
+  vCharSpeed: 5
+  vCharIncreseSpeed: .000250000012
 --- !u!114 &14545218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   fTiltRotationFactor: 135.5
   vCharToward: {x: 0, y: 0}
   vCharSpeed: 0
-  vCharIncreseSpeed: 0
+  vCharIncreseSpeed: .00150000001
   s_TouchMode: 1
 --- !u!82 &14545219
 AudioSource:
@@ -3616,7 +3616,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -85.5555344, y: -318.888916}
+  m_AnchoredPosition: {x: -114, y: -318.888916}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &1520039888
