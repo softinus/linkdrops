@@ -16,6 +16,8 @@ public class linkedCheck : MonoBehaviour
         if (Manager.GetComponent<BlockManager2>().bGameOver)    // call one time.
             return;
 
+        buttonManager.bPressStart = false;
+
         ++Global.s_nPlayCount;
         if(Global.s_nPlayCount % 5 == 0)
         {
@@ -44,15 +46,15 @@ public class linkedCheck : MonoBehaviour
     void AbsorbCount()
     {
         if( this.gameObject.transform.tag == "yellow")
-            ++BlockManager2.nAbsorbBlockY;
+            ++Global.nAbsorbBlockY;
         if (this.gameObject.transform.tag == "red")
-            ++BlockManager2.nAbsorbBlockR;
+            ++Global.nAbsorbBlockR;
         if (this.gameObject.transform.tag == "blue")
-            ++BlockManager2.nAbsorbBlockB;
+            ++Global.nAbsorbBlockB;
         if (this.gameObject.transform.tag == "green")
-            ++BlockManager2.nAbsorbBlockG;
+            ++Global.nAbsorbBlockG;
         if (this.gameObject.transform.tag == "purple")
-            ++BlockManager2.nAbsorbBlockP;
+            ++Global.nAbsorbBlockP;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -84,14 +86,14 @@ public class linkedCheck : MonoBehaviour
 
             if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
             {
-                ++BlockManager2.s_nScoreSlide;
+                ++Global.s_nScoreSlide;
                 // manage pitch of SE
-                gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScoreSlide / 100.0f);
+                gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)Global.s_nScoreSlide / 100.0f);
             }
             else
             {
-                ++BlockManager2.s_nScoreTlit;
-                gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)BlockManager2.s_nScoreTlit / 100.0f);
+                ++Global.s_nScoreTlit;
+                gMainBlock.GetComponent<AudioSource>().pitch = 1.0f + ((float)Global.s_nScoreTlit / 100.0f);
             }
 
             

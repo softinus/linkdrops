@@ -17,12 +17,12 @@ public class scoreManager : MonoBehaviour {
 
         if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
-            int highScore = BlockManager2.s_nScoreSlide;
+            int highScore = Global.s_nScoreSlide;
             highscoreText.text = "" + highScore;
         }
         else
         {
-            int highScore = BlockManager2.s_nScoreTlit;
+            int highScore = Global.s_nScoreTlit;
             highscoreText.text = "" + highScore;
         }
 

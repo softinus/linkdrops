@@ -180,14 +180,7 @@ public class RowItems
 
 public class BlockManager2 : MonoBehaviour
 {
-    static public int s_nScoreTlit = 0;
-    static public int s_nScoreSlide = 0;
 
-    static public int nAbsorbBlockR;
-    static public int nAbsorbBlockB;
-    static public int nAbsorbBlockG;
-    static public int nAbsorbBlockY;
-    static public int nAbsorbBlockP;
 
 	public int nWidth= 5;
     public int nHeight = 15;
@@ -395,16 +388,16 @@ public class BlockManager2 : MonoBehaviour
 
     static public void SaveData()
     {
-        PlayerPrefs.SetInt("blue_block",    PlayerPrefs.GetInt("blue_block")    + nAbsorbBlockB);
-        PlayerPrefs.SetInt("red_block",     PlayerPrefs.GetInt("red_block")     + nAbsorbBlockR);
-        PlayerPrefs.SetInt("yellow_block",  PlayerPrefs.GetInt("yellow_block")  + nAbsorbBlockY);
-        PlayerPrefs.SetInt("purple_block",  PlayerPrefs.GetInt("purple_block")  + nAbsorbBlockP);
-        PlayerPrefs.SetInt("green_block",   PlayerPrefs.GetInt("green_block")   + nAbsorbBlockG);
-        nAbsorbBlockR= 0;
-        nAbsorbBlockB= 0;
-        nAbsorbBlockG= 0;
-        nAbsorbBlockY= 0;
-        nAbsorbBlockP = 0;
+        PlayerPrefs.SetInt("blue_block",    PlayerPrefs.GetInt("blue_block")    + Global.nAbsorbBlockB);
+        PlayerPrefs.SetInt("red_block",     PlayerPrefs.GetInt("red_block")     + Global.nAbsorbBlockR);
+        PlayerPrefs.SetInt("yellow_block", PlayerPrefs.GetInt("yellow_block") + Global.nAbsorbBlockY);
+        PlayerPrefs.SetInt("purple_block", PlayerPrefs.GetInt("purple_block") + Global.nAbsorbBlockP);
+        PlayerPrefs.SetInt("green_block", PlayerPrefs.GetInt("green_block") + Global.nAbsorbBlockG);
+        Global.nAbsorbBlockR = 0;
+        Global.nAbsorbBlockB = 0;
+        Global.nAbsorbBlockG = 0;
+        Global.nAbsorbBlockY = 0;
+        Global.nAbsorbBlockP = 0;
 
         if (PlayerPrefs.GetInt("blue_block") > 100)
         {
@@ -542,10 +535,10 @@ public class BlockManager2 : MonoBehaviour
         if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
             int nMyHighScore = PlayerPrefs.GetInt("high_score_slide");
-            if (nMyHighScore < BlockManager2.s_nScoreSlide) // if it's higher than current high score renew the high score
+            if (nMyHighScore < Global.s_nScoreSlide) // if it's higher than current high score renew the high score
             {
-                PlayerPrefs.SetInt("high_score_slide", BlockManager2.s_nScoreSlide);
-                Social.ReportScore(BlockManager2.s_nScoreSlide, "CgkIuKTZ6sIaEAIQAQ", (bool success) =>
+                PlayerPrefs.SetInt("high_score_slide", Global.s_nScoreSlide);
+                Social.ReportScore(Global.s_nScoreSlide, "CgkIuKTZ6sIaEAIQAQ", (bool success) =>
                 {
                     bool _success = success;
                 });
@@ -585,10 +578,10 @@ public class BlockManager2 : MonoBehaviour
         else
         {
             int nMyHighScore = PlayerPrefs.GetInt("high_score_tilt");
-            if (nMyHighScore < BlockManager2.s_nScoreTlit) // if it's higher than current high score renew the high score
+            if (nMyHighScore < Global.s_nScoreTlit) // if it's higher than current high score renew the high score
             {
-                PlayerPrefs.SetInt("high_score_tilt", BlockManager2.s_nScoreTlit);
-                Social.ReportScore(BlockManager2.s_nScoreTlit, "CgkIuKTZ6sIaEAIQAg", (bool success) =>
+                PlayerPrefs.SetInt("high_score_tilt", Global.s_nScoreTlit);
+                Social.ReportScore(Global.s_nScoreTlit, "CgkIuKTZ6sIaEAIQAg", (bool success) =>
                 {
                     bool _success = success;
                 });
@@ -631,9 +624,9 @@ public class BlockManager2 : MonoBehaviour
     }
 
 	void Start ()
-	{        
-        s_nScoreSlide = 0;
-        s_nScoreTlit = 0;
+	{
+        Global.s_nScoreSlide = 0;
+        Global.s_nScoreTlit = 0;
         nRowCount = nHeight;
         nSelectedGroup = Random.Range(0, groups.Length);    // select shape
         nSelectedItem = Random.Range(0, nWidth);    // select color
@@ -744,12 +737,12 @@ public class BlockManager2 : MonoBehaviour
 
             if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
             {
-                GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + BlockManager2.s_nScoreSlide;
+                GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + Global.s_nScoreSlide;
                 GameObject.Find("highScore_text").GetComponent<Text>().text = "" + nMyHighScoreSlide;
             }
             else
             {
-                GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + BlockManager2.s_nScoreTlit;
+                GameObject.Find("currentScore_text").GetComponent<Text>().text = "" + Global.s_nScoreTlit;
                 GameObject.Find("highScore_text").GetComponent<Text>().text = "" + nMyHighScoreTilt;
             }
 
