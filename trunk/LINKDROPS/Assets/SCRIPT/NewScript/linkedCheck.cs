@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class linkedCheck : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class linkedCheck : MonoBehaviour
     protected GameObject gMainBlock;
     private GameObject gGameOverLimitY;
 
-    
+    Stopwatch SW = new Stopwatch();
 
     private void GameOver()
     {
@@ -18,25 +19,34 @@ public class linkedCheck : MonoBehaviour
 
         buttonManager.bPressStart = false;
 
+        long timeCheck = SW.ElapsedMilliseconds;
+
         ++Global.s_nPlayCount;
-        if(Global.s_nPlayCount % 5 == 0)
+        if(Global.s_nPlayCount > 5)
+        if (timeCheck >= 9000)
         {
             int NoADs= PlayerPrefs.GetInt("no_ads", 0);    // 0:default, 1:removed
 
             if (NoADs == 0)
                 UnityAdsManager.CallAD();
+
+            SW.Reset();
+
+            Global.s_nPlayCount = 0;
         }
 
         //this.gameObject.GetComponent<Animator>().enabled = true;
 
         Manager.GetComponent<BlockManager2>().BeginStart = false;
         Manager.GetComponent<BlockManager2>().bGameOver = true;
-
         BlockManager2.SaveData();
     }
 
     void Start()
     {
+        SW.Reset();
+        SW.Start();
+
         //selectedBlock = Manager.GetComponent<BlockManager2>()
         gMainBlock= GameObject.Find("main_block");
         gGameOverLimitY = GameObject.Find("GameOverLimitY");
