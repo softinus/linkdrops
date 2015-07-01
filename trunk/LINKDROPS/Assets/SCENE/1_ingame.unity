@@ -185,11 +185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vTouchPos: {x: 0, y: 0}
-  fTiltMovementFactor: 25.5
+  fTiltMovementFactor: 26.5
   fTiltRotationFactor: 135.5
   vCharToward: {x: 0, y: 0}
   vCharSpeed: 0
-  vCharIncreseSpeed: .00150000001
+  vCharIncreseSpeed: .000250000012
   s_TouchMode: 1
 --- !u!82 &14545219
 AudioSource:
@@ -202,7 +202,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6f7af8893353821438343cb88d53c8b0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .5
+  m_Volume: .150000006
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1068,8 +1068,7 @@ RectTransform:
 --- !u!114 &344760109
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11464040, guid: 7e7580d021a7be24cab84d619754da39,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 344760107}
   m_Enabled: 1
@@ -3616,7 +3615,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -114, y: -318.888916}
+  m_AnchoredPosition: {x: -121, y: -318.888916}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &1520039888

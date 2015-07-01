@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class Global : MonoBehaviour {
 
@@ -14,6 +15,9 @@ public class Global : MonoBehaviour {
     static public int nAbsorbBlockG;
     static public int nAbsorbBlockY;
     static public int nAbsorbBlockP;
+
+
+    static public Stopwatch SW_forStart = new Stopwatch();
 
 
     public enum TouchModes

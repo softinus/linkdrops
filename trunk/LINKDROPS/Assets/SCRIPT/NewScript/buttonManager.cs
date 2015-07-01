@@ -172,7 +172,8 @@ public class buttonManager : MonoBehaviour {
 
 	public void main_gameStart()
     {
-
+        Global.SW_forStart.Reset();
+        Global.SW_forStart.Start();
 
 		//manager.GetComponent<BlockManager2> ().BeginStart = true;
 		//Application.LoadLevel (1);
@@ -197,6 +198,7 @@ public class buttonManager : MonoBehaviour {
     public void GoHome()
     {
         CallAD();
+        //BlockManager2.retry = true;
         Application.LoadLevel(0);
     }
 
@@ -204,6 +206,9 @@ public class buttonManager : MonoBehaviour {
     public void retry_sceneLoad()
     {
         CallAD();
+
+        Global.SW_forStart.Reset();
+        Global.SW_forStart.Start();
 
         buttonManager.bPressStart = true;
         BlockManager2.retry = true;
@@ -381,6 +386,10 @@ public class buttonManager : MonoBehaviour {
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit(); 
+
         if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
         {
             for (int i = 0; i < this.gameObject.transform.childCount; ++i)

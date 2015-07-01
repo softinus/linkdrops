@@ -15,16 +15,20 @@ public class scoreManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+        if (managerObj.GetComponent<BlockManager2>().BeginStart)    // if started
         {
-            int highScore = Global.s_nScoreSlide;
-            highscoreText.text = "" + highScore;
+            if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+            {
+                int highScore = Global.s_nScoreSlide;
+                highscoreText.text = "" + highScore;
+            }
+            else
+            {
+                int highScore = Global.s_nScoreTlit;
+                highscoreText.text = "" + highScore;
+            }
         }
-        else
-        {
-            int highScore = Global.s_nScoreTlit;
-            highscoreText.text = "" + highScore;
-        }
+        
 
 		//this.gameObject.GetComponent<Text>().color.a = 10;
 
