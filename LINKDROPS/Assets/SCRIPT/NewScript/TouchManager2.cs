@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TouchManager2 : MonoBehaviour
 {
@@ -64,6 +65,34 @@ public class TouchManager2 : MonoBehaviour
     // Update is called once per frame 
     void FixedUpdate () 
     {
+        Text txt = GameObject.Find("currentScore").GetComponent<Text>();
+        if (Global.SW_forStart.ElapsedMilliseconds < 1000)
+        {
+            txt.color = Color.white;
+            txt.text = "3";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 2000)
+        {
+            txt.text = "2";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 3000)
+        {
+            txt.text = "1";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 4000)
+        {
+            txt.fontSize = 100;
+            txt.text = "YAMU!!";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 5000)
+        {
+            bManager.BeginStart = true;
+            txt.fontSize = 185;
+            txt.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+
+            if (gTutorialFinger != null)
+                gTutorialFinger.SetActive(false);
+        }
 
 
         gStartBlock = GameObject.Find("main_block");
@@ -77,25 +106,25 @@ public class TouchManager2 : MonoBehaviour
 //                bManager.BeginStart = true;
             if (bManager.BeginStart == false && BlockManager2.retry == true) // when rety, if game is not started yet
             {
-                gTutorialFinger.SetActive(false);
-                bManager.BeginStart = true;
+                //gTutorialFinger.SetActive(false);
+                //bManager.BeginStart = true;
                 BlockManager2.retry = false;
 
-                if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
-                {
-                    bManager.GetComponent<TouchManager>().enabled = false;
-                    bManager.GetComponent<TouchManager2>().enabled = true;
-                }
-                else
-                {
-                    bManager.GetComponent<TouchManager>().enabled = true;
-                    bManager.GetComponent<TouchManager2>().enabled = false;
-                }
+                //if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+                //{
+                //    bManager.GetComponent<TouchManager>().enabled = false;
+                //    bManager.GetComponent<TouchManager2>().enabled = true;
+                //}
+                //else
+                //{
+                //    bManager.GetComponent<TouchManager>().enabled = true;
+                //    bManager.GetComponent<TouchManager2>().enabled = false;
+                //}
             }
             else if (bManager.BeginStart == false && buttonManager.bPressStart && !bManager.bGameOver) // when rety, if game is not started yet
             {
-                bManager.BeginStart = true;
-                gTutorialFinger.SetActive(false);
+                //bManager.BeginStart = true;
+                //gTutorialFinger.SetActive(false);
             }
         }
 
@@ -219,11 +248,11 @@ public class TouchManager2 : MonoBehaviour
         {
             if (gStartBlock.transform.eulerAngles.z < 359.0f)
             if (gStartBlock.transform.eulerAngles.z > 310.0f)
-                gStartBlock.transform.Rotate(Vector3.back, -1.85f, Space.World);
+                gStartBlock.transform.Rotate(Vector3.back, -2.45f, Space.World);
 
             if (gStartBlock.transform.eulerAngles.z < 50.0f)
             if (gStartBlock.transform.eulerAngles.z > 1.0f)
-                gStartBlock.transform.Rotate(Vector3.back, 1.85f, Space.World);
+                gStartBlock.transform.Rotate(Vector3.back, 2.45f, Space.World);
         }
 
     }

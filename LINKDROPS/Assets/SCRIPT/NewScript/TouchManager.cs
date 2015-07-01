@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
+using UnityEngine.UI;
 
 public class TouchManager : MonoBehaviour
 {
@@ -49,8 +51,8 @@ public class TouchManager : MonoBehaviour
         
         //largeFont = new GUIStyle();
         //largeFont.fontSize = 80;
-        
-        
+
+
 
         //GUI.color = Color.green;
         //GUI.skin.label.fontSize = 85;
@@ -58,8 +60,8 @@ public class TouchManager : MonoBehaviour
         //////GUI.Label(new Rect(150, 275, 300, 20), "delta : " + Input.GetTouch(0).deltaPosition.x);
         //GUILayout.Space(5);
         //////GUILayout.Label("current");
-        //GUILayout.Label("delta : " + Input.GetTouch(0).deltaPosition.x, GUILayout.Width(800));
-        ////GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
+        ////GUILayout.Label("delta : " + Input.GetTouch(0).deltaPosition.x, GUILayout.Width(800));
+        //GUILayout.Label("acc(x) : " + Input.acceleration.x, GUILayout.Width(800));
         ////GUILayout.Label("acc(y) : " + Input.acceleration.y, GUILayout.Width(800));
         ////GUILayout.Label("acc(z) : " + Input.acceleration.z, GUILayout.Width(800));
         
@@ -86,9 +88,17 @@ public class TouchManager : MonoBehaviour
 
         if (BlockManager2.retry)
         {
-            gTutorialFinger.SetActive(false);
-            gTutorialAccelometer.SetActive(false);
+            if (gTutorialFinger != null)
+                gTutorialFinger.SetActive(false);
+
+            if (gTutorialAccelometer != null)
+                gTutorialAccelometer.SetActive(false);
         }
+
+        
+        
+
+
     }
 
     void InWindows()
@@ -122,33 +132,33 @@ public class TouchManager : MonoBehaviour
             bTouch = true;
             vStartTouchPos = vTouchPos;
             vGapBetweenTouchAndObj.x = (gStartBlock.transform.position.x - vTouchPos.x);
-			Debug.Log (hit);
+			//Debug.Log (hit);
             ////vGapBetweenTouchAndObj.x = gStartBlock.transform.position.x - (vTouchPos.x + fHalfScreen);
 
             if (bManager.BeginStart == false && BlockManager2.retry == true) // when rety, if game is not started yet
             {
-                bManager.BeginStart = true;
+                //bManager.BeginStart = true;
                 BlockManager2.retry = false;
 
-                if (bManager.bGameOver == false)
-                {
-                    if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
-                    {
-                        bManager.GetComponent<TouchManager>().enabled = false;
-                        bManager.GetComponent<TouchManager2>().enabled = true;
-                    }
-                    else
-                    {
-                        bManager.GetComponent<TouchManager>().enabled = true;
-                        bManager.GetComponent<TouchManager2>().enabled = false;
-                    }
-                }
+                //if (bManager.bGameOver == false)
+                //{
+                //    if (Global.s_nPlayMode == Global.TouchModes.E_TOUCH_MODE)
+                //    {
+                //        bManager.GetComponent<TouchManager>().enabled = false;
+                //        bManager.GetComponent<TouchManager2>().enabled = true;
+                //    }
+                //    else
+                //    {
+                //        bManager.GetComponent<TouchManager>().enabled = true;
+                //        bManager.GetComponent<TouchManager2>().enabled = false;
+                //    }
+                //}
             }
             else if (bManager.BeginStart == false && buttonManager.bPressStart && !bManager.bGameOver) // when rety, if game is not started yet
-            {
-                
-                bManager.BeginStart = true;
-                gTutorialAccelometer.SetActive(false);
+            {                
+                //bManager.BeginStart = true;
+                if (gTutorialAccelometer != null)
+                    gTutorialAccelometer.SetActive(false);
             }
 
             //if (bManager.BeginStart == false && bManager.bGameOver == false) // if game is not started yet
@@ -211,6 +221,36 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Text txt = GameObject.Find("currentScore").GetComponent<Text>();        
+        if( Global.SW_forStart.ElapsedMilliseconds < 1000 )
+        {
+            txt.color = Color.white;
+            txt.text = "3";
+        }
+        else if( Global.SW_forStart.ElapsedMilliseconds < 2000 )
+        {
+            txt.text = "2";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 3000 )
+        {
+            txt.text = "1";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 4000)
+        {
+            txt.fontSize = 100;
+            txt.text = "YAMU!!";
+        }
+        else if (Global.SW_forStart.ElapsedMilliseconds < 5000)
+        {
+            bManager.BeginStart = true;
+            txt.fontSize = 185;
+            txt.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+
+            if (gTutorialAccelometer != null)
+                gTutorialAccelometer.SetActive(false);
+        }
+        
+        
         
         
 	
@@ -255,12 +295,15 @@ public class TouchManager : MonoBehaviour
             {
                 if (!this.GetComponent<BlockManager2>().bGameOver)
                 {
-                    if (Input.acceleration.x < 0 ) // if accelometer x pos towards to left,
+                    float fMovement = 0.0F;
+                    fMovement = Mathf.Clamp(Input.acceleration.x, -0.5f, 0.5f);
+
+                    if (fMovement < 0) // if accelometer x pos towards to left,
                     {
                         if(gLeftWall.transform.position.x < gStartBlock.transform.position.x)
                         {
-                               gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * fTiltMovementFactor, 0, 0));
-                            gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -fTiltRotationFactor);
+                            gStartBlock.transform.Translate(new Vector3(fMovement * fTiltMovementFactor, 0, 0));
+                            gStartBlock.transform.rotation = Quaternion.Euler(0, 0, fMovement * -fTiltRotationFactor);
                         }
 
                     }
@@ -268,8 +311,8 @@ public class TouchManager : MonoBehaviour
                     {
                         if (gRightWall.transform.position.x > gStartBlock.transform.position.x)
                         {
-                            gStartBlock.transform.Translate(new Vector3(Input.acceleration.x * fTiltMovementFactor, 0, 0));
-                            gStartBlock.transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * -fTiltRotationFactor);
+                            gStartBlock.transform.Translate(new Vector3(fMovement * fTiltMovementFactor, 0, 0));
+                            gStartBlock.transform.rotation = Quaternion.Euler(0, 0, fMovement * -fTiltRotationFactor);
                         }
                     }
                 }
@@ -318,7 +361,7 @@ public class TouchManager : MonoBehaviour
 
 
 
-        fTiltMovementFactor += vCharIncreseSpeed;
+        fTiltMovementFactor += (vCharIncreseSpeed * 7F);
         vCharSpeed += vCharIncreseSpeed;
 
     }
