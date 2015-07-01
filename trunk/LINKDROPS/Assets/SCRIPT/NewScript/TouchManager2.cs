@@ -205,6 +205,9 @@ public class TouchManager2 : MonoBehaviour
 
     void DragMove()
     {
+        if (Input.touchCount != 1)
+            return;
+
         if (Input.touchCount > 0)
             vTouchDeltaPos = Input.GetTouch(0).deltaPosition;
         //Camera camera2 = GameObject.Find("Camera").GetComponent<Camera>();
